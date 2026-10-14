@@ -5,11 +5,14 @@
  *  - Васкрс по јулијанској пасхалији (Meeus), претворен у грегоријански датум;
  *  - непокретни празници се чувају по старом (јулијанском) календару;
  *  - покретни празници се рачунају као померај од Васкрса;
- *  - пост се одређује из вишедневних постова, среде/петка и мрсних седмица.
+ *  - пост: за године које имају податке из црквеног календара (src/data/post/<година>.json) узима се
+ *    степен из календара, а за остале године рачуна се по правилима (вишедневни постови, среда и петак,
+ *    мрсне седмице, олакшице за празнике).
  *
  * Разлика између календара је 13 дана за године 1900–2099.
  */
 import praznici from '../data/praznici.json' with { type: 'json' };
+import post2026 from '../data/post/2026.json' with { type: 'json' };
 
 export type Vrsta = 'crveno' | 'praznik' | 'vaskrs' | 'post';
 
@@ -38,6 +41,8 @@ export interface PostDana {
   posno: boolean;
   naziv: string; // нпр. „Божићни пост“, „Среда“, „Мрсни дан“
   stepen: StepenPosta;
+  /** Да ли је степен преузет из црквеног календара или израчунат по правилима. */
+  izvor: 'kalendar' | 'pravila';
 }
 
 const DAN = 86_400_000;
@@ -149,7 +154,25 @@ export function visednevniPostovi(godina: number): { naziv: string; od: Date; do
 const VELIKI = new Set(['mala-gospojina', 'krstovdan', 'vavedenje', 'sretenje', 'blagovesti', 'cveti', 'spasovdan', 'duhovi', 'preobrazenje', 'velika-gospojina']);
 
 function dan(stepen: StepenPosta, naziv: string): PostDana {
-  return { posno: stepen !== 'mrsno', naziv, stepen };
+  return { posno: stepen !== 'mrsno', naziv, stepen, izvor: 'pravila' };
+}
+
+/**
+ * Празници по старом календару [месец, дан] који у посне дане на води разрешавају на уље и вино
+ * (полијелејни и бденијски светитељи). Списак је изведен из календара СПЦ за 2026. и није потпун;
+ * за године са подацима из календара он се не користи.
+ */
+const OLAKSICA_ULJE: [number, number][] = [
+  [1, 15], [1, 17], [2, 13], [2, 17], [2, 24], [3, 9], [3, 26], [6, 11], [7, 2], [7, 25], [7, 30],
+  [9, 3], [9, 24], [9, 26], [10, 1], [11, 12], [11, 14], [11, 24], [12, 5], [12, 10], [12, 12], [12, 17], [12, 20],
+];
+
+/** Подаци из црквеног календара, по години: 'MM-DD' → степен (дани без поста се не наводе). */
+const KALENDARI_POSTA: Record<number, Record<string, string>> = { 2026: post2026.dani };
+const STEPEN_IZ_KALENDARA = new Set<string>(['beli-mrs', 'riba', 'ulje', 'voda', 'uzdrzanje']);
+
+export function imaKalendarPosta(godina: number): boolean {
+  return godina in KALENDARI_POSTA;
 }
 
 /**
@@ -162,6 +185,19 @@ function dan(stepen: StepenPosta, naziv: string): PostDana {
  * → Божићни, Петровски и Госпојински пост → среда и петак преко године.
  */
 export function post(d: Date): PostDana {
+  const r = postPoPravilima(d);
+  const kalendar = KALENDARI_POSTA[d.getUTCFullYear()];
+  if (!kalendar) return r;
+  const zapis = kalendar[d.toISOString().slice(5, 10)];
+  const stepen: StepenPosta = zapis && STEPEN_IZ_KALENDARA.has(zapis) ? (zapis as StepenPosta) : 'mrsno';
+  let naziv = r.naziv;
+  if (stepen === 'mrsno' && r.posno) naziv = 'Без поста';
+  else if (stepen !== 'mrsno' && !r.posno) naziv = d.getUTCDay() === 3 ? 'Среда' : d.getUTCDay() === 5 ? 'Петак' : 'Посни дан';
+  return { posno: stepen !== 'mrsno', naziv, stepen, izvor: 'kalendar' };
+}
+
+/** Пост по правилима Типика; користи се за године за које нема података из црквеног календара. */
+export function postPoPravilima(d: Date): PostDana {
   const g = d.getUTCFullYear();
   const s = poStarom(d);
   const naStarom = (m: number, dd: number) => s.mesec === m && s.dan === dd;
@@ -188,51 +224,48 @@ export function post(d: Date): PostDana {
 
   const p = vaskrs(g);
   const odV = razlikaDana(d, p);
+  const olaksica = OLAKSICA_ULJE.some(([m, dd]) => naStarom(m, dd));
+  const crveno = prazniciDana(d).some((x) => x.vrsta === 'crveno');
 
   // 3. Велики пост (Чисти понедељак до Велике суботе).
   if (odV >= -48 && odV <= -1) {
+    if (odV >= -48 && odV <= -46) return dan('uzdrzanje', 'Велики пост, прва три дана');
     if (odV === -2) return dan('uzdrzanje', 'Велики петак');
     if (odV === -1) return dan('voda', 'Велика субота');
+    if (odV === -3) return dan('ulje', 'Велики четвртак');
     if (odV === -7) return dan('riba', 'Цвети');
     if (praznici.includes('blagovesti')) return dan('riba', 'Благовести у Великом посту');
     if (odV === -8) return dan('ulje', 'Лазарева субота');
-    return dan(vikend ? 'ulje' : 'voda', 'Велики пост');
+    if (vikend || olaksica || naStarom(3, 9)) return dan('ulje', 'Велики пост');
+    return dan('voda', 'Велики пост');
   }
 
   // 4. Сирна (беле мрсне) седмица пред Великим постом.
   if (odV >= -55 && odV <= -49) return dan('beli-mrs', 'Сирна седмица');
 
   // 5. Вишедневни постови током године.
+  //    Божићни и Петровски: понедељак, среда, петак на води; уторак, четвртак на уљу; субота, недеља риба.
+  //    Последњих седам дана Божићног поста викенд је на уљу. Госпојински: на води, викендом уље.
   for (const v of visednevniPostovi(g)) {
     if (!uOpsegu(d, v.od, v.do) || v.naziv === 'Велики пост') continue;
-    if (v.naziv === 'Божићни пост') {
-      if (praznici.includes('vavedenje') || praznici.includes('nikoljdan')) return dan('riba', v.naziv);
-      const nikoljdan = izStarog(v.od.getUTCFullYear(), 12, 6);
-      const novaGodina = izStarog(v.od.getUTCFullYear(), 12, 20);
-      if (d <= nikoljdan) {
-        if (nedelja === 3 || nedelja === 5) return dan('voda', v.naziv);
-        return dan(nedelja === 1 ? 'ulje' : 'riba', v.naziv);
-      }
-      if (d < novaGodina) {
-        if (vikend) return dan('riba', v.naziv);
-        return dan(nedelja === 3 || nedelja === 5 ? 'voda' : 'ulje', v.naziv);
-      }
-      return dan(vikend ? 'ulje' : 'voda', `${v.naziv}, последњи дани`);
-    }
-    if (v.naziv === 'Петровски пост') {
-      if (nedelja === 3 || nedelja === 5) return dan('voda', v.naziv);
-      return dan(nedelja === 1 ? 'ulje' : 'riba', v.naziv);
-    }
-    // Госпојински пост
-    if (praznici.includes('preobrazenje')) return dan('riba', 'Преображење у Госпојинском посту');
-    return dan(vikend ? 'ulje' : 'voda', v.naziv);
+    if (praznici.some((x) => VELIKI.has(x)) || praznici.includes('nikoljdan') || naStarom(6, 24)) return dan('riba', v.naziv);
+    if (v.naziv === 'Госпојински пост') return dan(vikend || olaksica ? 'ulje' : 'voda', v.naziv);
+    const poslednjiDani = v.naziv === 'Божићни пост' && d >= izStarog(v.od.getUTCFullYear(), 12, 18);
+    if (vikend) return dan(poslednjiDani ? 'ulje' : 'riba', poslednjiDani ? `${v.naziv}, последњи дани` : v.naziv);
+    if (nedelja === 2 || nedelja === 4) return dan('ulje', v.naziv);
+    return dan(olaksica || crveno ? 'ulje' : 'voda', v.naziv);
   }
 
   // 6. Среда и петак преко године.
   if (nedelja === 3 || nedelja === 5) {
     const naziv = nedelja === 3 ? 'Среда' : 'Петак';
     if (praznici.some((x) => VELIKI.has(x))) return dan('riba', `${naziv}, велики празник`);
-    if (prazniciDana(d).some((x) => x.vrsta === 'crveno')) return dan('ulje', `${naziv}, црвено слово`);
+    // Од Томине недеље до Духова: среда Преполовљења и среда пред Спасовдан риба, остале на уљу.
+    if (odV >= 7 && odV <= 49) {
+      if (odV === 24 || odV === 38) return dan('riba', `${naziv}, ${odV === 24 ? 'Преполовљење' : 'оданије Васкрса'}`);
+      return dan('ulje', `${naziv} после Васкрса`);
+    }
+    if (crveno || olaksica) return dan('ulje', `${naziv}, празник`);
     return dan('voda', naziv);
   }
   return dan('mrsno', 'Мрсни дан');

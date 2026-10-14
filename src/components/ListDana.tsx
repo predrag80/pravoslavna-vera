@@ -106,7 +106,10 @@ export default function ListDana({ datum, podaci, onZatvori, onPomeri }: Props) 
               Додај у календар
             </button>
           </div>
-          <p className={s.savet}>О мери поста посаветујте се са својим духовником.</p>
+          <p className={s.savet}>
+            {d.post.izvor === 'kalendar' ? 'Пост према црквеном календару (crkvenikalendar.rs). ' : 'Пост је израчунат по правилима Типика; за ову годину још нема података из црквеног календара. '}
+            О мери поста посаветујте се са својим духовником.
+          </p>
         </div>
         <button type="button" className={s.zatvori} onClick={onZatvori}>Затвори</button>
       </div>
