@@ -25,3 +25,5 @@
 .veze :global(.dugme) { color: var(--slonovaca); }
 .veze :global(.dugme-obrub) { color: var(--svod); }
 .list figcaption a { color: var(--mastilo-2); }
+.savet { margin: 2px 0 0; font-size: 11px; color: var(--mastilo-2); }
+.oznake { align-items: flex-start; }

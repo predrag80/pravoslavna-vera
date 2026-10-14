@@ -45,3 +45,29 @@ test('пост', () => {
   assert.equal(post(utc(2026, 6, 20)).naziv, 'Петровски пост');
   assert.equal(post(utc(2026, 8, 20)).naziv, 'Госпојински пост');
 });
+
+test('степен поста', () => {
+  const st = (g: number, m: number, d: number) => post(utc(g, m, d)).stepen;
+  assert.equal(st(2026, 10, 14), 'voda'); // среда
+  assert.equal(st(2026, 10, 27), 'mrsno'); // Света Петка, уторак
+  assert.equal(st(2026, 12, 1), 'riba'); // уторак у Божићном посту, пре Никољдана
+  assert.equal(st(2026, 12, 2), 'voda'); // среда у Божићном посту
+  assert.equal(st(2026, 11, 30), 'ulje'); // понедељак у Божићном посту
+  assert.equal(st(2026, 12, 4), 'riba'); // Ваведење, петак
+  assert.equal(st(2026, 12, 19), 'riba'); // Никољдан
+  assert.equal(st(2026, 12, 22), 'ulje'); // уторак после Никољдана
+  assert.equal(st(2026, 12, 26), 'riba'); // субота после Никољдана
+  assert.equal(st(2027, 1, 4), 'voda'); // понедељак, последњи дани поста
+  assert.equal(st(2027, 1, 6), 'voda'); // Бадњи дан, среда
+  // Велики пост 2026 (Васкрс 12. април)
+  assert.equal(st(2026, 3, 10), 'voda');
+  assert.equal(st(2026, 3, 14), 'ulje'); // субота
+  assert.equal(st(2026, 4, 4), 'ulje'); // Лазарева субота
+  assert.equal(st(2026, 4, 5), 'riba'); // Цвети
+  assert.equal(st(2026, 4, 7), 'riba'); // Благовести у Страсној седмици
+  assert.equal(st(2026, 4, 10), 'uzdrzanje'); // Велики петак
+  assert.equal(st(2026, 2, 18), 'beli-mrs'); // Сирна седмица, среда
+  assert.equal(st(2026, 8, 19), 'riba'); // Преображење
+  assert.equal(st(2026, 8, 22), 'ulje'); // субота у Госпојинском посту
+  assert.equal(st(2026, 9, 27), 'ulje'); // Крстовдан у недељу
+});

@@ -6,7 +6,15 @@ import { marked } from 'marked';
 
 export interface Pitanje { pitanje: string; odgovori: string[]; tacan: number }
 export interface Lekcija { slug: string; redniBroj: number; naslov: string; podnaslov: string; trajanje: number; pitanja: Pitanje[]; html: string }
-export interface Molitva { slug: string; naslov: string; red: number; grupa: string; html: string }
+export type GrupaMolitve = 'svakodnevne' | 'akatisti' | 'kanoni' | 'ostale';
+export interface Molitva { slug: string; naslov: string; red: number; grupa: GrupaMolitve; pravila: Record<string, number>; html: string }
+
+/** Молитвена правила: молитве које се читају редом, једна за другом. */
+export const PRAVILA = {
+  jutarnje: { naziv: 'Јутарње правило', opis: 'Молитве по устајању' },
+  vecernje: { naziv: 'Вечерње правило', opis: 'Молитве пред спавање' },
+} as const;
+export type IdPravila = keyof typeof PRAVILA;
 
 function citaj<T>(folder: string, pretvori: (slug: string, podaci: Record<string, unknown>, html: string) => T): T[] {
   const dir = path.join(process.cwd(), 'content', folder);
@@ -32,7 +40,20 @@ export function lekcije(): Lekcija[] {
 }
 
 export function molitve(): Molitva[] {
-  return citaj('molitve', (slug, d, html) => ({ slug, naslov: String(d.naslov), red: Number(d.red ?? 99), grupa: String(d.grupa ?? 'ostale'), html })).sort((a, b) => a.red - b.red);
+  return citaj('molitve', (slug, d, html) => ({
+    slug,
+    naslov: String(d.naslov),
+    red: Number(d.red ?? 99),
+    grupa: (String(d.grupa ?? 'ostale') as GrupaMolitve),
+    pravila: (d.pravila as Record<string, number> | undefined) ?? {},
+    html,
+  })).sort((a, b) => a.red - b.red);
+}
+
+export function molitvePravila(id: IdPravila): Molitva[] {
+  return molitve()
+    .filter((m) => m.pravila[id] !== undefined)
+    .sort((a, b) => a.pravila[id]! - b.pravila[id]!);
 }
 
 export interface SadrzajPraznika { id: string; kratko: string; html: string }

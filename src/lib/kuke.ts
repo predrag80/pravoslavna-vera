@@ -50,3 +50,83 @@ export function usePut(): Put | null | undefined {
   return useSyncExternalStore(pretplataNaPut, sacuvaniPut, () => undefined);
 }
 
+
+/** Подешавања читања (величина слова, ноћни режим), заједничка за молитвеник и Свето писмо. */
+export interface PodesavanjaCitanja { velicina: number; nocni: boolean }
+const PODRAZUMEVANO: PodesavanjaCitanja = { velicina: 20, nocni: false };
+let poslednjiZapis = '';
+let poslednjaVrednost = PODRAZUMEVANO;
+
+function procitajPodesavanja(): PodesavanjaCitanja {
+  let zapis = '';
+  try {
+    zapis = localStorage.getItem('citanje') ?? '';
+  } catch {
+    /* без сачуваних подешавања */
+  }
+  if (zapis !== poslednjiZapis) {
+    poslednjiZapis = zapis;
+    try {
+      poslednjaVrednost = { ...PODRAZUMEVANO, ...(zapis ? (JSON.parse(zapis) as Partial<PodesavanjaCitanja>) : {}) };
+    } catch {
+      poslednjaVrednost = PODRAZUMEVANO;
+    }
+  }
+  return poslednjaVrednost;
+}
+
+function pretplataNaCitanje(obavesti: () => void) {
+  window.addEventListener('citanje', obavesti);
+  window.addEventListener('storage', obavesti);
+  return () => {
+    window.removeEventListener('citanje', obavesti);
+    window.removeEventListener('storage', obavesti);
+  };
+}
+
+export function usePodesavanjaCitanja(): [PodesavanjaCitanja, (p: Partial<PodesavanjaCitanja>) => void] {
+  const p = useSyncExternalStore(pretplataNaCitanje, procitajPodesavanja, () => PODRAZUMEVANO);
+  const promeni = (izmena: Partial<PodesavanjaCitanja>) => {
+    const novo = { ...procitajPodesavanja(), ...izmena };
+    novo.velicina = Math.min(32, Math.max(16, novo.velicina));
+    try {
+      localStorage.setItem('citanje', JSON.stringify(novo));
+    } catch {
+      /* приватни режим */
+    }
+    window.dispatchEvent(new Event('citanje'));
+  };
+  return [p, promeni];
+}
+
+/** Изабрана крсна слава (id из slave.json), чува се на уређају. */
+function procitajSlavu(): string | null {
+  try {
+    return localStorage.getItem('slava');
+  } catch {
+    return null;
+  }
+}
+
+function pretplataNaSlavu(obavesti: () => void) {
+  window.addEventListener('slava', obavesti);
+  window.addEventListener('storage', obavesti);
+  return () => {
+    window.removeEventListener('slava', obavesti);
+    window.removeEventListener('storage', obavesti);
+  };
+}
+
+export function useSlava(): [string | null, (id: string | null) => void] {
+  const id = useSyncExternalStore(pretplataNaSlavu, procitajSlavu, () => null);
+  const postavi = (novo: string | null) => {
+    try {
+      if (novo) localStorage.setItem('slava', novo);
+      else localStorage.removeItem('slava');
+    } catch {
+      /* приватни режим */
+    }
+    window.dispatchEvent(new Event('slava'));
+  };
+  return [id, postavi];
+}

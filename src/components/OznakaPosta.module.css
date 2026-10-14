@@ -1,0 +1,10 @@
+.oznaka { display: inline-flex; align-items: flex-start; gap: 6px; padding: 5px 10px; border-radius: 12px; font-size: 12px; line-height: 1.35; background: var(--pesak); color: var(--svod); }
+.oznaka svg { flex: none; margin-top: 1px; }
+.opis { display: block; font-weight: 400; opacity: 0.85; }
+.mrsno { background: var(--pesak); color: var(--svod); }
+.belimrs { background: #f3efe2; color: #6a5a2a; }
+.riba { background: #e3eef4; color: #1f4f6b; }
+.ulje { background: #f4ecd8; color: #6e5323; }
+.voda { background: #ece8f8; color: #4b3d8a; }
+.uzdrzanje { background: #f6e1de; color: var(--crveno); }
+.tamno { background: var(--svod-2); color: var(--slonovaca); border: 1px solid var(--linija-tamna); border-radius: 999px; }

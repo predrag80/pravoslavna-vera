@@ -5,6 +5,8 @@ import { useEffect, useRef } from 'react';
 import { opisDana } from '@/lib/opis-dana';
 import type { SadrzajPraznika } from '@/lib/sadrzaj';
 import type { Slika } from '@/lib/slike';
+import { preuzmiIcs } from '@/lib/ics';
+import OznakaPosta from './OznakaPosta';
 import SlikaPraznika from './SlikaPraznika';
 import s from './ListDana.module.css';
 
@@ -80,7 +82,7 @@ export default function ListDana({ datum, podaci, onZatvori, onPomeri }: Props) 
         <div className={s.sadrzaj}>
           {znacajan && <SlikaPraznika slika={podaci.slike[znacajan.id] ?? null} naziv={znacajan.naziv} mala />}
           <div className={s.oznake}>
-            <span className={d.post.posno ? s.posno : s.mrsno}>{d.post.posno ? `Посни дан · ${d.post.naziv}` : d.post.naziv}</span>
+            <OznakaPosta post={d.post} opis />
             {d.crveno && <span className={s.crveno}>Црвено слово</span>}
           </div>
           <h2 className={d.crveno ? s.crvenNaslov : undefined}>{naslov}</h2>
@@ -96,7 +98,15 @@ export default function ListDana({ datum, podaci, onZatvori, onPomeri }: Props) 
           <div className={s.veze}>
             {znacajan && <Link className="dugme" href={`/praznik/${znacajan.id}/`}>Више о празнику</Link>}
             <Link className="dugme dugme-obrub" href="/prolog/">Пролог</Link>
+            <button
+              type="button"
+              className="dugme dugme-obrub"
+              onClick={() => preuzmiIcs(`${datum.toISOString().slice(0, 10)}.ics`, [{ uid: `dan-${datum.toISOString().slice(0, 10)}`, naslov, opis: d.stari, datum, podsetnik: 'dan-ranije' }])}
+            >
+              Додај у календар
+            </button>
           </div>
+          <p className={s.savet}>О мери поста посаветујте се са својим духовником.</p>
         </div>
         <button type="button" className={s.zatvori} onClick={onZatvori}>Затвори</button>
       </div>

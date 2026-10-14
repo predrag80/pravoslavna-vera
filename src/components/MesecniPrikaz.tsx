@@ -1,6 +1,6 @@
 'use client';
 
-import { dodajDane, isti, utc } from '@/lib/kalendar';
+import { dodajDane, isti, STEPENI, utc } from '@/lib/kalendar';
 import { MESECI } from '@/lib/datumi';
 import { opisDana } from '@/lib/opis-dana';
 import type { PodaciPraznika } from './ListDana';
@@ -45,13 +45,13 @@ export default function MesecniPrikaz({ godina, mesec, danas, izabran, podaci, o
               type="button"
               role="gridcell"
               className={klase}
-              aria-label={`${d.getUTCDate()}. ${MESECI[mesec - 1]}${naziv ? `, ${naziv}` : ''}${o.post.posno ? ', посни дан' : ''}`}
+              aria-label={`${d.getUTCDate()}. ${MESECI[mesec - 1]}${naziv ? `, ${naziv}` : ''}${o.post.posno ? `, пост: ${STEPENI[o.post.stepen].naziv.toLowerCase()}` : ''}`}
               onClick={() => onIzaberi(d)}
             >
               {znacajan && <span className={s.znacajan} aria-hidden="true" />}
               <span className={s.broj}>{d.getUTCDate()}</span>
               <span className={s.stari} aria-hidden="true">{o.stari.split('.')[0]}</span>
-              {o.post.posno && <span className={s.post} aria-hidden="true" />}
+              {o.post.posno && <span className={`${s.post} ${s[o.post.stepen.replace('-', '')]}`} aria-hidden="true" />}
             </button>
           );
         })}
@@ -59,7 +59,9 @@ export default function MesecniPrikaz({ godina, mesec, danas, izabran, podaci, o
       <ul className={s.legenda} aria-hidden="true">
         <li><i className={s.lZnacajan} />Велики празник</li>
         <li><i className={s.lCrveno} />Црвено слово</li>
-        <li><i className={s.lPost} />Посни дан</li>
+        <li><i className={`${s.lPost} ${s.voda}`} />На води</li>
+        <li><i className={`${s.lPost} ${s.ulje}`} />На уљу</li>
+        <li><i className={`${s.lPost} ${s.riba}`} />Риба</li>
         <li><small>мали број: стари календар</small></li>
       </ul>
     </section>

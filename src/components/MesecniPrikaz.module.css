@@ -20,3 +20,8 @@
 .lZnacajan { width: 8px; height: 8px; background: var(--zlato-svetlo); transform: rotate(45deg); }
 .lCrveno { width: 9px; height: 9px; border-radius: 50%; background: var(--crveno-na-tamnom); }
 .lPost { width: 14px; height: 3px; border-radius: 2px; background: var(--post); }
+.voda { background: #8b79d1; }
+.ulje { background: #d9b45a; }
+.riba { background: #6fb3d6; }
+.belimrs { background: #f3ebd8; }
+.uzdrzanje { background: #f0675b; }

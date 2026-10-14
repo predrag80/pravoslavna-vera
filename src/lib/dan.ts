@@ -1,5 +1,5 @@
 /** Подаци за екран „Данас“, исти и при прављењу сајта и у прегледачу. */
-import { poStarom, prazniciDana, post, narednih, vaskrs, dodajDane, razlikaDana, visednevniPostovi } from './kalendar';
+import { poStarom, prazniciDana, post, narednih, vaskrs, dodajDane, razlikaDana, visednevniPostovi, type PostDana } from './kalendar';
 import { MESECI, MESECI_KRATKO, datumDugi, zaDana } from './datumi';
 import svetitelji from '../data/svetitelji.json' with { type: 'json' };
 
@@ -10,7 +10,7 @@ export interface PodaciDana {
   naslov: string;
   podnaslov: string;
   crveno: boolean;
-  post: { posno: boolean; naziv: string };
+  post: PostDana;
   narednih: { dan: number; mesec: string; naziv: string; crveno: boolean; kad: string }[];
 }
 

@@ -1,5 +1,5 @@
 /** Све што се зна о једном дану: датуми, пост, празници, светитељи. Ради и у прегледачу. */
-import { poStarom, post, prazniciDana, type Praznik } from './kalendar.ts';
+import { poStarom, post, prazniciDana, type PostDana, type Praznik } from './kalendar.ts';
 import { MESECI, datumDugi } from './datumi.ts';
 import svetitelji from '../data/svetitelji.json' with { type: 'json' };
 
@@ -7,7 +7,7 @@ export interface OpisDana {
   datum: string;
   stari: string;
   kljucStarog: string; // ММ-ДД по старом календару
-  post: { posno: boolean; naziv: string };
+  post: PostDana;
   praznici: Praznik[];
   svetitelji: string[];
   crveno: boolean;

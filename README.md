@@ -82,6 +82,10 @@ NEXT_PUBLIC_MAP_STYLE=https://…/style.json
 
 ## Шта мора да прегледа свештеник или богослов
 
+- правила поста по степенима (на води, на уљу, риба, бели мрс, уздржање) у функцији `post` у `src/lib/kalendar.ts`, са тестовима у `tests/kalendar.test.ts`;
+- текстове молитава у `content/molitve/` (кратке молитве су унете, дуже чекају текст из провереног молитвеника) и редослед јутарњег и вечерњег правила (`pravila` у заглављу фајла);
+- списак и датуме крсних слава у `src/data/slave.json` и опис обичаја у `src/components/KrsnaSlava.tsx`;
+
 - `src/data/praznici.json` — листа и ознаке црвених слова;
 - правила поста у `src/lib/kalendar.ts` (тренутно само посни/мрсни дан, без степена поста);
 - лекције у `content/lekcije/`, описи у `src/data/oci.json` и `src/data/svetinje.json`;

@@ -1,0 +1,25 @@
+.citac { min-height: 70dvh; }
+.traka { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 16px; padding-bottom: 8px; position: sticky; top: 0; z-index: 5; background: var(--papir); }
+.nocni .traka { background: var(--svod); }
+.nazad { min-height: 44px; display: inline-flex; align-items: center; font-size: 13px; font-weight: 700; text-decoration: none; }
+.dugmad { display: flex; gap: 6px; }
+.dugmad button { min-width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--ivica-2); background: var(--kartica); color: var(--svod); font-weight: 700; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.dugmad button[aria-pressed='true'] { background: var(--zlato); border-color: var(--zlato); color: var(--svod); }
+.nocni .dugmad button { background: var(--svod-2); border-color: var(--linija-tamna); color: var(--slonovaca); }
+.nocni .dugmad button[aria-pressed='true'] { background: var(--zlato); color: var(--svod); }
+.tekst { padding-top: 12px; }
+.naslov { font-size: 1.7em; margin: 4px 0 14px; }
+.nocni .naslov { color: var(--slonovaca); }
+.molitva { font-family: var(--font-tekst); line-height: 1.75; }
+.molitva p { margin: 0 0 0.9em; }
+.nocni .molitva { color: #e6dfcf; }
+.kretanje { padding-top: 12px; padding-bottom: 24px; display: flex; flex-direction: column; gap: 14px; }
+.tacke { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+.tacke button { width: 12px; height: 12px; padding: 0; border-radius: 50%; border: 1.5px solid #b9975a; background: transparent; cursor: pointer; }
+.tacke button.procitano { background: var(--zlato); border-color: var(--zlato); }
+.tacke button[aria-current='step'] { box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.35); }
+.dalje { display: flex; gap: 8px; }
+.dalje > * { flex: 1; }
+.nocni .dalje :global(.dugme) { background: var(--zlato); color: var(--svod); }
+.nocni .dalje :global(.dugme-obrub) { background: transparent; color: var(--slonovaca); border-color: var(--linija-tamna); }
+.nocni .nazad { color: var(--zlato-svetlo); }
