@@ -13,3 +13,4 @@
 .meta { margin: 4px 0 0; font-size: 12px; font-weight: 700; color: var(--zlato-svetlo); }
 .kad { flex: none; font-size: 12px; font-weight: 700; color: var(--svod); background: var(--zlato-svetlo); border-radius: 999px; padding: 5px 10px; }
 .opis { margin: 10px 0 0; font-size: 14px; color: #c9d0e3; }
+.ceoDan { margin-top: 12px; min-height: 44px; padding: 0 16px; border: none; border-radius: 12px; background: var(--zlato); color: var(--svod); font-weight: 700; cursor: pointer; }

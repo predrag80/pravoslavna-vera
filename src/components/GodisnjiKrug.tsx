@@ -11,7 +11,7 @@ const R = 122;
 const BOJA: Record<Praznik['vrsta'], string> = { crveno: '#f0675b', praznik: '#f3ebd8', vaskrs: '#e6c77a', post: '#b9aceb' };
 
 /** Црквена година као круг: почиње 14. септембра, Васкрс је сидро, лукови су постови. */
-export default function GodisnjiKrug() {
+export default function GodisnjiKrug({ onOtvoriDan }: { onOtvoriDan?: (d: Date) => void }) {
   // Дан се одређује у прегледачу, да круг увек показује данашњи дан, а не дан прављења сајта.
   const d0 = useDanas();
 
@@ -104,6 +104,9 @@ export default function GodisnjiKrug() {
             <span className={s.kad}>{razlikaDana(p.datum, d0) < 0 ? 'прошао' : zaDana(razlikaDana(p.datum, d0))}</span>
           </div>
           <p className={s.opis}>{p.opis}</p>
+          {onOtvoriDan && (
+            <button type="button" className={s.ceoDan} onClick={() => onOtvoriDan(p.datum)}>Цео дан ›</button>
+          )}
         </section>
       )}
     </>

@@ -34,3 +34,20 @@ export function lekcije(): Lekcija[] {
 export function molitve(): Molitva[] {
   return citaj('molitve', (slug, d, html) => ({ slug, naslov: String(d.naslov), red: Number(d.red ?? 99), grupa: String(d.grupa ?? 'ostale'), html })).sort((a, b) => a.red - b.red);
 }
+
+export interface SadrzajPraznika { id: string; kratko: string; html: string }
+
+/** Текстови значајних празника (content/praznici/<id>.md), кључ је id из praznici.json. */
+export function sadrzajPraznika(): Record<string, SadrzajPraznika> {
+  const dir = path.join(process.cwd(), 'content', 'praznici');
+  return Object.fromEntries(
+    fs
+      .readdirSync(dir)
+      .filter((f) => f.endsWith('.md'))
+      .map((f) => {
+        const id = f.replace(/\.md$/, '');
+        const { data, content } = matter(fs.readFileSync(path.join(dir, f), 'utf8'));
+        return [id, { id, kratko: String(data.kratko ?? ''), html: marked.parse(content, { async: false }) }];
+      }),
+  );
+}

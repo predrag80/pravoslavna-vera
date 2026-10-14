@@ -1,0 +1,6 @@
+.okvir { aspect-ratio: 16 / 9; border-radius: 18px; background: var(--svod); display: flex; align-items: center; justify-content: center; }
+.slika { margin: 0; }
+.slika img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 18px; background: var(--svod); }
+.slika figcaption { margin-top: 6px; font-size: 11px; line-height: 1.4; color: var(--mastilo-2); }
+.slika figcaption a { color: inherit; }
+.mala.okvir, .mala img { aspect-ratio: 2 / 1; }

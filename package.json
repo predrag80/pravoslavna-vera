@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "node --test --experimental-strip-types tests/*.test.ts",
-    "uvoz:biblija": "node scripts/uvoz-biblije.mjs"
+    "uvoz:biblija": "node scripts/uvoz-biblije.mjs",
+    "slike": "node scripts/slike.mjs"
   },
   "engines": {
     "node": ">=20.9.0"

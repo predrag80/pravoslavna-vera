@@ -1,0 +1,22 @@
+.zaglavlje { display: flex; align-items: center; justify-content: space-between; margin: 8px 0 10px; }
+.zaglavlje h2 { font-size: 28px; color: var(--slonovaca); text-transform: capitalize; }
+.strelica { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--linija-tamna); background: transparent; color: var(--zlato-svetlo); font-size: 22px; cursor: pointer; }
+.mreza { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.danUNedelji { text-align: center; font-size: 11px; font-weight: 700; color: #9aa5c3; padding-bottom: 4px; }
+.dan { position: relative; aspect-ratio: 1 / 1.05; min-height: 46px; border: 1px solid transparent; border-radius: 12px; background: var(--svod-2); color: var(--slonovaca); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+.dan:hover { border-color: var(--linija-tamna); }
+.broj { font-size: 16px; font-weight: 700; line-height: 1; }
+.stari { font-size: 9px; color: #8f9ab8; margin-top: 2px; }
+.crveno .broj { color: var(--crveno-na-tamnom); }
+.danas { border-color: var(--zlato-svetlo); }
+.izabran { background: var(--slonovaca); color: var(--svod); }
+.izabran .stari { color: var(--mastilo-2); }
+.izabran.crveno .broj { color: var(--crveno); }
+.znacajan { position: absolute; top: 5px; right: 5px; width: 7px; height: 7px; background: var(--zlato-svetlo); transform: rotate(45deg); border-radius: 1px; }
+.post { position: absolute; bottom: 5px; width: 14px; height: 3px; border-radius: 2px; background: var(--post); }
+.legenda { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-size: 11px; color: #c3cbe0; }
+.legenda li { display: inline-flex; align-items: center; gap: 6px; }
+.legenda i { display: inline-block; }
+.lZnacajan { width: 8px; height: 8px; background: var(--zlato-svetlo); transform: rotate(45deg); }
+.lCrveno { width: 9px; height: 9px; border-radius: 50%; background: var(--crveno-na-tamnom); }
+.lPost { width: 14px; height: 3px; border-radius: 2px; background: var(--post); }
