@@ -180,3 +180,49 @@ export function usePlanovi(): [Napredak, (id: string, izmena: NapredakPlana | nu
   };
   return [n, promeni];
 }
+
+/** Ходочашће: списак светиња (id) редом обиласка. Чува се на уређају. */
+let zapisHodocasca = '';
+let vrednostHodocasca: string[] = [];
+
+function procitajHodocasce(): string[] {
+  let zapis = '';
+  try {
+    zapis = localStorage.getItem('hodocasce') ?? '';
+  } catch {
+    /* без сачуваног ходочашћа */
+  }
+  if (zapis !== zapisHodocasca) {
+    zapisHodocasca = zapis;
+    try {
+      const v: unknown = zapis ? JSON.parse(zapis) : [];
+      vrednostHodocasca = Array.isArray(v) ? v.filter((x): x is string => typeof x === 'string') : [];
+    } catch {
+      vrednostHodocasca = [];
+    }
+  }
+  return vrednostHodocasca;
+}
+
+const praznoHodocasce: string[] = [];
+function pretplataNaHodocasce(obavesti: () => void) {
+  window.addEventListener('hodocasce', obavesti);
+  window.addEventListener('storage', obavesti);
+  return () => {
+    window.removeEventListener('hodocasce', obavesti);
+    window.removeEventListener('storage', obavesti);
+  };
+}
+
+export function useHodocasce(): [string[], (ids: string[]) => void] {
+  const ids = useSyncExternalStore(pretplataNaHodocasce, procitajHodocasce, () => praznoHodocasce);
+  const postavi = (nove: string[]) => {
+    try {
+      localStorage.setItem('hodocasce', JSON.stringify(nove));
+    } catch {
+      /* приватни режим */
+    }
+    window.dispatchEvent(new Event('hodocasce'));
+  };
+  return [ids, postavi];
+}

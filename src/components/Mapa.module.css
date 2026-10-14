@@ -28,3 +28,24 @@
 .ekran :global(.maplibregl-ctrl-top-right) { top: 128px; }
 .nazad { flex: none; width: 48px; height: 48px; border: none; border-radius: 14px; background: var(--kartica); color: var(--zlato-tamno); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); }
 .prikaz { padding: 0 10px; }
+.alat { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; }
+.alat[aria-pressed='true'] svg { color: inherit; }
+.broj { min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px; background: var(--svod); color: var(--zlato-svetlo); font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; }
+.alat[aria-pressed='true'] .broj { background: var(--zlato-svetlo); color: var(--svod); }
+.greska { display: flex; align-items: center; gap: 10px; justify-content: space-between; }
+.napomena { max-width: 640px; margin: 0 auto 10px; font-size: 13px; color: var(--mastilo-2); }
+.km { margin-left: auto; flex: none; font-size: 13px; font-weight: 800; color: var(--zlato-tamno); }
+.filteri, .hodocasce { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.hodocasce { gap: 0; }
+.hodocasce h2 { font-size: 30px; }
+.filteri fieldset { border: none; margin: 0; padding: 0; }
+.filteri legend { padding: 0; margin-bottom: 8px; }
+.cipovi { display: flex; flex-wrap: wrap; gap: 6px; }
+.stanice { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.stanice li { display: flex; align-items: center; gap: 10px; padding: 8px 8px 8px 12px; border: 1px solid var(--ivica); border-radius: 16px; background: var(--kartica); }
+.stanice .tekst { flex: 1; min-width: 0; align-items: flex-start; border: none; background: none; padding: 4px 0; text-align: left; cursor: pointer; font: inherit; }
+.redni { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--zlato-tamno); color: #fffcf5; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.pomeri { flex: none; display: flex; gap: 4px; }
+.pomeri button { width: 36px; height: 36px; border: 1px solid var(--ivica); border-radius: 10px; background: var(--papir); font-size: 16px; cursor: pointer; color: var(--svod); }
+.pomeri button:disabled { opacity: 0.35; cursor: default; }
+.obrisi { margin: 14px auto 0; border: none; background: none; color: var(--crveno); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; min-height: 44px; }
