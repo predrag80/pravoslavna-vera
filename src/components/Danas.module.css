@@ -1,0 +1,29 @@
+.nebo { background: var(--svod); color: var(--slonovaca); border-radius: 0 0 32px 32px; padding: 20px 0 22px; }
+.datum { display: flex; flex-direction: column; justify-content: center; min-height: 44px; text-decoration: none; }
+.d { font-weight: 700; font-size: 14px; color: var(--slonovaca); }
+.s { font-size: 12px; color: var(--na-tamnom); }
+.vreme { margin: 18px 0 0; display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--zlato-svetlo); }
+.vreme span { width: 8px; height: 8px; border-radius: 50%; background: var(--zlato); }
+.naslov { margin-top: 8px; color: var(--slonovaca); max-width: 16ch; }
+.crveno { color: var(--crveno-na-tamnom); }
+.podnaslov { margin: 6px 0 0; color: #c3cbe0; font-size: 14px; }
+.oznake { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.oznaka { display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border-radius: 999px; background: var(--svod-2); border: 1px solid var(--linija-tamna); font-size: 12px; font-weight: 600; color: var(--slonovaca); text-decoration: none; }
+.sadrzaj { display: flex; flex-direction: column; gap: 16px; padding-top: 18px; }
+.natpis { font-family: var(--font-ui); margin: 0 0 8px 4px; }
+.plocice a { min-height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: var(--kartica); border: 1px solid var(--ivica); border-radius: 18px; text-decoration: none; color: var(--svod); text-align: center; padding: 8px 4px; }
+.ikona { width: 40px; height: 40px; border-radius: 50%; background: var(--svod); color: var(--zlato-svetlo); display: flex; align-items: center; justify-content: center; margin-bottom: 2px; }
+.plocice b { font-size: 13px; }
+.plocice small { font-size: 10px; color: var(--mastilo-2); }
+.red { display: flex; justify-content: space-between; align-items: center; }
+.red h2 { margin: 0; font-family: var(--font-ui); }
+.red a { font-size: 13px; font-weight: 700; text-decoration: none; min-height: 32px; display: inline-flex; align-items: center; }
+.praznici { list-style: none; margin: 4px 0 0; padding: 0; }
+.praznici li { display: flex; align-items: center; gap: 14px; padding: 8px 0; border-bottom: 1px solid var(--pesak); }
+.praznici li:last-child { border-bottom: none; }
+.dan { width: 44px; display: flex; flex-direction: column; align-items: center; font-family: var(--font-naslov); font-size: 24px; font-weight: 700; line-height: 1; }
+.dan small { font-family: var(--font-ui); font-size: 11px; font-weight: 400; color: var(--mastilo-2); }
+.crvenDan { color: var(--crveno); }
+.ime { flex: 1; font-weight: 600; }
+.kad { font-size: 12px; color: var(--mastilo-2); }
+.trazi { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--linija-tamna); color: var(--zlato-svetlo); display: flex; align-items: center; justify-content: center; }

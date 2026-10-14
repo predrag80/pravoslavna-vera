@@ -1,0 +1,3 @@
+.citanje { padding-top: 8px; }
+.broj { font-family: var(--font-ui); font-size: 11px; font-weight: 700; color: var(--zlato-tamno); margin-right: 3px; }
+.navigacija { display: flex; justify-content: space-between; gap: 8px; margin: 20px 0; }

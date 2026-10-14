@@ -1,0 +1,9 @@
+.skok { margin: 8px 0 4px; }
+.grupa { padding-top: 18px; scroll-margin-top: 12px; }
+.zaglavlje { display: flex; align-items: center; gap: 10px; }
+.zaglavlje h2 { flex: 1; font-size: 25px; }
+.boja { width: 12px; height: 28px; border-radius: 3px; }
+.opis { margin: 4px 0 10px; font-size: 13px; }
+.knjiga { min-height: 60px; padding: 8px 10px; display: flex; flex-direction: column; justify-content: center; gap: 3px; border-radius: 12px; background: var(--kartica); border: 1px solid var(--ivica); text-decoration: none; color: var(--svod); }
+.knjiga b { font-size: 13px; line-height: 1.2; }
+.knjiga small { font-size: 11px; color: var(--mastilo-2); }

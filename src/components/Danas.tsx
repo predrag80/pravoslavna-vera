@@ -1,0 +1,95 @@
+'use client';
+
+import Link from 'next/link';
+import { useMemo } from 'react';
+import { podaciDana, type PodaciDana } from '@/lib/dan';
+import { useDanas } from '@/lib/kuke';
+import IzborPisma from './IzborPisma';
+import s from './Danas.module.css';
+
+const PLOCICE = [
+  { href: '/prolog/', naziv: 'Пролог', opis: 'житије дана', ikona: <><path d="M8 4h10a2 2 0 0 1 0 4H8" /><path d="M8 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V8" /><path d="M10 12h6M10 15h4" /></> },
+  { href: '/psaltir/', naziv: 'Псалтир', opis: 'катизме', ikona: <><path d="M7 4c-2 5-2 11 0 16h10c2-5 2-11 0-16" /><path d="M6 4h12" /><path d="M10 6v12M12 6v12M14 6v12" /></> },
+  { href: '/molitve/', naziv: 'Молитве', opis: 'јутарње, вечерње', ikona: <><path d="M12 3c1.6 2 1.6 3.6 0 5.2-1.6-1.6-1.6-3.2 0-5.2z" /><path d="M10 10.5h4V21h-4z" /></> },
+  { href: '/kalendar/', naziv: 'Круг', opis: 'календар', ikona: <><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="2.5" /><path d="M12 4v3M20 12h-3M12 20v-3M4 12h3" /></> },
+];
+
+/** Почетни екран. Сервер приказује податке из дана прављења сајта, а прегледач их одмах освежава за данас. */
+export default function Danas({ pocetno }: { pocetno: PodaciDana }) {
+  const dan = useDanas();
+  const p = useMemo(() => (dan ? podaciDana(dan) : pocetno), [dan, pocetno]);
+  const sledeci = p.narednih[0];
+
+  return (
+    <>
+      <header className={`${s.nebo} na-tamnom`}>
+        <div className="omot">
+          <div className="gornji-red">
+            <Link href="/kalendar/" className={s.datum} aria-label={`${p.datum} Отвори годишњи круг`}>
+              <span className={s.d}>{p.datum}</span>
+              <span className={s.s}>{p.stari}</span>
+            </Link>
+            <div style={{ display: 'flex', gap: 6 }}>
+              <IzborPisma />
+              <Link href="/pretraga/" className={s.trazi} aria-label="Претрага">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></svg>
+              </Link>
+            </div>
+          </div>
+          <p className={s.vreme}>
+            <span aria-hidden="true" />
+            {p.vreme}
+          </p>
+          <h1 className={p.crveno ? `${s.naslov} ${s.crveno}` : s.naslov}>{p.naslov}</h1>
+          {p.podnaslov && <p className={s.podnaslov}>{p.podnaslov}</p>}
+          <div className={s.oznake}>
+            <span className={s.oznaka}>{p.post.posno ? `Посни дан · ${p.post.naziv}` : p.post.naziv}</span>
+            {sledeci && (
+              <Link className={s.oznaka} href="/kalendar/">
+                Следећи: {sledeci.naziv}, {sledeci.dan}. {sledeci.mesec}
+              </Link>
+            )}
+          </div>
+        </div>
+      </header>
+
+      <div className={`omot ${s.sadrzaj}`}>
+        <section aria-labelledby="svaki-dan">
+          <h2 id="svaki-dan" className={`natpis ${s.natpis}`}>Свакога дана</h2>
+          <div className={`mreza mreza-4 ${s.plocice}`}>
+            {PLOCICE.map((x) => (
+              <Link key={x.href} href={x.href}>
+                <span className={s.ikona}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    {x.ikona}
+                  </svg>
+                </span>
+                <b>{x.naziv}</b>
+                <small>{x.opis}</small>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="kartica" aria-labelledby="naredni">
+          <div className={s.red}>
+            <h2 id="naredni" className="natpis">Наредни празници</h2>
+            <Link href="/kalendar/">Годишњи круг</Link>
+          </div>
+          <ul className={s.praznici}>
+            {p.narednih.map((n) => (
+              <li key={n.naziv + n.dan}>
+                <span className={n.crveno ? `${s.dan} ${s.crvenDan}` : s.dan}>
+                  {n.dan}
+                  <small>{n.mesec}</small>
+                </span>
+                <span className={s.ime}>{n.naziv}</span>
+                <span className={s.kad}>{n.kad}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+    </>
+  );
+}

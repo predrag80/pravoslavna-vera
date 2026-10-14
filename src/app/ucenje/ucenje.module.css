@@ -1,0 +1,11 @@
+.lestvica { list-style: none; margin: 14px 0; padding: 0; position: relative; }
+.lestvica::before, .lestvica::after { content: ''; position: absolute; top: 0; bottom: 0; width: 2px; background: #b9975a; }
+.lestvica::before { left: 30px; }
+.lestvica::after { left: 56px; }
+.lestvica li { position: relative; display: flex; align-items: center; min-height: 56px; }
+.lestvica li::before { content: ''; position: absolute; left: 30px; width: 28px; height: 2px; background: #b9975a; }
+.cvor { position: absolute; left: 31px; z-index: 1; width: 26px; height: 26px; border-radius: 50%; background: var(--papir); border: 2px solid #b9975a; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: var(--zlato-tamno); }
+.stepenik { margin-left: 88px; flex: 1; min-height: 48px; display: flex; flex-direction: column; justify-content: center; padding: 6px 12px; border-radius: 14px; text-decoration: none; color: var(--svod); }
+.stepenik:hover { background: var(--pesak); }
+.stepenik b { font-size: 15px; }
+.stepenik small { font-size: 12px; color: var(--mastilo-2); }

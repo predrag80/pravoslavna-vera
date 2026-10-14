@@ -1,0 +1,15 @@
+.krug { position: relative; width: min(340px, 100%); aspect-ratio: 1; margin: 4px auto 0; }
+.krug svg { width: 100%; height: 100%; }
+.centar { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.broj { font-family: var(--font-naslov); font-size: 52px; font-weight: 600; line-height: 1; }
+.stari { font-size: 11px; margin-top: 4px; color: var(--na-tamnom); }
+.legenda { list-style: none; padding: 0; margin: 4px 0 14px; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; font-size: 11px; color: #c3cbe0; }
+.legenda li { display: inline-flex; align-items: center; gap: 5px; }
+.legenda i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; }
+.cip { min-height: 44px; }
+.detalj { margin-top: 12px; padding: 16px 18px; background: var(--svod-2); border: 1px solid var(--linija-tamna); border-radius: var(--radius); }
+.red { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.detalj h2 { font-size: 28px; color: var(--slonovaca); }
+.meta { margin: 4px 0 0; font-size: 12px; font-weight: 700; color: var(--zlato-svetlo); }
+.kad { flex: none; font-size: 12px; font-weight: 700; color: var(--svod); background: var(--zlato-svetlo); border-radius: 999px; padding: 5px 10px; }
+.opis { margin: 10px 0 0; font-size: 14px; color: #c9d0e3; }
