@@ -14,6 +14,8 @@ const STAVKE = [
 
 export default function DonjaNavigacija() {
   const putanja = usePathname() ?? '/';
+  // Екран добродошлице је без навигације: корисник прво бира пут.
+  if (putanja.startsWith('/dobrodosli')) return null;
   return (
     <nav className={styles.navigacija} aria-label="Главна навигација">
       {STAVKE.map((s) => {

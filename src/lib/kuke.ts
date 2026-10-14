@@ -3,6 +3,7 @@
 import { useMemo, useSyncExternalStore } from 'react';
 import { danas, utc } from './kalendar';
 import { sacuvanoPismo, type Pismo } from './pismo-klijent';
+import { sacuvaniPut, type Put } from './put';
 
 const bezPromena = () => () => {};
 
@@ -31,3 +32,21 @@ function pretplataNaPismo(obavesti: () => void) {
 export function usePismo(): Pismo {
   return useSyncExternalStore(pretplataNaPismo, sacuvanoPismo, () => 'cir');
 }
+
+function pretplataNaPut(obavesti: () => void) {
+  window.addEventListener('put', obavesti);
+  window.addEventListener('storage', obavesti);
+  return () => {
+    window.removeEventListener('put', obavesti);
+    window.removeEventListener('storage', obavesti);
+  };
+}
+
+/**
+ * `undefined` док се страна приказује на серверу (избор још није познат),
+ * `null` када корисник још није изабрао пут, иначе изабрани пут.
+ */
+export function usePut(): Put | null | undefined {
+  return useSyncExternalStore(pretplataNaPut, sacuvaniPut, () => undefined);
+}
+

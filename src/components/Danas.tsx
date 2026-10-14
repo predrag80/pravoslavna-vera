@@ -1,9 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useMemo } from 'react';
 import { podaciDana, type PodaciDana } from '@/lib/dan';
-import { useDanas } from '@/lib/kuke';
+import { useDanas, usePut } from '@/lib/kuke';
+import type { Put } from '@/lib/put';
 import IzborPisma from './IzborPisma';
 import s from './Danas.module.css';
 
@@ -17,6 +19,12 @@ const PLOCICE = [
 /** Почетни екран. Сервер приказује податке из дана прављења сајта, а прегледач их одмах освежава за данас. */
 export default function Danas({ pocetno }: { pocetno: PodaciDana }) {
   const dan = useDanas();
+  const put = usePut();
+  const router = useRouter();
+  // Резерва за навигацију унутар апликације, када се скрипта из page.tsx не извршава.
+  useEffect(() => {
+    if (put === null) router.replace('/dobrodosli/');
+  }, [put, router]);
   const p = useMemo(() => (dan ? podaciDana(dan) : pocetno), [dan, pocetno]);
   const sledeci = p.narednih[0];
 
@@ -54,6 +62,7 @@ export default function Danas({ pocetno }: { pocetno: PodaciDana }) {
       </header>
 
       <div className={`omot ${s.sadrzaj}`}>
+        {put && put !== 'zivot' && <ZaVas put={put} />}
         <section aria-labelledby="svaki-dan">
           <h2 id="svaki-dan" className={`natpis ${s.natpis}`}>Свакога дана</h2>
           <div className={`mreza mreza-4 ${s.plocice}`}>
@@ -70,6 +79,8 @@ export default function Danas({ pocetno }: { pocetno: PodaciDana }) {
             ))}
           </div>
         </section>
+
+        {put === 'zivot' && <ZaVas put={put} />}
 
         <section className="kartica" aria-labelledby="naredni">
           <div className={s.red}>
@@ -91,5 +102,53 @@ export default function Danas({ pocetno }: { pocetno: PodaciDana }) {
         </section>
       </div>
     </>
+  );
+}
+
+const PREPORUKE: Record<Put, { naslov: string; stavke: { href: string; naziv: string; opis: string }[] }> = {
+  pocetnik: {
+    naslov: 'Почните овде',
+    stavke: [
+      { href: '/hram/', naziv: 'Уђи у храм', opis: 'Шта значи иконостас, кандило, свећа' },
+      { href: '/ucenje/ko-je-bog/', naziv: 'Прва лекција: Ко је Бог', opis: '5 минута' },
+    ],
+  },
+  ucenje: {
+    naslov: 'Наставите учење',
+    stavke: [
+      { href: '/ucenje/', naziv: 'Лествица', opis: 'Следећи степеник' },
+      { href: '/oci/', naziv: 'Свети оци', opis: 'Дрво Предања кроз векове' },
+    ],
+  },
+  zivot: {
+    naslov: 'За данашњи дан',
+    stavke: [
+      { href: '/pismo/', naziv: 'Свето писмо', opis: 'Наставите читање' },
+      { href: '/mapa/', naziv: 'Храмови и манастири', opis: 'Светиње у близини' },
+    ],
+  },
+};
+
+/** Предлози према путу изабраном на екрану добродошлице. */
+function ZaVas({ put }: { put: Put }) {
+  const p = PREPORUKE[put];
+  return (
+    <section aria-labelledby="za-vas">
+      <div className={s.red}>
+        <h2 id="za-vas" className={`natpis ${s.natpis}`}>{p.naslov}</h2>
+        <Link href="/dobrodosli/" className={s.promeni}>Промени пут</Link>
+      </div>
+      <div className={s.preporuke}>
+        {p.stavke.map((x) => (
+          <Link key={x.href} href={x.href} className={s.preporuka}>
+            <span>
+              <b>{x.naziv}</b>
+              <small>{x.opis}</small>
+            </span>
+            <span aria-hidden="true">›</span>
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 }

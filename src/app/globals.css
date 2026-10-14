@@ -122,3 +122,5 @@ body.tamno .izbor-pisma, .na-tamnom .izbor-pisma { border-color: var(--linija-ta
   font-weight: 700; font-size: 13px; cursor: pointer; color: inherit;
 }
 .izbor-pisma button[aria-pressed='true'] { background: var(--zlato); color: var(--svod); }
+.izbor-pisma.siroko { padding: 4px; }
+.izbor-pisma.siroko button { min-width: 112px; height: 44px; font-size: 14px; }
