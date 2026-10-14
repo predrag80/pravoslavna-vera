@@ -108,8 +108,12 @@ body.tamno .cip[aria-pressed='true'] { background: var(--slonovaca); color: var(
 
 .zaglavlje-strane { padding-top: 28px; padding-bottom: 8px; }
 .zaglavlje-strane .nazad {
-  display: inline-flex; align-items: center; gap: 6px; min-height: 40px; font-size: 13px; font-weight: 700; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 12px 0 8px; margin-left: -8px;
+  border: none; border-radius: 999px; background: transparent; color: var(--zlato-tamno);
+  font-size: 13px; font-weight: 700; text-decoration: none; cursor: pointer;
 }
+body.tamno .zaglavlje-strane .nazad { color: var(--zlato-svetlo); }
+.zaglavlje-strane .natpis { display: block; margin-bottom: 4px; }
 .zaglavlje-strane p { margin: 6px 0 0; }
 
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }

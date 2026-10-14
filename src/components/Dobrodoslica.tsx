@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { usePut } from '@/lib/kuke';
 import { sacuvajPut, type Put } from '@/lib/put';
+import DugmeNazad from './DugmeNazad';
 import IzborPisma from './IzborPisma';
 import TamnaTema from './TamnaTema';
 import s from './Dobrodoslica.module.css';
@@ -31,6 +32,11 @@ export default function Dobrodoslica() {
       {ZVEZDE.map(([x, y, v], i) => (
         <span key={i} aria-hidden="true" className={s.zvezda} style={{ left: `${x}%`, top: y, width: v, height: v }} />
       ))}
+      {izabran && (
+        <div className={s.gore}>
+          <DugmeNazad tekst="Данас" className={s.nazad} />
+        </div>
+      )}
       <div className={s.sadrzaj}>
         <svg width="96" height="122" viewBox="0 0 96 122" fill="none" stroke="#c9a24b" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
           <path d="M8 120V48a40 40 0 0 1 80 0v72" />

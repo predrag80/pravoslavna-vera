@@ -8,7 +8,7 @@ export const metadata: Metadata = { title: 'Свето писмо' };
 export default function Pismo() {
   return (
     <>
-      <Zaglavlje natpis="Свето писмо" naslov="Свето писмо" podnaslov="Превод Ђуре Даничића и Вука Караџића" />
+      <Zaglavlje naslov="Свето писмо" podnaslov="Превод Ђуре Даничића и Вука Караџића" />
       <div className="omot">
         <div className={s.vrata}>
           <Link href="/pismo/stari-zavet/" className={s.stari}>

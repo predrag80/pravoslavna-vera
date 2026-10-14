@@ -8,7 +8,7 @@ export const metadata: Metadata = { title: 'Свети оци' };
 export default function Oci() {
   return (
     <>
-      <Zaglavlje natpis="Свети оци" naslov="Свети оци" podnaslov="Дрво Предања, од апостола до наших дана" />
+      <Zaglavlje naslov="Свети оци" podnaslov="Дрво Предања, од апостола до наших дана" />
       <div className="omot">
         <Link href="/prolog/" className="dugme" style={{ width: '100%', justifyContent: 'space-between', marginTop: 8 }}>
           Охридски пролог за данас <span aria-hidden="true">›</span>

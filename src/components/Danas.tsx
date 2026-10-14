@@ -136,7 +136,7 @@ function ZaVas({ put }: { put: Put }) {
     <section aria-labelledby="za-vas">
       <div className={s.red}>
         <h2 id="za-vas" className={`natpis ${s.natpis}`}>{p.naslov}</h2>
-        <Link href="/dobrodosli/" className={s.promeni}>Промени пут</Link>
+        <Link href="/dobrodosli/" className={s.promeni}>Иди на главни мени</Link>
       </div>
       <div className={s.preporuke}>
         {p.stavke.map((x) => (

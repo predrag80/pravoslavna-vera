@@ -1,14 +1,16 @@
 import Link from 'next/link';
+import DugmeNazad from './DugmeNazad';
 import IzborPisma from './IzborPisma';
 
 interface Props {
   naslov: string;
   podnaslov?: string;
   natpis?: string;
+  /** Одређени циљ повратка (нпр. из главе у књигу); без њега дугме враћа на претходну страну. */
   nazad?: { href: string; tekst: string };
 }
 
-/** Стандардно заглавље стране: повратак или натпис, избор писма, наслов. */
+/** Стандардно заглавље стране: дугме за повратак, избор писма, натпис и наслов. */
 export default function Zaglavlje({ naslov, podnaslov, natpis, nazad }: Props) {
   return (
     <header className="omot zaglavlje-strane">
@@ -20,13 +22,12 @@ export default function Zaglavlje({ naslov, podnaslov, natpis, nazad }: Props) {
             </svg>
             {nazad.tekst}
           </Link>
-        ) : natpis ? (
-          <span className="natpis">{natpis}</span>
         ) : (
-          <span />
+          <DugmeNazad />
         )}
         <IzborPisma />
       </div>
+      {natpis && <span className="natpis">{natpis}</span>}
       <h1>{naslov}</h1>
       {podnaslov && <p className="prigusen">{podnaslov}</p>}
     </header>

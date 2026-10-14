@@ -3,6 +3,7 @@
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { ErrorEvent, GeoJSONSource, Map as MapaGL, MapLayerMouseEvent } from 'maplibre-gl';
+import DugmeNazad from './DugmeNazad';
 import IzborPisma from './IzborPisma';
 import s from './Mapa.module.css';
 
@@ -136,10 +137,11 @@ export default function Mapa({ svetinje }: { svetinje: Svetinja[] }) {
 
       <div className={s.gore}>
         <div className={s.pretraga}>
+          <DugmeNazad samoIkona className={s.nazad} />
           <label>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7a5a16" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></svg>
             <span className="samo-citac">Претрага светиња</span>
-            <input type="search" placeholder="Манастир, храм или место" value={upit} onChange={(e) => setUpit(e.target.value)} />
+            <input type="search" placeholder="Тражи светињу или место" value={upit} onChange={(e) => setUpit(e.target.value)} />
           </label>
           <button type="button" className={s.prikaz} onClick={() => setPrikaz(prikaz === 'mapa' ? 'lista' : 'mapa')}>
             {prikaz === 'mapa' ? `Листа · ${vidljive.length}` : 'Мапа'}
