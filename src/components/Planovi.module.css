@@ -1,0 +1,25 @@
+.lista { list-style: none; margin: 10px 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.plan { display: flex; flex-direction: column; gap: 4px; padding: 16px; border-radius: 18px; background: var(--kartica); border: 1px solid var(--ivica); text-decoration: none; color: var(--svod); }
+.plan b { font-family: var(--font-naslov); font-size: 22px; font-weight: 600; }
+.plan > span { font-size: 13px; color: var(--mastilo-2); }
+.plan small { font-weight: 700; color: var(--zlato-tamno); }
+.aktivan { border-color: var(--zlato); box-shadow: inset 4px 0 0 var(--zlato); }
+.napredak { display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--mastilo-2); margin-top: 6px; }
+.traka { display: block; height: 6px; border-radius: 3px; background: var(--pesak); overflow: hidden; }
+.traka span { display: block; height: 100%; background: var(--zlato); }
+.pocni { margin-top: 10px; display: flex; flex-direction: column; gap: 12px; }
+.pocni p { margin: 0; }
+.danas { margin-top: 10px; padding: 18px; border-radius: 20px; background: var(--svod); color: var(--slonovaca); display: flex; flex-direction: column; gap: 12px; }
+.danas :global(.natpis) { color: var(--zlato-svetlo); }
+.danas h2 { color: var(--slonovaca); }
+.danas :global(.dugme) { background: var(--zlato); color: var(--svod); }
+.danas .napredak { color: var(--na-tamnom); }
+.danas .traka { background: var(--svod-2); }
+.delovi { display: flex; flex-wrap: wrap; gap: 8px; }
+.deo { min-height: 44px; padding: 0 14px; border-radius: 12px; background: var(--svod-2); border: 1px solid var(--linija-tamna); color: var(--slonovaca) !important; text-decoration: none; display: inline-flex; align-items: center; font-weight: 700; }
+.dani { list-style: none; margin: 16px 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.dani label { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 6px 12px; border-radius: 14px; background: var(--kartica); border: 1px solid var(--ivica); cursor: pointer; }
+.dani input { width: 20px; height: 20px; accent-color: var(--zlato-tamno); flex: none; }
+.broj { width: 28px; font-weight: 800; color: var(--zlato-tamno); font-size: 13px; }
+.sadrzaj { font-size: 14px; color: var(--svod); }
+.tekuci label { border-color: var(--zlato); }

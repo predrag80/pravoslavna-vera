@@ -130,3 +130,53 @@ export function useSlava(): [string | null, (id: string | null) => void] {
   };
   return [id, postavi];
 }
+
+/** Напредак у плановима читања: почетак и прочитани дани, по плану. Чува се на уређају. */
+export interface NapredakPlana { pocetak: string; procitano: number[] }
+type Napredak = Record<string, NapredakPlana>;
+let zapisPlanova = '';
+let vrednostPlanova: Napredak = {};
+
+function procitajPlanove(): Napredak {
+  let zapis = '';
+  try {
+    zapis = localStorage.getItem('planovi') ?? '';
+  } catch {
+    /* без сачуваног напретка */
+  }
+  if (zapis !== zapisPlanova) {
+    zapisPlanova = zapis;
+    try {
+      vrednostPlanova = zapis ? (JSON.parse(zapis) as Napredak) : {};
+    } catch {
+      vrednostPlanova = {};
+    }
+  }
+  return vrednostPlanova;
+}
+
+const prazno: Napredak = {};
+function pretplataNaPlanove(obavesti: () => void) {
+  window.addEventListener('planovi', obavesti);
+  window.addEventListener('storage', obavesti);
+  return () => {
+    window.removeEventListener('planovi', obavesti);
+    window.removeEventListener('storage', obavesti);
+  };
+}
+
+export function usePlanovi(): [Napredak, (id: string, izmena: NapredakPlana | null) => void] {
+  const n = useSyncExternalStore(pretplataNaPlanove, procitajPlanove, () => prazno);
+  const promeni = (id: string, izmena: NapredakPlana | null) => {
+    const novo = { ...procitajPlanove() };
+    if (izmena) novo[id] = izmena;
+    else delete novo[id];
+    try {
+      localStorage.setItem('planovi', JSON.stringify(novo));
+    } catch {
+      /* приватни режим */
+    }
+    window.dispatchEvent(new Event('planovi'));
+  };
+  return [n, promeni];
+}

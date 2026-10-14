@@ -1,7 +1,7 @@
 // Једноставан service worker: странице и ресурси сајта се чувају на уређају,
 // па апликација ради и без интернета. Подлога мапе се не чува (то долази са PMTiles фајлом).
 const KES = 'pravoslavlje-v1';
-const OSNOVNO = ['/', '/dobrodosli/', '/kalendar/', '/molitve/', '/slava/', '/podsetnici/', '/pismo/', '/psaltir/', '/prolog/', '/oci/', '/ucenje/', '/hram/', '/mapa/', '/pretraga/', '/maplibre/maplibre-gl-worker.mjs', '/svetinje.geojson'];
+const OSNOVNO = ['/', '/dobrodosli/', '/kalendar/', '/molitve/', '/slava/', '/podsetnici/', '/planovi/', '/pismo/', '/psaltir/', '/prolog/', '/oci/', '/ucenje/', '/hram/', '/mapa/', '/pretraga/', '/maplibre/maplibre-gl-worker.mjs', '/svetinje.geojson'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(KES).then((k) => k.addAll(OSNOVNO)).then(() => self.skipWaiting()));
