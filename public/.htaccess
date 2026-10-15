@@ -1,0 +1,35 @@
+# Подешавања за Apache (cPanel хостинг). На nginx серверу се занемарују.
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+# HTTPS
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType application/javascript .mjs
+  AddType application/manifest+json .webmanifest
+  AddType application/geo+json .geojson
+  AddType application/wasm .wasm
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json application/geo+json image/svg+xml
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Фајлови у /_next/static/ имају хеш у имену и никад се не мењају; остало се проверава на сваких сат времена.
+  SetEnvIf Request_URI "^/_next/static/" NEPROMENJIVO
+  Header set Cache-Control "public, max-age=31536000, immutable" env=NEPROMENJIVO
+  Header set Cache-Control "public, max-age=3600" env=!NEPROMENJIVO
+  <FilesMatch "\.(html|json|geojson|webmanifest)$|^sw\.js$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

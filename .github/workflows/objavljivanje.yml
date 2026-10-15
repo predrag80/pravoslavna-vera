@@ -1,0 +1,68 @@
+# Провера, израда и постављање на хостинг после сваког push-а на main.
+#
+# Постављање зависи од тога који су подаци уписани у GitHub → Settings → Secrets and variables → Actions:
+#  - FTP (класичан хостинг, cPanel): FTP_SERVER, FTP_USERNAME, FTP_PASSWORD, FTP_DIR (нпр. /pravoslavna-vera.prowebsystems.rs/)
+#  - SSH (VPS): SSH_HOST, SSH_USER, SSH_KEY (приватни кључ), SSH_DIR (нпр. /var/www/pravoslavna-vera), опционо SSH_PORT
+# Док ниједно није уписано, ток ради проверу и израду, а сајт се може преузети као „artifact“.
+name: Objavljivanje
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: objavljivanje
+  cancel-in-progress: true
+
+jobs:
+  objavi:
+    runs-on: ubuntu-latest
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+      - name: Сачувај изграђени сајт
+        uses: actions/upload-artifact@v4
+        with:
+          name: sajt
+          path: out
+          retention-days: 7
+
+      - name: Постављање преко FTP-а
+        if: env.FTP_SERVER != ''
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./out/
+          server-dir: ${{ secrets.FTP_DIR }}
+          dangerous-clean-slate: false
+
+      - name: Постављање преко SSH-а
+        if: env.SSH_HOST != '' && env.FTP_SERVER == ''
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_DIR: ${{ secrets.SSH_DIR }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/kljuc && chmod 600 ~/.ssh/kljuc
+          ssh-keyscan -p "${SSH_PORT:-22}" "$SSH_HOST" >> ~/.ssh/known_hosts
+          rsync -az --delete -e "ssh -i ~/.ssh/kljuc -p ${SSH_PORT:-22}" out/ "$SSH_USER@$SSH_HOST:$SSH_DIR/"

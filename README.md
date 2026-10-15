@@ -16,6 +16,17 @@ npm run lint && npm run typecheck
 
 Потребан је Node.js 20.9 или новији.
 
+## Објављивање
+
+Сваки push на `main` покреће `.github/workflows/objavljivanje.yml`: провера (lint, typecheck, тестови), израда и
+постављање фасцикле `out/` на хостинг (https://pravoslavna-vera.prowebsystems.rs). Приступни подаци се уписују у
+GitHub → Settings → Secrets and variables → Actions:
+
+- FTP (cPanel): `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, `FTP_DIR` (фасцикла поддомена на серверу, са `/` на крају);
+- или SSH: `SSH_HOST`, `SSH_USER`, `SSH_KEY`, `SSH_DIR`, опционо `SSH_PORT`.
+
+`public/.htaccess` подешава Apache (HTTPS, страна 404, кеширање). Сајт је статички: није потребан Node на серверу.
+
 ## Стек
 
 | Део | Избор | Зашто |
