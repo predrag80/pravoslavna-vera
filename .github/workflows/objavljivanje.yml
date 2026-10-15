@@ -71,6 +71,7 @@ jobs:
           mkdir -p ~/.ssh && chmod 700 ~/.ssh
           printf '%s\n' "$SSH_KEY" | tr -d '\r' > ~/.ssh/kljuc && chmod 600 ~/.ssh/kljuc
           ssh-keygen -y -f ~/.ssh/kljuc > /dev/null 2>&1 || greska "SSH_KEY није исправан приватни кључ (треба цео садржај, са редовима BEGIN и END, без лозинке)."
+          echo "::notice title=Отисак кључа::$(ssh-keygen -y -f ~/.ssh/kljuc | ssh-keygen -lf - | awk '{print $2, $4}')"
           timeout 20 bash -c "</dev/tcp/$SSH_HOST/$PORT" 2>/dev/null || greska "Сервер $SSH_HOST не прима везе на порту $PORT (погрешна адреса, порт или заштитни зид блокира GitHub)."
           ssh-keyscan -T 15 -p "$PORT" "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null || greska "ssh-keyscan није успео за $SSH_HOST:$PORT."
           SSH="ssh -i $HOME/.ssh/kljuc -p $PORT -o BatchMode=yes -o ConnectTimeout=15"
