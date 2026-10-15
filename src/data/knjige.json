@@ -1,613 +1,547 @@
 {
- "_napomena": "Ред књига у Новом завету прати црквени поредак. Даничић–Караџић нема књиге које Православна Црква чита а које нису у хебрејском канону; оне су у листи „vanPrevoda“.",
- "stariZavet": [
-  {
-   "id": "zakon",
-   "naziv": "Закон",
-   "opis": "Пет књига Мојсијевих: стварање света, Савез и Закон.",
-   "knjige": [
+  "_napomena": "Ред књига у Новом завету прати црквени поредак. Даничић–Караџић нема књиге које Православна Црква чита а које нису у хебрејском канону; оне су у листи „vanPrevoda“.",
+  "stariZavet": [
     {
-     "id": "1mojs",
-     "kratko": "1. Мојсијева",
-     "naziv": "Прва књига Мојсијева",
-     "glava": 50,
-     "zavet": "stari",
-     "usfm": "GEN"
+      "id": "zakon",
+      "naziv": "Закон",
+      "opis": "Пет књига Мојсијевих: стварање света, Савез и Закон.",
+      "knjige": [
+        {
+          "id": "1mojs",
+          "kratko": "1. Мојсијева",
+          "naziv": "Прва књига Мојсијева",
+          "glava": 50,
+          "zavet": "stari"
+        },
+        {
+          "id": "2mojs",
+          "kratko": "2. Мојсијева",
+          "naziv": "Друга књига Мојсијева",
+          "glava": 40,
+          "zavet": "stari"
+        },
+        {
+          "id": "3mojs",
+          "kratko": "3. Мојсијева",
+          "naziv": "Трећа књига Мојсијева",
+          "glava": 27,
+          "zavet": "stari"
+        },
+        {
+          "id": "4mojs",
+          "kratko": "4. Мојсијева",
+          "naziv": "Четврта књига Мојсијева",
+          "glava": 36,
+          "zavet": "stari"
+        },
+        {
+          "id": "5mojs",
+          "kratko": "5. Мојсијева",
+          "naziv": "Пета књига Мојсијева",
+          "glava": 34,
+          "zavet": "stari"
+        }
+      ]
     },
     {
-     "id": "2mojs",
-     "kratko": "2. Мојсијева",
-     "naziv": "Друга књига Мојсијева",
-     "glava": 40,
-     "zavet": "stari",
-     "usfm": "EXO"
+      "id": "istorijske",
+      "naziv": "Историјске књиге",
+      "opis": "Историја изабраног народа од уласка у обећану земљу до повратка из ропства.",
+      "knjige": [
+        {
+          "id": "isus-navin",
+          "kratko": "Исус Навин",
+          "naziv": "Књига Исуса Навина",
+          "glava": 24,
+          "zavet": "stari"
+        },
+        {
+          "id": "sudije",
+          "kratko": "Судије",
+          "naziv": "Књига о судијама",
+          "glava": 21,
+          "zavet": "stari"
+        },
+        {
+          "id": "ruta",
+          "kratko": "Рута",
+          "naziv": "Књига о Рути",
+          "glava": 4,
+          "zavet": "stari"
+        },
+        {
+          "id": "1sam",
+          "kratko": "1. Самуилова",
+          "naziv": "Прва књига Самуилова",
+          "glava": 31,
+          "zavet": "stari"
+        },
+        {
+          "id": "2sam",
+          "kratko": "2. Самуилова",
+          "naziv": "Друга књига Самуилова",
+          "glava": 24,
+          "zavet": "stari"
+        },
+        {
+          "id": "1car",
+          "kratko": "1. о царевима",
+          "naziv": "Прва књига о царевима",
+          "glava": 22,
+          "zavet": "stari"
+        },
+        {
+          "id": "2car",
+          "kratko": "2. о царевима",
+          "naziv": "Друга књига о царевима",
+          "glava": 25,
+          "zavet": "stari"
+        },
+        {
+          "id": "1dn",
+          "kratko": "1. дневника",
+          "naziv": "Прва књига дневника",
+          "glava": 29,
+          "zavet": "stari"
+        },
+        {
+          "id": "2dn",
+          "kratko": "2. дневника",
+          "naziv": "Друга књига дневника",
+          "glava": 36,
+          "zavet": "stari"
+        },
+        {
+          "id": "jezdra",
+          "kratko": "Јездра",
+          "naziv": "Књига Јездрина",
+          "glava": 10,
+          "zavet": "stari"
+        },
+        {
+          "id": "nemija",
+          "kratko": "Немија",
+          "naziv": "Књига Немијина",
+          "glava": 13,
+          "zavet": "stari"
+        },
+        {
+          "id": "jestira",
+          "kratko": "Јестира",
+          "naziv": "Књига о Јестири",
+          "glava": 10,
+          "zavet": "stari"
+        }
+      ]
     },
     {
-     "id": "3mojs",
-     "kratko": "3. Мојсијева",
-     "naziv": "Трећа књига Мојсијева",
-     "glava": 27,
-     "zavet": "stari",
-     "usfm": "LEV"
+      "id": "poucne",
+      "naziv": "Поучне књиге",
+      "opis": "Молитве, песме и мудрост. Међу њима је Псалтир, молитвеник Цркве.",
+      "knjige": [
+        {
+          "id": "jov",
+          "kratko": "Јов",
+          "naziv": "Књига о Јову",
+          "glava": 42,
+          "zavet": "stari"
+        },
+        {
+          "id": "psalmi",
+          "kratko": "Псалми",
+          "naziv": "Псалми",
+          "glava": 150,
+          "zavet": "stari"
+        },
+        {
+          "id": "price",
+          "kratko": "Приче Соломонове",
+          "naziv": "Приче Соломонове",
+          "glava": 31,
+          "zavet": "stari"
+        },
+        {
+          "id": "propovednik",
+          "kratko": "Проповедник",
+          "naziv": "Проповедник",
+          "glava": 12,
+          "zavet": "stari"
+        },
+        {
+          "id": "pesma",
+          "kratko": "Песма над песмама",
+          "naziv": "Песма над песмама",
+          "glava": 8,
+          "zavet": "stari"
+        }
+      ]
     },
     {
-     "id": "4mojs",
-     "kratko": "4. Мојсијева",
-     "naziv": "Четврта књига Мојсијева",
-     "glava": 36,
-     "zavet": "stari",
-     "usfm": "NUM"
+      "id": "veliki-proroci",
+      "naziv": "Велики пророци",
+      "opis": "Пророштва о Месији која Црква чита као најаву Христа.",
+      "knjige": [
+        {
+          "id": "isaija",
+          "kratko": "Исаија",
+          "naziv": "Књига пророка Исаије",
+          "glava": 66,
+          "zavet": "stari"
+        },
+        {
+          "id": "jeremija",
+          "kratko": "Јеремија",
+          "naziv": "Књига пророка Јеремије",
+          "glava": 52,
+          "zavet": "stari"
+        },
+        {
+          "id": "plac",
+          "kratko": "Плач Јеремијин",
+          "naziv": "Плач Јеремијин",
+          "glava": 5,
+          "zavet": "stari"
+        },
+        {
+          "id": "jezekilj",
+          "kratko": "Језекиљ",
+          "naziv": "Књига пророка Језекиља",
+          "glava": 48,
+          "zavet": "stari"
+        },
+        {
+          "id": "danilo",
+          "kratko": "Данило",
+          "naziv": "Књига пророка Данила",
+          "glava": 12,
+          "zavet": "stari"
+        }
+      ]
     },
     {
-     "id": "5mojs",
-     "kratko": "5. Мојсијева",
-     "naziv": "Пета књига Мојсијева",
-     "glava": 34,
-     "zavet": "stari",
-     "usfm": "DEU"
+      "id": "mali-proroci",
+      "naziv": "Мали пророци",
+      "opis": "Дванаест краћих пророчких књига.",
+      "knjige": [
+        {
+          "id": "osija",
+          "kratko": "Осија",
+          "naziv": "Осија",
+          "glava": 14,
+          "zavet": "stari"
+        },
+        {
+          "id": "joil",
+          "kratko": "Јоил",
+          "naziv": "Јоил",
+          "glava": 3,
+          "zavet": "stari"
+        },
+        {
+          "id": "amos",
+          "kratko": "Амос",
+          "naziv": "Амос",
+          "glava": 9,
+          "zavet": "stari"
+        },
+        {
+          "id": "avdija",
+          "kratko": "Авдија",
+          "naziv": "Авдија",
+          "glava": 1,
+          "zavet": "stari"
+        },
+        {
+          "id": "jona",
+          "kratko": "Јона",
+          "naziv": "Јона",
+          "glava": 4,
+          "zavet": "stari"
+        },
+        {
+          "id": "mihej",
+          "kratko": "Михеј",
+          "naziv": "Михеј",
+          "glava": 7,
+          "zavet": "stari"
+        },
+        {
+          "id": "naum",
+          "kratko": "Наум",
+          "naziv": "Наум",
+          "glava": 3,
+          "zavet": "stari"
+        },
+        {
+          "id": "avakum",
+          "kratko": "Авакум",
+          "naziv": "Авакум",
+          "glava": 3,
+          "zavet": "stari"
+        },
+        {
+          "id": "sofonija",
+          "kratko": "Софонија",
+          "naziv": "Софонија",
+          "glava": 3,
+          "zavet": "stari"
+        },
+        {
+          "id": "agej",
+          "kratko": "Агеј",
+          "naziv": "Агеј",
+          "glava": 2,
+          "zavet": "stari"
+        },
+        {
+          "id": "zaharija",
+          "kratko": "Захарија",
+          "naziv": "Захарија",
+          "glava": 14,
+          "zavet": "stari"
+        },
+        {
+          "id": "malahija",
+          "kratko": "Малахија",
+          "naziv": "Малахија",
+          "glava": 4,
+          "zavet": "stari"
+        }
+      ]
     }
-   ]
-  },
-  {
-   "id": "istorijske",
-   "naziv": "Историјске књиге",
-   "opis": "Историја изабраног народа од уласка у обећану земљу до повратка из ропства.",
-   "knjige": [
+  ],
+  "noviZavet": [
     {
-     "id": "isus-navin",
-     "kratko": "Исус Навин",
-     "naziv": "Књига Исуса Навина",
-     "glava": 24,
-     "zavet": "stari",
-     "usfm": "JOS"
+      "id": "jevandjelja",
+      "naziv": "Јеванђеља",
+      "opis": "Живот, учење, смрт и Васкрсење Христово.",
+      "knjige": [
+        {
+          "id": "matej",
+          "kratko": "По Матеју",
+          "naziv": "Јеванђеље по Матеју",
+          "glava": 28,
+          "zavet": "novi"
+        },
+        {
+          "id": "marko",
+          "kratko": "По Марку",
+          "naziv": "Јеванђеље по Марку",
+          "glava": 16,
+          "zavet": "novi"
+        },
+        {
+          "id": "luka",
+          "kratko": "По Луки",
+          "naziv": "Јеванђеље по Луки",
+          "glava": 24,
+          "zavet": "novi"
+        },
+        {
+          "id": "jovan",
+          "kratko": "По Јовану",
+          "naziv": "Јеванђеље по Јовану",
+          "glava": 21,
+          "zavet": "novi"
+        }
+      ]
     },
     {
-     "id": "sudije",
-     "kratko": "Судије",
-     "naziv": "Књига о судијама",
-     "glava": 21,
-     "zavet": "stari",
-     "usfm": "JDG"
+      "id": "dela",
+      "naziv": "Дела апостолска",
+      "opis": "Почетак Цркве: од Вазнесења до проповеди апостола Павла у Риму.",
+      "knjige": [
+        {
+          "id": "dela",
+          "kratko": "Дела апостолска",
+          "naziv": "Дела светих апостола",
+          "glava": 28,
+          "zavet": "novi"
+        }
+      ]
     },
     {
-     "id": "ruta",
-     "kratko": "Рута",
-     "naziv": "Књига о Рути",
-     "glava": 4,
-     "zavet": "stari",
-     "usfm": "RUT"
+      "id": "saborne",
+      "naziv": "Саборне посланице",
+      "opis": "Посланице упућене свим хришћанима.",
+      "knjige": [
+        {
+          "id": "jakov",
+          "kratko": "Јаковљева",
+          "naziv": "Посланица Јаковљева",
+          "glava": 5,
+          "zavet": "novi"
+        },
+        {
+          "id": "1petar",
+          "kratko": "1. Петрова",
+          "naziv": "Прва посланица Петрова",
+          "glava": 5,
+          "zavet": "novi"
+        },
+        {
+          "id": "2petar",
+          "kratko": "2. Петрова",
+          "naziv": "Друга посланица Петрова",
+          "glava": 3,
+          "zavet": "novi"
+        },
+        {
+          "id": "1jovan",
+          "kratko": "1. Јованова",
+          "naziv": "Прва посланица Јованова",
+          "glava": 5,
+          "zavet": "novi"
+        },
+        {
+          "id": "2jovan",
+          "kratko": "2. Јованова",
+          "naziv": "Друга посланица Јованова",
+          "glava": 1,
+          "zavet": "novi"
+        },
+        {
+          "id": "3jovan",
+          "kratko": "3. Јованова",
+          "naziv": "Трећа посланица Јованова",
+          "glava": 1,
+          "zavet": "novi"
+        },
+        {
+          "id": "juda",
+          "kratko": "Јудина",
+          "naziv": "Посланица Јудина",
+          "glava": 1,
+          "zavet": "novi"
+        }
+      ]
     },
     {
-     "id": "1sam",
-     "kratko": "1. Самуилова",
-     "naziv": "Прва књига Самуилова",
-     "glava": 31,
-     "zavet": "stari",
-     "usfm": "1SA"
+      "id": "pavle",
+      "naziv": "Посланице апостола Павла",
+      "opis": "Четрнаест посланица црквама и ученицима.",
+      "knjige": [
+        {
+          "id": "rimljani",
+          "kratko": "Римљанима",
+          "naziv": "Посланица Римљанима",
+          "glava": 16,
+          "zavet": "novi"
+        },
+        {
+          "id": "1kor",
+          "kratko": "1. Коринћанима",
+          "naziv": "Прва посланица Коринћанима",
+          "glava": 16,
+          "zavet": "novi"
+        },
+        {
+          "id": "2kor",
+          "kratko": "2. Коринћанима",
+          "naziv": "Друга посланица Коринћанима",
+          "glava": 13,
+          "zavet": "novi"
+        },
+        {
+          "id": "galati",
+          "kratko": "Галатима",
+          "naziv": "Посланица Галатима",
+          "glava": 6,
+          "zavet": "novi"
+        },
+        {
+          "id": "efesci",
+          "kratko": "Ефесцима",
+          "naziv": "Посланица Ефесцима",
+          "glava": 6,
+          "zavet": "novi"
+        },
+        {
+          "id": "filibljani",
+          "kratko": "Филибљанима",
+          "naziv": "Посланица Филибљанима",
+          "glava": 4,
+          "zavet": "novi"
+        },
+        {
+          "id": "kolosani",
+          "kratko": "Колошанима",
+          "naziv": "Посланица Колошанима",
+          "glava": 4,
+          "zavet": "novi"
+        },
+        {
+          "id": "1sol",
+          "kratko": "1. Солуњанима",
+          "naziv": "Прва посланица Солуњанима",
+          "glava": 5,
+          "zavet": "novi"
+        },
+        {
+          "id": "2sol",
+          "kratko": "2. Солуњанима",
+          "naziv": "Друга посланица Солуњанима",
+          "glava": 3,
+          "zavet": "novi"
+        },
+        {
+          "id": "1tim",
+          "kratko": "1. Тимотију",
+          "naziv": "Прва посланица Тимотију",
+          "glava": 6,
+          "zavet": "novi"
+        },
+        {
+          "id": "2tim",
+          "kratko": "2. Тимотију",
+          "naziv": "Друга посланица Тимотију",
+          "glava": 4,
+          "zavet": "novi"
+        },
+        {
+          "id": "tit",
+          "kratko": "Титу",
+          "naziv": "Посланица Титу",
+          "glava": 3,
+          "zavet": "novi"
+        },
+        {
+          "id": "filimon",
+          "kratko": "Филимону",
+          "naziv": "Посланица Филимону",
+          "glava": 1,
+          "zavet": "novi"
+        },
+        {
+          "id": "jevreji",
+          "kratko": "Јеврејима",
+          "naziv": "Посланица Јеврејима",
+          "glava": 13,
+          "zavet": "novi"
+        }
+      ]
     },
     {
-     "id": "2sam",
-     "kratko": "2. Самуилова",
-     "naziv": "Друга књига Самуилова",
-     "glava": 24,
-     "zavet": "stari",
-     "usfm": "2SA"
-    },
-    {
-     "id": "1car",
-     "kratko": "1. о царевима",
-     "naziv": "Прва књига о царевима",
-     "glava": 22,
-     "zavet": "stari",
-     "usfm": "1KI"
-    },
-    {
-     "id": "2car",
-     "kratko": "2. о царевима",
-     "naziv": "Друга књига о царевима",
-     "glava": 25,
-     "zavet": "stari",
-     "usfm": "2KI"
-    },
-    {
-     "id": "1dn",
-     "kratko": "1. дневника",
-     "naziv": "Прва књига дневника",
-     "glava": 29,
-     "zavet": "stari",
-     "usfm": "1CH"
-    },
-    {
-     "id": "2dn",
-     "kratko": "2. дневника",
-     "naziv": "Друга књига дневника",
-     "glava": 36,
-     "zavet": "stari",
-     "usfm": "2CH"
-    },
-    {
-     "id": "jezdra",
-     "kratko": "Јездра",
-     "naziv": "Књига Јездрина",
-     "glava": 10,
-     "zavet": "stari",
-     "usfm": "EZR"
-    },
-    {
-     "id": "nemija",
-     "kratko": "Немија",
-     "naziv": "Књига Немијина",
-     "glava": 13,
-     "zavet": "stari",
-     "usfm": "NEH"
-    },
-    {
-     "id": "jestira",
-     "kratko": "Јестира",
-     "naziv": "Књига о Јестири",
-     "glava": 10,
-     "zavet": "stari",
-     "usfm": "EST"
+      "id": "otkrivenje",
+      "naziv": "Откривење",
+      "opis": "Пророчка књига о крају историје и Царству Божјем.",
+      "knjige": [
+        {
+          "id": "otkrivenje",
+          "kratko": "Откривење",
+          "naziv": "Откривење Јованово",
+          "glava": 22,
+          "zavet": "novi"
+        }
+      ]
     }
-   ]
-  },
-  {
-   "id": "poucne",
-   "naziv": "Поучне књиге",
-   "opis": "Молитве, песме и мудрост. Међу њима је Псалтир, молитвеник Цркве.",
-   "knjige": [
-    {
-     "id": "jov",
-     "kratko": "Јов",
-     "naziv": "Књига о Јову",
-     "glava": 42,
-     "zavet": "stari",
-     "usfm": "JOB"
-    },
-    {
-     "id": "psalmi",
-     "kratko": "Псалми",
-     "naziv": "Псалми",
-     "glava": 150,
-     "zavet": "stari",
-     "usfm": "PSA"
-    },
-    {
-     "id": "price",
-     "kratko": "Приче Соломонове",
-     "naziv": "Приче Соломонове",
-     "glava": 31,
-     "zavet": "stari",
-     "usfm": "PRO"
-    },
-    {
-     "id": "propovednik",
-     "kratko": "Проповедник",
-     "naziv": "Проповедник",
-     "glava": 12,
-     "zavet": "stari",
-     "usfm": "ECC"
-    },
-    {
-     "id": "pesma",
-     "kratko": "Песма над песмама",
-     "naziv": "Песма над песмама",
-     "glava": 8,
-     "zavet": "stari",
-     "usfm": "SNG"
-    }
-   ]
-  },
-  {
-   "id": "veliki-proroci",
-   "naziv": "Велики пророци",
-   "opis": "Пророштва о Месији која Црква чита као најаву Христа.",
-   "knjige": [
-    {
-     "id": "isaija",
-     "kratko": "Исаија",
-     "naziv": "Књига пророка Исаије",
-     "glava": 66,
-     "zavet": "stari",
-     "usfm": "ISA"
-    },
-    {
-     "id": "jeremija",
-     "kratko": "Јеремија",
-     "naziv": "Књига пророка Јеремије",
-     "glava": 52,
-     "zavet": "stari",
-     "usfm": "JER"
-    },
-    {
-     "id": "plac",
-     "kratko": "Плач Јеремијин",
-     "naziv": "Плач Јеремијин",
-     "glava": 5,
-     "zavet": "stari",
-     "usfm": "LAM"
-    },
-    {
-     "id": "jezekilj",
-     "kratko": "Језекиљ",
-     "naziv": "Књига пророка Језекиља",
-     "glava": 48,
-     "zavet": "stari",
-     "usfm": "EZK"
-    },
-    {
-     "id": "danilo",
-     "kratko": "Данило",
-     "naziv": "Књига пророка Данила",
-     "glava": 12,
-     "zavet": "stari",
-     "usfm": "DAN"
-    }
-   ]
-  },
-  {
-   "id": "mali-proroci",
-   "naziv": "Мали пророци",
-   "opis": "Дванаест краћих пророчких књига.",
-   "knjige": [
-    {
-     "id": "osija",
-     "kratko": "Осија",
-     "naziv": "Осија",
-     "glava": 14,
-     "zavet": "stari",
-     "usfm": "HOS"
-    },
-    {
-     "id": "joil",
-     "kratko": "Јоил",
-     "naziv": "Јоил",
-     "glava": 3,
-     "zavet": "stari",
-     "usfm": "JOL"
-    },
-    {
-     "id": "amos",
-     "kratko": "Амос",
-     "naziv": "Амос",
-     "glava": 9,
-     "zavet": "stari",
-     "usfm": "AMO"
-    },
-    {
-     "id": "avdija",
-     "kratko": "Авдија",
-     "naziv": "Авдија",
-     "glava": 1,
-     "zavet": "stari",
-     "usfm": "OBA"
-    },
-    {
-     "id": "jona",
-     "kratko": "Јона",
-     "naziv": "Јона",
-     "glava": 4,
-     "zavet": "stari",
-     "usfm": "JON"
-    },
-    {
-     "id": "mihej",
-     "kratko": "Михеј",
-     "naziv": "Михеј",
-     "glava": 7,
-     "zavet": "stari",
-     "usfm": "MIC"
-    },
-    {
-     "id": "naum",
-     "kratko": "Наум",
-     "naziv": "Наум",
-     "glava": 3,
-     "zavet": "stari",
-     "usfm": "NAM"
-    },
-    {
-     "id": "avakum",
-     "kratko": "Авакум",
-     "naziv": "Авакум",
-     "glava": 3,
-     "zavet": "stari",
-     "usfm": "HAB"
-    },
-    {
-     "id": "sofonija",
-     "kratko": "Софонија",
-     "naziv": "Софонија",
-     "glava": 3,
-     "zavet": "stari",
-     "usfm": "ZEP"
-    },
-    {
-     "id": "agej",
-     "kratko": "Агеј",
-     "naziv": "Агеј",
-     "glava": 2,
-     "zavet": "stari",
-     "usfm": "HAG"
-    },
-    {
-     "id": "zaharija",
-     "kratko": "Захарија",
-     "naziv": "Захарија",
-     "glava": 14,
-     "zavet": "stari",
-     "usfm": "ZEC"
-    },
-    {
-     "id": "malahija",
-     "kratko": "Малахија",
-     "naziv": "Малахија",
-     "glava": 4,
-     "zavet": "stari",
-     "usfm": "MAL"
-    }
-   ]
-  }
- ],
- "noviZavet": [
-  {
-   "id": "jevandjelja",
-   "naziv": "Јеванђеља",
-   "opis": "Живот, учење, смрт и Васкрсење Христово.",
-   "knjige": [
-    {
-     "id": "matej",
-     "kratko": "По Матеју",
-     "naziv": "Јеванђеље по Матеју",
-     "glava": 28,
-     "zavet": "novi",
-     "usfm": "MAT"
-    },
-    {
-     "id": "marko",
-     "kratko": "По Марку",
-     "naziv": "Јеванђеље по Марку",
-     "glava": 16,
-     "zavet": "novi",
-     "usfm": "MRK"
-    },
-    {
-     "id": "luka",
-     "kratko": "По Луки",
-     "naziv": "Јеванђеље по Луки",
-     "glava": 24,
-     "zavet": "novi",
-     "usfm": "LUK"
-    },
-    {
-     "id": "jovan",
-     "kratko": "По Јовану",
-     "naziv": "Јеванђеље по Јовану",
-     "glava": 21,
-     "zavet": "novi",
-     "usfm": "JHN"
-    }
-   ]
-  },
-  {
-   "id": "dela",
-   "naziv": "Дела апостолска",
-   "opis": "Почетак Цркве: од Вазнесења до проповеди апостола Павла у Риму.",
-   "knjige": [
-    {
-     "id": "dela",
-     "kratko": "Дела апостолска",
-     "naziv": "Дела светих апостола",
-     "glava": 28,
-     "zavet": "novi",
-     "usfm": "ACT"
-    }
-   ]
-  },
-  {
-   "id": "saborne",
-   "naziv": "Саборне посланице",
-   "opis": "Посланице упућене свим хришћанима.",
-   "knjige": [
-    {
-     "id": "jakov",
-     "kratko": "Јаковљева",
-     "naziv": "Посланица Јаковљева",
-     "glava": 5,
-     "zavet": "novi",
-     "usfm": "JAS"
-    },
-    {
-     "id": "1petar",
-     "kratko": "1. Петрова",
-     "naziv": "Прва посланица Петрова",
-     "glava": 5,
-     "zavet": "novi",
-     "usfm": "1PE"
-    },
-    {
-     "id": "2petar",
-     "kratko": "2. Петрова",
-     "naziv": "Друга посланица Петрова",
-     "glava": 3,
-     "zavet": "novi",
-     "usfm": "2PE"
-    },
-    {
-     "id": "1jovan",
-     "kratko": "1. Јованова",
-     "naziv": "Прва посланица Јованова",
-     "glava": 5,
-     "zavet": "novi",
-     "usfm": "1JN"
-    },
-    {
-     "id": "2jovan",
-     "kratko": "2. Јованова",
-     "naziv": "Друга посланица Јованова",
-     "glava": 1,
-     "zavet": "novi",
-     "usfm": "2JN"
-    },
-    {
-     "id": "3jovan",
-     "kratko": "3. Јованова",
-     "naziv": "Трећа посланица Јованова",
-     "glava": 1,
-     "zavet": "novi",
-     "usfm": "3JN"
-    },
-    {
-     "id": "juda",
-     "kratko": "Јудина",
-     "naziv": "Посланица Јудина",
-     "glava": 1,
-     "zavet": "novi",
-     "usfm": "JUD"
-    }
-   ]
-  },
-  {
-   "id": "pavle",
-   "naziv": "Посланице апостола Павла",
-   "opis": "Четрнаест посланица црквама и ученицима.",
-   "knjige": [
-    {
-     "id": "rimljani",
-     "kratko": "Римљанима",
-     "naziv": "Посланица Римљанима",
-     "glava": 16,
-     "zavet": "novi",
-     "usfm": "ROM"
-    },
-    {
-     "id": "1kor",
-     "kratko": "1. Коринћанима",
-     "naziv": "Прва посланица Коринћанима",
-     "glava": 16,
-     "zavet": "novi",
-     "usfm": "1CO"
-    },
-    {
-     "id": "2kor",
-     "kratko": "2. Коринћанима",
-     "naziv": "Друга посланица Коринћанима",
-     "glava": 13,
-     "zavet": "novi",
-     "usfm": "2CO"
-    },
-    {
-     "id": "galati",
-     "kratko": "Галатима",
-     "naziv": "Посланица Галатима",
-     "glava": 6,
-     "zavet": "novi",
-     "usfm": "GAL"
-    },
-    {
-     "id": "efesci",
-     "kratko": "Ефесцима",
-     "naziv": "Посланица Ефесцима",
-     "glava": 6,
-     "zavet": "novi",
-     "usfm": "EPH"
-    },
-    {
-     "id": "filibljani",
-     "kratko": "Филибљанима",
-     "naziv": "Посланица Филибљанима",
-     "glava": 4,
-     "zavet": "novi",
-     "usfm": "PHP"
-    },
-    {
-     "id": "kolosani",
-     "kratko": "Колошанима",
-     "naziv": "Посланица Колошанима",
-     "glava": 4,
-     "zavet": "novi",
-     "usfm": "COL"
-    },
-    {
-     "id": "1sol",
-     "kratko": "1. Солуњанима",
-     "naziv": "Прва посланица Солуњанима",
-     "glava": 5,
-     "zavet": "novi",
-     "usfm": "1TH"
-    },
-    {
-     "id": "2sol",
-     "kratko": "2. Солуњанима",
-     "naziv": "Друга посланица Солуњанима",
-     "glava": 3,
-     "zavet": "novi",
-     "usfm": "2TH"
-    },
-    {
-     "id": "1tim",
-     "kratko": "1. Тимотију",
-     "naziv": "Прва посланица Тимотију",
-     "glava": 6,
-     "zavet": "novi",
-     "usfm": "1TI"
-    },
-    {
-     "id": "2tim",
-     "kratko": "2. Тимотију",
-     "naziv": "Друга посланица Тимотију",
-     "glava": 4,
-     "zavet": "novi",
-     "usfm": "2TI"
-    },
-    {
-     "id": "tit",
-     "kratko": "Титу",
-     "naziv": "Посланица Титу",
-     "glava": 3,
-     "zavet": "novi",
-     "usfm": "TIT"
-    },
-    {
-     "id": "filimon",
-     "kratko": "Филимону",
-     "naziv": "Посланица Филимону",
-     "glava": 1,
-     "zavet": "novi",
-     "usfm": "PHM"
-    },
-    {
-     "id": "jevreji",
-     "kratko": "Јеврејима",
-     "naziv": "Посланица Јеврејима",
-     "glava": 13,
-     "zavet": "novi",
-     "usfm": "HEB"
-    }
-   ]
-  },
-  {
-   "id": "otkrivenje",
-   "naziv": "Откривење",
-   "opis": "Пророчка књига о крају историје и Царству Божјем.",
-   "knjige": [
-    {
-     "id": "otkrivenje",
-     "kratko": "Откривење",
-     "naziv": "Откривење Јованово",
-     "glava": 22,
-     "zavet": "novi",
-     "usfm": "REV"
-    }
-   ]
-  }
- ],
- "vanPrevoda": [
-  "Товија",
-  "Јудита",
-  "Премудрост Соломонова",
-  "Премудрост Исуса сина Сирахова",
-  "Варух",
-  "Макавејске књиге"
- ]
+  ],
+  "vanPrevoda": [
+    "Товија",
+    "Јудита",
+    "Премудрост Соломонова",
+    "Премудрост Исуса сина Сирахова",
+    "Варух",
+    "Макавејске књиге"
+  ]
 }

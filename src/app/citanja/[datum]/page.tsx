@@ -83,7 +83,7 @@ export default async function CitanjaStrana({ params }: Props) {
                   <Stihovi stihovi={deo.stihovi} kratko={kratko} glave />
                 ) : (
                   <p className="prigusen" style={{ margin: '4px 0 0', fontSize: 14 }}>
-                    [Текст ће се појавити када се увезе Свето писмо (`npm run uvoz:biblija`). До тада, додир на референцу отвара главу.]
+                    [Текст Светог писма биће додат из издања које користи Српска православна црква. До тада додир на референцу отвара главу.]
                   </p>
                 )}
               </div>

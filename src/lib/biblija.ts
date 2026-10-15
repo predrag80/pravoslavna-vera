@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import knjige from '@/data/knjige.json';
 
-export interface Knjiga { id: string; kratko: string; naziv: string; glava: number; zavet: 'stari' | 'novi'; usfm: string }
+export interface Knjiga { id: string; kratko: string; naziv: string; glava: number; zavet: 'stari' | 'novi' }
 export interface Grupa { id: string; naziv: string; opis: string; knjige: Knjiga[] }
 
 export const stariZavet = knjige.stariZavet as Grupa[];
@@ -14,7 +14,7 @@ export function knjiga(id: string): Knjiga | undefined {
   return sveKnjige.find((k) => k.id === id);
 }
 
-/** Текст главе, ако је увезен скриптом `npm run uvoz:biblija` (src/data/biblija/<књига>.json). */
+/** Текст главе из src/data/biblija/<књига>.json, облика { "1": ["стих 1", …], … }; null док текст није додат. */
 export function tekstGlave(id: string, glava: number): string[] | null {
   const fajl = path.join(process.cwd(), 'src', 'data', 'biblija', `${id}.json`);
   if (!fs.existsSync(fajl)) return null;

@@ -37,7 +37,7 @@ export default async function Glava({ params }: Props) {
             kratko={{ [k.id]: skracenica(k.id, k.kratko) }}
           />
         ) : (
-          <p className="kartica prigusen">[Текст ове главе још није увезен. Покрените `npm run uvoz:biblija` према упутству у README.md.]</p>
+          <p className="kartica prigusen">[Текст Светог писма биће додат из издања које користи Српска православна црква, када се добије дозвола издавача.]</p>
         )}
         <nav className={s.navigacija} aria-label="Главе">
           {broj > 1 ? <Link className="dugme dugme-obrub" href={`/pismo/${k.id}/${broj - 1}/`}>‹ Глава {broj - 1}</Link> : <span />}
