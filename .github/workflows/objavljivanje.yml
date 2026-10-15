@@ -98,3 +98,13 @@ jobs:
           fi
           rsync -az --delete -e "$SSH" out/ "$SSH_USER@$SSH_HOST:$SSH_DIR/" || greska "rsync није успео."
           echo "::notice title=SSH::Сајт је постављен."
+          ADRESA="https://pravoslavna-vera.prowebsystems.rs/kalendar/"
+          BEZ=$(curl -s -o /dev/null -w '%{http_code}' "$ADRESA")
+          if [ -n "$HTTP_AUTH_USER" ] && [ -n "$HTTP_AUTH_PASS" ]; then
+            SA=$(curl -s -o /dev/null -w '%{http_code}' -u "$HTTP_AUTH_USER:$HTTP_AUTH_PASS" "$ADRESA")
+            [ "$BEZ" = "401" ] && [ "$SA" = "200" ] || greska "Провера заштите: без лозинке $BEZ (очекује се 401), са лозинком $SA (очекује се 200)."
+            echo "::notice title=Провера::Без лозинке $BEZ, са лозинком $SA."
+          else
+            [ "$BEZ" = "200" ] || greska "Провера: страна враћа $BEZ (очекује се 200)."
+            echo "::notice title=Провера::Страна враћа $BEZ."
+          fi
