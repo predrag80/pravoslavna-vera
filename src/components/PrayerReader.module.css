@@ -23,3 +23,4 @@
 .night .next :global(.button) { background: var(--gold); color: var(--vault); }
 .night .next :global(.button-outline) { background: transparent; color: var(--ivory); border-color: var(--line-dark); }
 .night .back { color: var(--gold-light); }
+.logo { flex: none; min-width: 36px !important; }

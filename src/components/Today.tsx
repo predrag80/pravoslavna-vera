@@ -9,6 +9,7 @@ import { nextSlava, findSlava } from '@/lib/slava';
 import { daysBetween } from '@/lib/calendar';
 import { inDays } from '@/lib/dates';
 import type { Journey } from '@/lib/journey';
+import Logo from './Logo';
 import ScriptToggle from './ScriptToggle';
 import FastBadge from './FastBadge';
 import ActivePlan from './ActivePlan';
@@ -44,10 +45,7 @@ export default function Today({ initial }: { initial: TodayData }) {
       <header className={`${s.sky} on-dark`}>
         <div className="container">
           <div className="top-row">
-            <Link href="/kalendar/" className={s.date} aria-label={`${p.date} Отвори годишњи круг`}>
-              <span className={s.dateText}>{p.date}</span>
-              <span className={s.oldStyle}>{p.oldStyle}</span>
-            </Link>
+            <Logo size={38} stroke={1.7} link={false} className={s.brand} />
             <div style={{ display: 'flex', gap: 6 }}>
               <ScriptToggle />
               <Link href="/pretraga/" className={s.search} aria-label="Претрага">
@@ -55,6 +53,10 @@ export default function Today({ initial }: { initial: TodayData }) {
               </Link>
             </div>
           </div>
+          <Link href="/kalendar/" className={s.date} aria-label={`${p.date} Отвори годишњи круг`}>
+            <span className={s.dateText}>{p.date}</span>
+            <span className={s.oldStyle}>{p.oldStyle}</span>
+          </Link>
           <p className={s.season}>
             <span aria-hidden="true" />
             {p.season}

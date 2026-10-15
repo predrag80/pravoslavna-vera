@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useJourney } from '@/lib/hooks';
 import { saveJourney, type Journey } from '@/lib/journey';
 import BackButton from './BackButton';
+import { LogoMark } from './Logo';
 import ScriptToggle from './ScriptToggle';
 import DarkTheme from './DarkTheme';
 import s from './Welcome.module.css';
@@ -38,12 +39,7 @@ export default function Welcome() {
         </div>
       )}
       <div className={s.content}>
-        <svg width="96" height="122" viewBox="0 0 96 122" fill="none" stroke="#c9a24b" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
-          <path d="M8 120V48a40 40 0 0 1 80 0v72" />
-          <path d="M18 120V50a30 30 0 0 1 60 0v70" />
-          <path d="M48 34v62M43 41h10M37 52h22M43 84l10 4" />
-          <path d="M2 120h92" />
-        </svg>
+        <span className={s.mark}><LogoMark size={122} stroke={1.5} /></span>
         <h1 className={s.title}>Добро дошли</h1>
         <p className={s.subtitle}>Упознавање, учење и живот у православној вери на једном месту.</p>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Logo from './Logo';
 import { useEffect, useRef, useState } from 'react';
 import { useReadingSettings } from '@/lib/hooks';
 import s from './PrayerReader.module.css';
@@ -54,6 +55,7 @@ export default function PrayerReader({ items, title, back }: { items: Item[]; ti
     <div className={`${s.reader} ${settings.night ? s.night : ''}`} ref={top}>
       <div className={`container ${s.toolbar}`}>
         <Link href={back.href} className={s.back}>‹ {back.text}</Link>
+        <Logo size={30} stroke={1.7} className={s.logo} />
         <div className={s.buttons} role="group" aria-label="Подешавања читања">
           <button type="button" aria-label="Мања слова" onClick={() => setSettings({ fontSize: settings.fontSize - 2 })}>A−</button>
           <button type="button" aria-label="Већа слова" onClick={() => setSettings({ fontSize: settings.fontSize + 2 })}>A+</button>

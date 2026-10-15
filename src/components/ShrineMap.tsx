@@ -4,6 +4,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { ErrorEvent, GeoJSONSource, Map as MapGL, MapLayerMouseEvent } from 'maplibre-gl';
 import BackButton from './BackButton';
+import Logo from './Logo';
 import ScriptToggle from './ScriptToggle';
 import { usePilgrimage } from '@/lib/hooks';
 import { centuryNumber, directionsUrl, km, shorterOrder, toRoman, totalKm, type Point } from '@/lib/pilgrimage';
@@ -395,6 +396,8 @@ export default function ShrineMap({ shrines, eparchies }: { shrines: Shrine[]; e
           </div>
         </div>
       )}
+
+      {view === 'map' && !selected && <Logo size={30} stroke={1.7} className={s.logoBadge} />}
 
       {view === 'map' && selected && (
         <section className={s.card} aria-live="polite">

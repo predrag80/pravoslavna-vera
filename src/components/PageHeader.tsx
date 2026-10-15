@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import BackButton from './BackButton';
+import Logo from './Logo';
 import ScriptToggle from './ScriptToggle';
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
   back?: { href: string; text: string };
 }
 
-/** Standard page header: back button, script toggle, eyebrow and title. */
+/** Standard page header: back button, app mark (link home), script toggle, eyebrow and title. */
 export default function PageHeader({ title, subtitle, eyebrow, back }: Props) {
   return (
     <header className="container page-header">
@@ -25,6 +26,7 @@ export default function PageHeader({ title, subtitle, eyebrow, back }: Props) {
         ) : (
           <BackButton />
         )}
+        <Logo size={34} stroke={1.7} />
         <ScriptToggle />
       </div>
       {eyebrow && <span className="eyebrow">{eyebrow}</span>}
