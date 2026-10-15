@@ -1,0 +1,8 @@
+.lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.lista li { display: flex; align-items: flex-start; gap: 8px; padding: 12px 10px 12px 14px; border-radius: 16px; background: var(--kartica); border: 1px solid var(--ivica); border-left-width: 5px; }
+.lista li a { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; text-decoration: none; color: var(--mastilo); }
+.tekst { font-family: var(--font-tekst); font-size: 16px; line-height: 1.5; }
+.lista li button { flex: none; width: 36px; height: 36px; border: none; border-radius: 50%; background: var(--pesak); font-size: 18px; cursor: pointer; color: var(--svod); }
+.zlato { border-left-color: #e6c77a !important; }
+.ruza { border-left-color: #e28c8c !important; }
+.nebo { border-left-color: #78a0dc !important; }

@@ -6,5 +6,5 @@
 .vrata small { font-size: 12px; font-weight: 700; color: var(--zlato-svetlo); }
 .stari { background: #6e5323; }
 .novi { background: #8e2a22; }
-.brzo { display: flex; gap: 8px; margin-top: 16px; }
+.brzo { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 16px; }
 .brzo a { flex: 1; min-height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 14px; background: var(--pesak); font-size: 13px; font-weight: 700; color: var(--svod); text-decoration: none; }

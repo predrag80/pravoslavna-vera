@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Zaglavlje from '@/components/Zaglavlje';
+import Stihovi from '@/components/Stihovi';
 import { knjiga, sveKnjige, tekstGlave } from '@/lib/biblija';
+import { skracenica } from '@/lib/citanja';
 import s from './glava.module.css';
 
 export const dynamicParams = false;
@@ -30,14 +32,10 @@ export default async function Glava({ params }: Props) {
       <Zaglavlje natpis={k.naziv} naslov={k.id === 'psalmi' ? `Псалам ${broj}` : `Глава ${broj}`} nazad={{ href: `/pismo/${k.id}/`, tekst: k.kratko }} />
       <article className={`omot ${s.citanje}`}>
         {stihovi ? (
-          <p className="tekst-citanja">
-            {stihovi.map((stih, i) => (
-              <span key={i} id={`s${i + 1}`}>
-                <sup className={s.broj}>{i + 1}</sup>
-                {stih}{' '}
-              </span>
-            ))}
-          </p>
+          <Stihovi
+            stihovi={stihovi.map((tekst, i) => ({ knjiga: k.id, glava: broj, stih: i + 1, tekst }))}
+            kratko={{ [k.id]: skracenica(k.id, k.kratko) }}
+          />
         ) : (
           <p className="kartica prigusen">[Текст ове главе још није увезен. Покрените `npm run uvoz:biblija` према упутству у README.md.]</p>
         )}

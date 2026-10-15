@@ -25,9 +25,10 @@ export default function Pismo() {
           </Link>
         </div>
         <div className={s.brzo}>
-          <Link href="/psaltir/">Псалтир</Link>
-          <Link href="/pismo/novi-zavet/#jevandjelja">Јеванђеља</Link>
+          <Link href="/citanja/">Читања дана</Link>
           <Link href="/planovi/">Планови читања</Link>
+          <Link href="/psaltir/">Псалтир</Link>
+          <Link href="/pismo/obelezeno/">Обележено</Link>
         </div>
       </div>
     </>

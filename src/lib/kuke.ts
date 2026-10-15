@@ -226,3 +226,57 @@ export function useHodocasce(): [string[], (ids: string[]) => void] {
   };
   return [ids, postavi];
 }
+
+/** Обележени стихови: кључ „књига:глава:стих“, боја и текст у тренутку обележавања. Чува се на уређају. */
+export type BojaObelezja = 'zlato' | 'ruza' | 'nebo';
+export interface Obelezje { boja: BojaObelezja; tekst: string; vreme: number }
+export type Obelezja = Record<string, Obelezje>;
+let zapisObelezja = '';
+let vrednostObelezja: Obelezja = {};
+
+function procitajObelezja(): Obelezja {
+  let zapis = '';
+  try {
+    zapis = localStorage.getItem('obelezeno') ?? '';
+  } catch {
+    /* без сачуваних обележја */
+  }
+  if (zapis !== zapisObelezja) {
+    zapisObelezja = zapis;
+    try {
+      vrednostObelezja = zapis ? (JSON.parse(zapis) as Obelezja) : {};
+    } catch {
+      vrednostObelezja = {};
+    }
+  }
+  return vrednostObelezja;
+}
+
+const praznaObelezja: Obelezja = {};
+function pretplataNaObelezja(obavesti: () => void) {
+  window.addEventListener('obelezeno', obavesti);
+  window.addEventListener('storage', obavesti);
+  return () => {
+    window.removeEventListener('obelezeno', obavesti);
+    window.removeEventListener('storage', obavesti);
+  };
+}
+
+export function useObelezja(): [Obelezja, (izmene: Record<string, Omit<Obelezje, 'vreme'> | null>) => void] {
+  const o = useSyncExternalStore(pretplataNaObelezja, procitajObelezja, () => praznaObelezja);
+  const promeni = (izmene: Record<string, Omit<Obelezje, 'vreme'> | null>) => {
+    const novo = { ...procitajObelezja() };
+    const vreme = Date.now();
+    for (const [k, v] of Object.entries(izmene)) {
+      if (v) novo[k] = { ...v, vreme };
+      else delete novo[k];
+    }
+    try {
+      localStorage.setItem('obelezeno', JSON.stringify(novo));
+    } catch {
+      /* приватни режим */
+    }
+    window.dispatchEvent(new Event('obelezeno'));
+  };
+  return [o, promeni];
+}

@@ -12,6 +12,7 @@ import type { Put } from '@/lib/put';
 import IzborPisma from './IzborPisma';
 import OznakaPosta from './OznakaPosta';
 import AktivniPlan from './AktivniPlan';
+import SledeceCitanje from './SledeceCitanje';
 import s from './Danas.module.css';
 
 const PLOCICE = [
@@ -93,6 +94,7 @@ export default function Danas({ pocetno }: { pocetno: PodaciDana }) {
           </div>
         </section>
 
+        <SledeceCitanje />
         <AktivniPlan />
 
         {put === 'zivot' && <ZaVas put={put} />}
