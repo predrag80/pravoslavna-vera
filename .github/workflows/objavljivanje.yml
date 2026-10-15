@@ -89,7 +89,7 @@ jobs:
             case "${SERVER,,}" in *nginx*) echo "::warning title=Заштита лозинком::Сервер је nginx; .htaccess се занемарује, па заштиту треба подесити у nginx конфигурацији." ;; esac
             ZASTITA_DIR=$($SSH "$SSH_USER@$SSH_HOST" "cd '$SSH_DIR/..' && pwd") || greska "Не могу да одредим фасциклу изнад SSH_DIR."
             HES=$(openssl passwd -apr1 "$HTTP_AUTH_PASS")
-            printf '%s:%s\n' "$HTTP_AUTH_USER" "$HES" | $SSH "$SSH_USER@$SSH_HOST" "umask 027; cat > '$ZASTITA_DIR/.htpasswd-pravoslavna-vera'" || greska "Не могу да упишем .htpasswd на сервер."
+            printf '%s:%s\n' "$HTTP_AUTH_USER" "$HES" | $SSH "$SSH_USER@$SSH_HOST" "umask 022; cat > '$ZASTITA_DIR/.htpasswd-pravoslavna-vera'" || greska "Не могу да упишем .htpasswd на сервер."
             printf '\n# Заштита лозинком (поставља је објављивање)\nAuthType Basic\nAuthName "Pravoslavna vera - probna verzija"\nAuthUserFile %s/.htpasswd-pravoslavna-vera\nRequire valid-user\n' "$ZASTITA_DIR" >> out/.htaccess
             echo "::notice title=Заштита лозинком::Укључена за корисника $HTTP_AUTH_USER."
           else
