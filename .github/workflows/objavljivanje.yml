@@ -3,6 +3,7 @@
 # Постављање зависи од тога који су подаци уписани у GitHub → Settings → Secrets and variables → Actions:
 #  - FTP (класичан хостинг, cPanel): FTP_SERVER, FTP_USERNAME, FTP_PASSWORD, FTP_DIR (нпр. /pravoslavna-vera.prowebsystems.rs/)
 #  - SSH (VPS): SSH_HOST, SSH_USER, SSH_KEY (приватни кључ), SSH_DIR (нпр. /var/www/pravoslavna-vera), опционо SSH_PORT
+#  - Заштита лозинком (само уз SSH, Apache/LiteSpeed): HTTP_AUTH_USER, HTTP_AUTH_PASS; брисањем тајни заштита се искључује
 # Док ниједно није уписано, ток ради проверу и израду, а сајт се може преузети као „artifact“.
 name: Objavljivanje
 
@@ -61,6 +62,8 @@ jobs:
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_DIR: ${{ secrets.SSH_DIR }}
           SSH_PORT: ${{ secrets.SSH_PORT }}
+          HTTP_AUTH_USER: ${{ secrets.HTTP_AUTH_USER }}
+          HTTP_AUTH_PASS: ${{ secrets.HTTP_AUTH_PASS }}
         run: |
           greska() { echo "::error title=SSH::$1"; exit 1; }
           PORT="${SSH_PORT:-22}"
@@ -78,5 +81,20 @@ jobs:
           $SSH "$SSH_USER@$SSH_HOST" true 2>/tmp/ssh.err || greska "Пријава није успела за корисника $SSH_USER: $(tail -1 /tmp/ssh.err). Проверите да је јавни кључ у ~/.ssh/authorized_keys на серверу."
           $SSH "$SSH_USER@$SSH_HOST" "command -v rsync" >/dev/null || greska "На серверу није инсталиран rsync (нпр. sudo apt install rsync)."
           $SSH "$SSH_USER@$SSH_HOST" "mkdir -p '$SSH_DIR' && test -w '$SSH_DIR'" || greska "Корисник $SSH_USER нема право писања у SSH_DIR."
+          SERVER=$(curl -sI "https://pravoslavna-vera.prowebsystems.rs/" | tr -d '\r' | awk -F': ' 'tolower($1)=="server"{print $2}')
+          echo "::notice title=Веб сервер::${SERVER:-непознат}"
+          # Заштита лозинком (HTTP Basic), док постоје тајне HTTP_AUTH_USER и HTTP_AUTH_PASS.
+          # .htpasswd се чува ван јавне фасцикле, па га rsync --delete не брише, а посетиоци га не виде.
+          if [ -n "$HTTP_AUTH_USER" ] && [ -n "$HTTP_AUTH_PASS" ]; then
+            case "${SERVER,,}" in *nginx*) echo "::warning title=Заштита лозинком::Сервер је nginx; .htaccess се занемарује, па заштиту треба подесити у nginx конфигурацији." ;; esac
+            ZASTITA_DIR=$($SSH "$SSH_USER@$SSH_HOST" "cd '$SSH_DIR/..' && pwd") || greska "Не могу да одредим фасциклу изнад SSH_DIR."
+            HES=$(openssl passwd -apr1 "$HTTP_AUTH_PASS")
+            printf '%s:%s\n' "$HTTP_AUTH_USER" "$HES" | $SSH "$SSH_USER@$SSH_HOST" "umask 027; cat > '$ZASTITA_DIR/.htpasswd-pravoslavna-vera'" || greska "Не могу да упишем .htpasswd на сервер."
+            printf '\n# Заштита лозинком (поставља је објављивање)\nAuthType Basic\nAuthName "Pravoslavna vera - probna verzija"\nAuthUserFile %s/.htpasswd-pravoslavna-vera\nRequire valid-user\n' "$ZASTITA_DIR" >> out/.htaccess
+            echo "::notice title=Заштита лозинком::Укључена за корисника $HTTP_AUTH_USER."
+          else
+            $SSH "$SSH_USER@$SSH_HOST" "rm -f '$SSH_DIR/../.htpasswd-pravoslavna-vera'" || true
+            echo "::notice title=Заштита лозинком::Искључена (нема тајни HTTP_AUTH_USER и HTTP_AUTH_PASS)."
+          fi
           rsync -az --delete -e "$SSH" out/ "$SSH_USER@$SSH_HOST:$SSH_DIR/" || greska "rsync није успео."
           echo "::notice title=SSH::Сајт је постављен."

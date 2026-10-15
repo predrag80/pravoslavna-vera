@@ -24,6 +24,7 @@ GitHub → Settings → Secrets and variables → Actions:
 
 - FTP (cPanel): `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, `FTP_DIR` (фасцикла поддомена на серверу, са `/` на крају);
 - или SSH: `SSH_HOST`, `SSH_USER`, `SSH_KEY`, `SSH_DIR`, опционо `SSH_PORT`.
+- Заштита лозинком док је апликација у припреми: `HTTP_AUTH_USER` и `HTTP_AUTH_PASS`. Када се тајне обришу, следеће објављивање уклања заштиту.
 
 `public/.htaccess` подешава Apache (HTTPS, страна 404, кеширање). Сајт је статички: није потребан Node на серверу.
 
