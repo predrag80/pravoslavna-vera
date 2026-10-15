@@ -1,0 +1,110 @@
+# Check, build and deploy to hosting after every push to main.
+#
+# Deployment depends on which values are set in GitHub → Settings → Secrets and variables → Actions:
+#  - FTP (classic hosting, cPanel): FTP_SERVER, FTP_USERNAME, FTP_PASSWORD, FTP_DIR (e.g. /pravoslavna-vera.prowebsystems.rs/)
+#  - SSH (VPS): SSH_HOST, SSH_USER, SSH_KEY (private key), SSH_DIR (e.g. /var/www/pravoslavna-vera), optionally SSH_PORT
+#  - Password protection (SSH only, Apache/LiteSpeed): HTTP_AUTH_USER, HTTP_AUTH_PASS; deleting the secrets turns protection off
+# While none are set, the workflow only checks and builds, and the site can be downloaded as an artifact.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+      - name: Save the built site
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: out
+          retention-days: 7
+
+      - name: Deploy via FTP
+        if: env.FTP_SERVER != ''
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./out/
+          server-dir: ${{ secrets.FTP_DIR }}
+          dangerous-clean-slate: false
+
+      - name: Deploy via SSH
+        if: env.SSH_HOST != '' && env.FTP_SERVER == ''
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_DIR: ${{ secrets.SSH_DIR }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          HTTP_AUTH_USER: ${{ secrets.HTTP_AUTH_USER }}
+          HTTP_AUTH_PASS: ${{ secrets.HTTP_AUTH_PASS }}
+        run: |
+          fail() { echo "::error title=SSH::$1"; exit 1; }
+          PORT="${SSH_PORT:-22}"
+          [ -n "$SSH_USER" ] || fail "Missing secret SSH_USER."
+          [ -n "$SSH_DIR" ] || fail "Missing secret SSH_DIR."
+          [ -n "$SSH_KEY" ] || fail "Missing secret SSH_KEY."
+          case "$SSH_DIR" in /*) ;; *) fail "SSH_DIR must be an absolute path starting with / (it currently starts with '${SSH_DIR:0:1}')." ;; esac
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" | tr -d '\r' > ~/.ssh/key && chmod 600 ~/.ssh/key
+          ssh-keygen -y -f ~/.ssh/key > /dev/null 2>&1 || fail "SSH_KEY is not a valid private key (it needs the full contents, with the BEGIN and END lines, without a passphrase)."
+          echo "::notice title=Key fingerprint::$(ssh-keygen -y -f ~/.ssh/key | ssh-keygen -lf - | awk '{print $2, $4}')"
+          timeout 20 bash -c "</dev/tcp/$SSH_HOST/$PORT" 2>/dev/null || fail "Server $SSH_HOST does not accept connections on port $PORT (wrong address or port, or a firewall is blocking GitHub)."
+          ssh-keyscan -T 15 -p "$PORT" "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null || fail "ssh-keyscan failed for $SSH_HOST:$PORT."
+          SSH="ssh -i $HOME/.ssh/key -p $PORT -o BatchMode=yes -o ConnectTimeout=15"
+          $SSH "$SSH_USER@$SSH_HOST" true 2>/tmp/ssh.err || fail "Login failed for user $SSH_USER: $(tail -1 /tmp/ssh.err). Check that the public key is in ~/.ssh/authorized_keys on the server."
+          $SSH "$SSH_USER@$SSH_HOST" "command -v rsync" >/dev/null || fail "rsync is not installed on the server (e.g. sudo apt install rsync)."
+          $SSH "$SSH_USER@$SSH_HOST" "mkdir -p '$SSH_DIR' && test -w '$SSH_DIR'" || fail "User $SSH_USER has no write permission in SSH_DIR."
+          SERVER=$(curl -sI "https://pravoslavna-vera.prowebsystems.rs/" | tr -d '\r' | awk -F': ' 'tolower($1)=="server"{print $2}')
+          echo "::notice title=Web server::${SERVER:-unknown}"
+          # Password protection (HTTP Basic) while the HTTP_AUTH_USER and HTTP_AUTH_PASS secrets exist.
+          # .htpasswd is kept outside the public folder, so rsync --delete does not remove it and visitors cannot see it.
+          if [ -n "$HTTP_AUTH_USER" ] && [ -n "$HTTP_AUTH_PASS" ]; then
+            case "${SERVER,,}" in *nginx*) echo "::warning title=Password protection::The server is nginx; .htaccess is ignored, so protection must be configured in the nginx configuration." ;; esac
+            AUTH_DIR=$($SSH "$SSH_USER@$SSH_HOST" "cd '$SSH_DIR/..' && pwd") || fail "Cannot determine the folder above SSH_DIR."
+            HASH=$(openssl passwd -apr1 "$HTTP_AUTH_PASS")
+            printf '%s:%s\n' "$HTTP_AUTH_USER" "$HASH" | $SSH "$SSH_USER@$SSH_HOST" "umask 022; cat > '$AUTH_DIR/.htpasswd-pravoslavna-vera'" || fail "Cannot write .htpasswd to the server."
+            printf '\n# Password protection (added by the deploy workflow)\nAuthType Basic\nAuthName "Pravoslavna vera - probna verzija"\nAuthUserFile %s/.htpasswd-pravoslavna-vera\nRequire valid-user\n' "$AUTH_DIR" >> out/.htaccess
+            echo "::notice title=Password protection::Enabled for user $HTTP_AUTH_USER."
+          else
+            $SSH "$SSH_USER@$SSH_HOST" "rm -f '$SSH_DIR/../.htpasswd-pravoslavna-vera'" || true
+            echo "::notice title=Password protection::Disabled (no HTTP_AUTH_USER and HTTP_AUTH_PASS secrets)."
+          fi
+          rsync -az --delete -e "$SSH" out/ "$SSH_USER@$SSH_HOST:$SSH_DIR/" || fail "rsync failed."
+          echo "::notice title=SSH::Site deployed."
+          URL="https://pravoslavna-vera.prowebsystems.rs/kalendar/"
+          NO_AUTH=$(curl -s -o /dev/null -w '%{http_code}' "$URL")
+          if [ -n "$HTTP_AUTH_USER" ] && [ -n "$HTTP_AUTH_PASS" ]; then
+            WITH_AUTH=$(curl -s -o /dev/null -w '%{http_code}' -u "$HTTP_AUTH_USER:$HTTP_AUTH_PASS" "$URL")
+            [ "$NO_AUTH" = "401" ] && [ "$WITH_AUTH" = "200" ] || fail "Protection check: without password $NO_AUTH (expected 401), with password $WITH_AUTH (expected 200)."
+            echo "::notice title=Check::Without password $NO_AUTH, with password $WITH_AUTH."
+          else
+            [ "$NO_AUTH" = "200" ] || fail "Check: the page returns $NO_AUTH (expected 200)."
+            echo "::notice title=Check::The page returns $NO_AUTH."
+          fi

@@ -1,7 +1,0 @@
-.dan { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 6px; text-align: center; }
-.dan div { display: flex; flex-direction: column; }
-.dan b { color: var(--svod); }
-.dan span { font-size: 12px; }
-.dan button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--ivica); background: var(--kartica); font-size: 22px; color: var(--zlato-tamno); cursor: pointer; }
-.svetitelj { margin-top: 14px; text-align: center; font-size: 32px; }
-.ostali { text-align: center; margin: 4px 0 0; font-size: 13px; }

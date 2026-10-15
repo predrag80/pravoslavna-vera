@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
-import Podsetnici from '@/components/Podsetnici';
-import Zaglavlje from '@/components/Zaglavlje';
+import Reminders from '@/components/Reminders';
+import PageHeader from '@/components/PageHeader';
 
 export const metadata: Metadata = { title: 'Подсетници' };
 
-export default function PodsetniciStrana() {
+export default function RemindersPage() {
   return (
     <>
-      <Zaglavlje naslov="Подсетници" podnaslov="Слава, празници и почетак постова у календару вашег телефона" />
-      <div className="omot">
-        <Podsetnici />
+      <PageHeader title="Подсетници" subtitle="Слава, празници и почетак постова у календару вашег телефона" />
+      <div className="container">
+        <Reminders />
       </div>
     </>
   );

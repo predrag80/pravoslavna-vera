@@ -1,0 +1,36 @@
+.sky { background: var(--vault); color: var(--ivory); border-radius: 0 0 32px 32px; padding: 20px 0 22px; }
+.date { display: flex; flex-direction: column; justify-content: center; min-height: 44px; text-decoration: none; }
+.dateText { font-weight: 700; font-size: 14px; color: var(--ivory); }
+.oldStyle { font-size: 12px; color: var(--on-dark); }
+.season { margin: 18px 0 0; display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); }
+.season span { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+.title { margin-top: 8px; color: var(--ivory); max-width: 16ch; }
+.redLetter { color: var(--red-on-dark); }
+.subtitle { margin: 6px 0 0; color: #c3cbe0; font-size: 14px; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.badge { display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border-radius: 999px; background: var(--vault-2); border: 1px solid var(--line-dark); font-size: 12px; font-weight: 600; color: var(--ivory); text-decoration: none; }
+.content { display: flex; flex-direction: column; gap: 16px; padding-top: 18px; }
+.eyebrow { font-family: var(--font-ui); margin: 0 0 8px 4px; }
+.tiles a { min-height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: var(--card); border: 1px solid var(--border); border-radius: 18px; text-decoration: none; color: var(--vault); text-align: center; padding: 8px 4px; }
+.icon { width: 40px; height: 40px; border-radius: 50%; background: var(--vault); color: var(--gold-light); display: flex; align-items: center; justify-content: center; margin-bottom: 2px; }
+.tiles b { font-size: 13px; }
+.tiles small { font-size: 10px; color: var(--ink-2); }
+.row { display: flex; justify-content: space-between; align-items: center; }
+.row h2 { margin: 0; font-family: var(--font-ui); }
+.row a { font-size: 13px; font-weight: 700; text-decoration: none; min-height: 32px; display: inline-flex; align-items: center; }
+.feasts { list-style: none; margin: 4px 0 0; padding: 0; }
+.feasts li { display: flex; align-items: center; gap: 14px; padding: 8px 0; border-bottom: 1px solid var(--sand); }
+.feasts li:last-child { border-bottom: none; }
+.day { width: 44px; display: flex; flex-direction: column; align-items: center; font-family: var(--font-heading); font-size: 24px; font-weight: 700; line-height: 1; }
+.day small { font-family: var(--font-ui); font-size: 11px; font-weight: 400; color: var(--ink-2); }
+.redDay { color: var(--red); }
+.name { flex: 1; font-weight: 600; }
+.when { font-size: 12px; color: var(--ink-2); }
+.search { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-dark); color: var(--gold-light); display: flex; align-items: center; justify-content: center; }
+.change { font-size: 12px; font-weight: 700; text-decoration: none; min-height: 32px; display: inline-flex; align-items: center; }
+.suggestions { display: flex; flex-direction: column; gap: 8px; }
+.suggestion { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 60px; padding: 10px 16px; border-radius: 16px; background: var(--vault); color: var(--ivory); text-decoration: none; font-size: 20px; }
+.suggestion span:first-child { display: flex; flex-direction: column; }
+.suggestion b { font-size: 15px; }
+.suggestion small { font-size: 12px; color: var(--on-dark); }
+.suggestion span:last-child { color: var(--gold-light); }

@@ -1,0 +1,8 @@
+.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.list li { display: flex; align-items: flex-start; gap: 8px; padding: 12px 10px 12px 14px; border-radius: 16px; background: var(--card); border: 1px solid var(--border); border-left-width: 5px; }
+.list li a { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; text-decoration: none; color: var(--ink); }
+.text { font-family: var(--font-text); font-size: 16px; line-height: 1.5; }
+.list li button { flex: none; width: 36px; height: 36px; border: none; border-radius: 50%; background: var(--sand); font-size: 18px; cursor: pointer; color: var(--vault); }
+.gold { border-left-color: #e6c77a !important; }
+.rose { border-left-color: #e28c8c !important; }
+.blue { border-left-color: #78a0dc !important; }

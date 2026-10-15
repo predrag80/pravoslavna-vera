@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
-import KrsnaSlava from '@/components/KrsnaSlava';
-import Zaglavlje from '@/components/Zaglavlje';
+import SlavaPicker from '@/components/SlavaPicker';
+import PageHeader from '@/components/PageHeader';
 
 export const metadata: Metadata = { title: 'Крсна слава' };
 
-export default function SlavaStrana() {
+export default function SlavaPage() {
   return (
     <>
-      <Zaglavlje naslov="Крсна слава" podnaslov="Изаберите своју славу: подсетник, житије, тропар и обичаји" />
-      <div className="omot">
-        <KrsnaSlava />
+      <PageHeader title="Крсна слава" subtitle="Изаберите своју славу: подсетник, житије, тропар и обичаји" />
+      <div className="container">
+        <SlavaPicker />
       </div>
     </>
   );

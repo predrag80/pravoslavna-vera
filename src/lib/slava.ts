@@ -1,26 +1,26 @@
-/** Крсна слава: датум у години и наредни дан славе. */
-import podaci from '../data/slave.json' with { type: 'json' };
-import { dodajDane, utc, vaskrs } from './kalendar.ts';
+/** Family slava: its date in a year and the next slava day. */
+import data from '../data/slavas.json' with { type: 'json' };
+import { addDays, utc, pascha } from './calendar.ts';
 
-export interface Slava { id: string; naziv: string; svetitelj: string; stari?: number[]; odVaskrsa?: number; praznik: string | null }
+export interface Slava { id: string; name: string; saint: string; oldStyle?: number[]; fromPascha?: number; feast: string | null }
 
-export const SLAVE = podaci.slave as Slava[];
+export const SLAVAS = data.slavas as Slava[];
 
-export function slava(id: string | null | undefined): Slava | null {
-  return SLAVE.find((s) => s.id === id) ?? null;
+export function findSlava(id: string | null | undefined): Slava | null {
+  return SLAVAS.find((s) => s.id === id) ?? null;
 }
 
-/** Датум славе у датој грегоријанској години (непокретна слава по старом календару увек пада у исту годину, осим крајем децембра). */
-export function datumSlave(s: Slava, godina: number): Date {
-  if (s.odVaskrsa !== undefined) return dodajDane(vaskrs(godina), s.odVaskrsa);
-  const [m, d] = s.stari as [number, number];
-  // Стари датум + 13 дана; слава по старом 19–31. децембра пада у јануар следеће године.
-  const uIstojGodini = dodajDane(utc(godina, m, d), 13);
-  return uIstojGodini.getUTCFullYear() === godina ? uIstojGodini : dodajDane(utc(godina - 1, m, d), 13);
+/** The slava date in the given Gregorian year (a fixed old-style slava always falls in the same year, except at the end of December). */
+export function slavaDate(s: Slava, year: number): Date {
+  if (s.fromPascha !== undefined) return addDays(pascha(year), s.fromPascha);
+  const [m, d] = s.oldStyle as [number, number];
+  // Old-style date + 13 days; a slava on 19–31 December old style falls in January of the next year.
+  const sameYear = addDays(utc(year, m, d), 13);
+  return sameYear.getUTCFullYear() === year ? sameYear : addDays(utc(year - 1, m, d), 13);
 }
 
-/** Наредни дан славе од датог дана (укључујући и тај дан). */
-export function narednaSlava(s: Slava, od: Date): Date {
-  const ove = datumSlave(s, od.getUTCFullYear());
-  return ove.getTime() >= od.getTime() ? ove : datumSlave(s, od.getUTCFullYear() + 1);
+/** The next slava day from the given day (including that day). */
+export function nextSlava(s: Slava, from: Date): Date {
+  const thisYear = slavaDate(s, from.getUTCFullYear());
+  return thisYear.getTime() >= from.getTime() ? thisYear : slavaDate(s, from.getUTCFullYear() + 1);
 }

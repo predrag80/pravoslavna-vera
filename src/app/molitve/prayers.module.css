@@ -1,0 +1,14 @@
+.rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 10px; }
+.rule { min-height: 132px; padding: 16px; border-radius: 20px; background: #f4ecd8; color: var(--vault); text-decoration: none; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; }
+.rule b { font-family: var(--font-heading); font-size: 24px; font-weight: 600; line-height: 1.05; }
+.rule span { font-size: 12px; color: var(--ink-2); }
+.rule small { margin-top: 6px; font-size: 12px; font-weight: 700; color: var(--gold-dark); }
+.evening { background: var(--vault); color: var(--ivory); }
+.evening span { color: var(--on-dark); }
+.evening small { color: var(--gold-light); }
+.group { margin-top: 20px; }
+.group h2 { font-size: 24px; margin-bottom: 6px; }
+.group ul { list-style: none; margin: 0; padding: 0; background: var(--card); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
+.group li + li { border-top: 1px solid var(--sand); }
+.group a { min-height: 52px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; text-decoration: none; color: var(--vault); font-weight: 600; }
+.group a span { color: var(--gold-dark); }

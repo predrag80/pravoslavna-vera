@@ -1,4 +1,4 @@
-# Подешавања за Apache (cPanel хостинг). На nginx серверу се занемарују.
+# Apache settings (cPanel hosting). Ignored on an nginx server.
 Options -Indexes
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
@@ -23,10 +23,10 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 <IfModule mod_headers.c>
-  # Фајлови у /_next/static/ имају хеш у имену и никад се не мењају; остало се проверава на сваких сат времена.
-  SetEnvIf Request_URI "^/_next/static/" NEPROMENJIVO
-  Header set Cache-Control "public, max-age=31536000, immutable" env=NEPROMENJIVO
-  Header set Cache-Control "public, max-age=3600" env=!NEPROMENJIVO
+  # Files in /_next/static/ have a hash in their name and never change; everything else is revalidated every hour.
+  SetEnvIf Request_URI "^/_next/static/" IMMUTABLE
+  Header set Cache-Control "public, max-age=31536000, immutable" env=IMMUTABLE
+  Header set Cache-Control "public, max-age=3600" env=!IMMUTABLE
   <FilesMatch "\.(html|json|geojson|webmanifest)$|^sw\.js$">
     Header set Cache-Control "no-cache"
   </FilesMatch>

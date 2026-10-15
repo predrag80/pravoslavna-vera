@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import Dobrodoslica from '@/components/Dobrodoslica';
+import Welcome from '@/components/Welcome';
 
 export const metadata: Metadata = { title: 'Добро дошли' };
 
-export default function DobrodosliStrana() {
-  return <Dobrodoslica />;
+export default function WelcomePage() {
+  return <Welcome />;
 }

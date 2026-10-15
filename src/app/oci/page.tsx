@@ -1,19 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import DrvoPredanja from '@/components/DrvoPredanja';
-import Zaglavlje from '@/components/Zaglavlje';
+import FathersTree from '@/components/FathersTree';
+import PageHeader from '@/components/PageHeader';
 
 export const metadata: Metadata = { title: 'Свети оци' };
 
-export default function Oci() {
+export default function FathersPage() {
   return (
     <>
-      <Zaglavlje naslov="Свети оци" podnaslov="Дрво Предања, од апостола до наших дана" />
-      <div className="omot">
-        <Link href="/prolog/" className="dugme" style={{ width: '100%', justifyContent: 'space-between', marginTop: 8 }}>
+      <PageHeader title="Свети оци" subtitle="Дрво Предања, од апостола до наших дана" />
+      <div className="container">
+        <Link href="/prolog/" className="button" style={{ width: '100%', justifyContent: 'space-between', marginTop: 8 }}>
           Охридски пролог за данас <span aria-hidden="true">›</span>
         </Link>
-        <DrvoPredanja />
+        <FathersTree />
       </div>
     </>
   );

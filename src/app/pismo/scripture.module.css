@@ -1,0 +1,10 @@
+.doors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+.doors a { position: relative; min-height: 244px; padding: 0 16px 18px; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; border-radius: 86px 86px 20px 20px; text-decoration: none; color: var(--ivory); overflow: hidden; }
+.doors svg { position: absolute; left: 50%; top: 26px; transform: translateX(-50%); }
+.doors b { font-family: var(--font-heading); font-size: 28px; font-weight: 600; line-height: 1; }
+.doors span { font-size: 12px; line-height: 1.4; opacity: 0.9; }
+.doors small { font-size: 12px; font-weight: 700; color: var(--gold-light); }
+.old { background: #6e5323; }
+.new { background: #8e2a22; }
+.quick { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 16px; }
+.quick a { flex: 1; min-height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 14px; background: var(--sand); font-size: 13px; font-weight: 700; color: var(--vault); text-decoration: none; }

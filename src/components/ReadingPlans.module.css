@@ -1,0 +1,25 @@
+.list { list-style: none; margin: 10px 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.plan { display: flex; flex-direction: column; gap: 4px; padding: 16px; border-radius: 18px; background: var(--card); border: 1px solid var(--border); text-decoration: none; color: var(--vault); }
+.plan b { font-family: var(--font-heading); font-size: 22px; font-weight: 600; }
+.plan > span { font-size: 13px; color: var(--ink-2); }
+.plan small { font-weight: 700; color: var(--gold-dark); }
+.active { border-color: var(--gold); box-shadow: inset 4px 0 0 var(--gold); }
+.progress { display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--ink-2); margin-top: 6px; }
+.bar { display: block; height: 6px; border-radius: 3px; background: var(--sand); overflow: hidden; }
+.bar span { display: block; height: 100%; background: var(--gold); }
+.start { margin-top: 10px; display: flex; flex-direction: column; gap: 12px; }
+.start p { margin: 0; }
+.today { margin-top: 10px; padding: 18px; border-radius: 20px; background: var(--vault); color: var(--ivory); display: flex; flex-direction: column; gap: 12px; }
+.today :global(.eyebrow) { color: var(--gold-light); }
+.today h2 { color: var(--ivory); }
+.today :global(.button) { background: var(--gold); color: var(--vault); }
+.today .progress { color: var(--on-dark); }
+.today .bar { background: var(--vault-2); }
+.parts { display: flex; flex-wrap: wrap; gap: 8px; }
+.part { min-height: 44px; padding: 0 14px; border-radius: 12px; background: var(--vault-2); border: 1px solid var(--line-dark); color: var(--ivory) !important; text-decoration: none; display: inline-flex; align-items: center; font-weight: 700; }
+.days { list-style: none; margin: 16px 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.days label { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 6px 12px; border-radius: 14px; background: var(--card); border: 1px solid var(--border); cursor: pointer; }
+.days input { width: 20px; height: 20px; accent-color: var(--gold-dark); flex: none; }
+.number { width: 28px; font-weight: 800; color: var(--gold-dark); font-size: 13px; }
+.content { font-size: 14px; color: var(--vault); }
+.current label { border-color: var(--gold); }

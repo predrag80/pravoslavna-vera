@@ -1,0 +1,243 @@
+{
+ "_note": "Почетни скуп. Координате су приближне и треба их проверити; пуну базу треба допунити из података епархија СПЦ и OpenStreetMap-а. Епархије (поље eparchy, id из eparchies.json) такође треба проверити.",
+ "shrines": [
+  {
+   "id": "studenica",
+   "name": "Студеница",
+   "kind": "monastery",
+   "lat": 43.486,
+   "lon": 20.532,
+   "century": "XII век",
+   "place": "код Краљева",
+   "eparchy": "zicka",
+   "description": "Задужбина Стефана Немање, мајка српских цркава. Ту је Свети Сава написао Студенички типик.",
+   "tags": [
+    "unesco",
+    "nemanjic"
+   ]
+  },
+  {
+   "id": "zica",
+   "name": "Жича",
+   "kind": "monastery",
+   "lat": 43.695,
+   "lon": 20.646,
+   "century": "XIII век",
+   "place": "код Краљева",
+   "eparchy": "zicka",
+   "description": "Подигли су је Стефан Првовенчани и Свети Сава; прво седиште самосталне српске архиепископије.",
+   "tags": [
+    "nemanjic"
+   ]
+  },
+  {
+   "id": "sopocani",
+   "name": "Сопоћани",
+   "kind": "monastery",
+   "lat": 43.136,
+   "lon": 20.432,
+   "century": "XIII век",
+   "place": "код Новог Пазара",
+   "eparchy": "rasko-prizrenska",
+   "description": "Задужбина краља Уроша I, позната по фрескама међу најлепшим у средњем веку.",
+   "tags": [
+    "unesco",
+    "nemanjic"
+   ]
+  },
+  {
+   "id": "djurdjevi-stupovi",
+   "name": "Ђурђеви ступови",
+   "kind": "monastery",
+   "lat": 43.155,
+   "lon": 20.507,
+   "century": "XII век",
+   "place": "код Новог Пазара",
+   "eparchy": "rasko-prizrenska",
+   "description": "Задужбина Стефана Немање на брду изнад старог Раса.",
+   "tags": [
+    "unesco",
+    "nemanjic"
+   ]
+  },
+  {
+   "id": "mileseva",
+   "name": "Милешева",
+   "kind": "monastery",
+   "lat": 43.358,
+   "lon": 19.716,
+   "century": "XIII век",
+   "place": "код Пријепоља",
+   "eparchy": "milesevska",
+   "description": "Задужбина краља Владислава, позната по фресци Белог анђела.",
+   "tags": [
+    "nemanjic"
+   ]
+  },
+  {
+   "id": "pecka-patrijarsija",
+   "name": "Пећка патријаршија",
+   "kind": "monastery",
+   "lat": 42.663,
+   "lon": 20.267,
+   "century": "XIII век",
+   "place": "Пећ",
+   "eparchy": "rasko-prizrenska",
+   "description": "Вековно седиште српских архиепископа и патријараха.",
+   "tags": [
+    "unesco",
+    "nemanjic"
+   ]
+  },
+  {
+   "id": "decani",
+   "name": "Високи Дечани",
+   "kind": "monastery",
+   "lat": 42.546,
+   "lon": 20.266,
+   "century": "XIV век",
+   "place": "код Пећи",
+   "eparchy": "rasko-prizrenska",
+   "description": "Задужбина краља Стефана Дечанског, највећа очувана средњовековна црква на Балкану.",
+   "tags": [
+    "unesco",
+    "nemanjic"
+   ]
+  },
+  {
+   "id": "gracanica",
+   "name": "Грачаница",
+   "kind": "monastery",
+   "lat": 42.598,
+   "lon": 21.193,
+   "century": "XIV век",
+   "place": "код Приштине",
+   "eparchy": "rasko-prizrenska",
+   "description": "Задужбина краља Милутина из 1321. године.",
+   "tags": [
+    "unesco",
+    "nemanjic"
+   ]
+  },
+  {
+   "id": "ravanica",
+   "name": "Раваница",
+   "kind": "monastery",
+   "lat": 43.958,
+   "lon": 21.564,
+   "century": "XIV век",
+   "place": "код Ћуприје",
+   "eparchy": "branicevska",
+   "description": "Задужбина кнеза Лазара, у којој почивају његове мошти.",
+   "tags": []
+  },
+  {
+   "id": "ljubostinja",
+   "name": "Љубостиња",
+   "kind": "monastery",
+   "lat": 43.661,
+   "lon": 21.027,
+   "century": "XIV–XV век",
+   "place": "код Трстеника",
+   "eparchy": "krusevacka",
+   "description": "Задужбина кнегиње Милице, која се ту замонашила.",
+   "tags": []
+  },
+  {
+   "id": "kalenic",
+   "name": "Каленић",
+   "kind": "monastery",
+   "lat": 43.993,
+   "lon": 21.008,
+   "century": "XV век",
+   "place": "код Рековца",
+   "eparchy": "sumadijska",
+   "description": "Манастир моравског стила, познат по фресци Свадбе у Кани.",
+   "tags": []
+  },
+  {
+   "id": "manasija",
+   "name": "Манасија",
+   "kind": "monastery",
+   "lat": 44.096,
+   "lon": 21.465,
+   "century": "XV век",
+   "place": "код Деспотовца",
+   "eparchy": "branicevska",
+   "description": "Утврђена задужбина деспота Стефана Лазаревића, средиште Ресавске школе.",
+   "tags": []
+  },
+  {
+   "id": "krusedol",
+   "name": "Крушедол",
+   "kind": "monastery",
+   "lat": 45.118,
+   "lon": 19.94,
+   "century": "XVI век",
+   "place": "Фрушка гора",
+   "eparchy": "sremska",
+   "description": "Задужбина последњих Бранковића, најпознатији фрушкогорски манастир.",
+   "tags": []
+  },
+  {
+   "id": "lazarica",
+   "name": "Лазарица",
+   "kind": "church",
+   "lat": 43.584,
+   "lon": 21.333,
+   "century": "XIV век",
+   "place": "Крушевац",
+   "eparchy": "krusevacka",
+   "description": "Дворска црква кнеза Лазара у његовој престоници.",
+   "tags": []
+  },
+  {
+   "id": "oplenac",
+   "name": "Опленац",
+   "kind": "church",
+   "lat": 44.24,
+   "lon": 20.68,
+   "century": "XX век",
+   "place": "Топола",
+   "eparchy": "sumadijska",
+   "description": "Црква Светог Ђорђа, задужбина краља Петра I и маузолеј Карађорђевића.",
+   "tags": []
+  },
+  {
+   "id": "hram-svetog-save",
+   "name": "Храм Светог Саве",
+   "kind": "church",
+   "lat": 44.798,
+   "lon": 20.469,
+   "century": "XX–XXI век",
+   "place": "Београд, Врачар",
+   "eparchy": "beogradsko-karlovacka",
+   "description": "Подигнут на месту где су Турци 1595. спалили мошти Светог Саве.",
+   "tags": []
+  },
+  {
+   "id": "saborna-beograd",
+   "name": "Саборна црква",
+   "kind": "church",
+   "lat": 44.818,
+   "lon": 20.454,
+   "century": "XIX век",
+   "place": "Београд",
+   "eparchy": "beogradsko-karlovacka",
+   "description": "Саборни храм Светог архангела Михаила, подигнут 1837–1840.",
+   "tags": []
+  },
+  {
+   "id": "saborna-novi-sad",
+   "name": "Саборна црква",
+   "kind": "church",
+   "lat": 45.256,
+   "lon": 19.845,
+   "century": "XIX–XX век",
+   "place": "Нови Сад",
+   "eparchy": "backa",
+   "description": "Храм Светог великомученика Георгија у срцу Новог Сада.",
+   "tags": []
+  }
+ ]
+}

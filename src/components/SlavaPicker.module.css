@@ -1,0 +1,24 @@
+.search { display: flex; align-items: center; min-height: 52px; padding: 0 14px; margin-top: 8px; }
+.search input { flex: 1; border: none; background: transparent; font: inherit; outline: none; }
+.list { list-style: none; margin: 12px 0; padding: 0; background: var(--card); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
+.list li + li { border-top: 1px solid var(--sand); }
+.list button { width: 100%; min-height: 60px; padding: 8px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border: none; background: transparent; text-align: left; cursor: pointer; }
+.list button[aria-pressed='true'] { background: var(--sand); }
+.list b { display: block; color: var(--vault); font-size: 15px; }
+.list small { display: block; color: var(--ink-2); font-size: 12px; }
+.date { flex: none; font-size: 12px; font-weight: 700; color: var(--gold-dark); }
+.card { margin-top: 8px; padding: 20px 18px; border-radius: 22px; background: var(--vault); color: var(--ivory); }
+.card h2 { color: var(--ivory); font-size: 36px; margin-top: 4px; }
+.card :global(.eyebrow) { color: var(--gold-light); }
+.saint { margin: 4px 0 0; color: var(--on-dark); }
+.countdown { margin-top: 16px; display: flex; flex-direction: column; gap: 2px; }
+.countdown b { font-family: var(--font-heading); font-size: 30px; color: var(--gold-light); }
+.countdown span { font-size: 13px; color: #c3cbe0; }
+.buttons { margin-top: 16px; display: grid; grid-template-columns: 1fr; gap: 8px; }
+.buttons :global(.button) { background: var(--gold); color: var(--vault); }
+.buttons :global(.button-outline) { background: transparent; color: var(--ivory); border-color: var(--line-dark); }
+.preparation { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.preparation label { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border-radius: 16px; background: var(--card); border: 1px solid var(--border); cursor: pointer; }
+.preparation input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--gold-dark); flex: none; }
+.preparation b { display: block; color: var(--vault); }
+.preparation small { display: block; color: var(--ink-2); font-size: 13px; }

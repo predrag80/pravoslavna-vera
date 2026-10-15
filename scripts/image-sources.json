@@ -1,0 +1,19 @@
+{
+  "_note": "Шта скрипта scripts/images.mjs тражи на Wikimedia Commons. За сваки празник прво пробa „candidates“ (тачни називи фајлова), па „searches“ редом. Ако вам се изабрана слика не допада, упишите жељени фајл као први кандидат и покрените `npm run images -- --redo <id>`.",
+  "feasts": {
+    "bozic": { "description": "Рођење Христово", "candidates": [], "searches": ["Nativity of Christ fresco Serbia monastery", "Nativity of Christ icon Orthodox"] },
+    "bogojavljenje": { "description": "Крштење Господње", "candidates": [], "searches": ["Baptism of Christ fresco Serbia monastery", "Theophany icon Orthodox"] },
+    "sretenje": { "description": "Сретење Господње", "candidates": [], "searches": ["Presentation of Christ in the Temple fresco Serbia", "Presentation of Jesus at the Temple icon Orthodox"] },
+    "blagovesti": { "description": "Благовести", "candidates": [], "searches": ["Annunciation fresco Serbia monastery", "Annunciation icon Orthodox"] },
+    "cveti": { "description": "Улазак Господа у Јерусалим", "candidates": [], "searches": ["Entry into Jerusalem fresco Serbia monastery", "Entry into Jerusalem icon Orthodox"] },
+    "vaskrs": { "description": "Мироносице на гробу, Бели анђео", "candidates": ["The White Angel, Mileseva 25.jpg", "Beli andjeo.jpg"], "searches": ["White Angel Mileseva", "Anastasis fresco Orthodox"] },
+    "spasovdan": { "description": "Вазнесење Господње", "candidates": [], "searches": ["Ascension of Christ fresco Serbia monastery", "Ascension of Christ icon Orthodox"] },
+    "duhovi": { "description": "Силазак Светог Духа на апостоле", "candidates": [], "searches": ["Pentecost fresco Serbia monastery", "Pentecost icon Orthodox"] },
+    "preobrazenje": { "description": "Преображење Господње", "candidates": ["Transfiguration (Annunciation Cathedral, Kremlin).jpg"], "searches": ["Transfiguration fresco Serbia monastery", "Transfiguration icon Theophanes"] },
+    "velika-gospojina": { "description": "Успење Пресвете Богородице", "candidates": ["Uspenje presvete Bogorodice - Sopocani.jpg"], "searches": ["Dormition Sopocani fresco", "Dormition of the Theotokos fresco Serbia"] },
+    "mala-gospojina": { "description": "Рођење Пресвете Богородице", "candidates": [], "searches": ["Nativity of the Theotokos fresco Serbia", "Nativity of the Virgin icon Orthodox"] },
+    "krstovdan": { "description": "Воздвижење Часног Крста", "candidates": [], "searches": ["Exaltation of the Cross icon Orthodox", "Exaltation of the Holy Cross fresco"] },
+    "vavedenje": { "description": "Ваведење Пресвете Богородице", "candidates": [], "searches": ["Presentation of the Theotokos fresco Serbia", "Entry of the Theotokos into the Temple icon"] },
+    "sveti-sava": { "description": "Свети Сава, фреска", "candidates": ["Saint Sava, fresco from Mileševa.jpg", "Sveti Sava, freska iz Gračanice, XIV vek.jpg"], "searches": ["Saint Sava fresco Mileseva", "Saint Sava fresco"] }
+  }
+}

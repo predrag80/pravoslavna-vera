@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
-import Pretraga from '@/components/Pretraga';
-import Zaglavlje from '@/components/Zaglavlje';
+import Search from '@/components/Search';
+import PageHeader from '@/components/PageHeader';
 
 export const metadata: Metadata = { title: 'Претрага' };
 
-export default function PretragaStrana() {
+export default function SearchPage() {
   return (
     <>
-      <Zaglavlje naslov="Претрага" podnaslov="Празници, светитељи, Свето писмо, храмови" nazad={{ href: '/', tekst: 'Данас' }} />
-      <div className="omot">
-        <Pretraga />
+      <PageHeader title="Претрага" subtitle="Празници, светитељи, Свето писмо, храмови" back={{ href: '/', text: 'Данас' }} />
+      <div className="container">
+        <Search />
       </div>
     </>
   );

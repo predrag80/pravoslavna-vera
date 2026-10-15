@@ -1,23 +1,23 @@
 import type { Metadata } from 'next';
-import ListaKnjiga from '@/components/ListaKnjiga';
-import Zaglavlje from '@/components/Zaglavlje';
-import { stariZavet, vanPrevoda } from '@/lib/biblija';
+import BookList from '@/components/BookList';
+import PageHeader from '@/components/PageHeader';
+import { oldTestament, notInTranslation } from '@/lib/bible';
 
 export const metadata: Metadata = { title: 'Стари завет' };
 
-export default function StariZavet() {
+export default function OldTestamentPage() {
   return (
     <>
-      <Zaglavlje naslov="Стари завет" podnaslov="39 књига у преводу Ђуре Даничића. Савез Бога са изабраним народом и припрема за долазак Христов." nazad={{ href: '/pismo/', tekst: 'Свето писмо' }} />
-      <div className="omot">
-        <ListaKnjiga grupe={stariZavet} />
+      <PageHeader title="Стари завет" subtitle="39 књига у преводу Ђуре Даничића. Савез Бога са изабраним народом и припрема за долазак Христов." back={{ href: '/pismo/', text: 'Свето писмо' }} />
+      <div className="container">
+        <BookList groups={oldTestament} />
         <section style={{ paddingTop: 18 }} aria-labelledby="van">
           <h2 id="van" style={{ fontSize: 25 }}>Остале књиге</h2>
-          <p className="prigusen" style={{ fontSize: 13 }}>Књиге које Православна Црква чита, а Даничић их није превео. Потребан је други извор.</p>
-          <div className="mreza mreza-3">
-            {vanPrevoda.map((k) => (
-              <div key={k} style={{ minHeight: 60, padding: '8px 10px', border: '1.5px dashed var(--ivica-2)', borderRadius: 12, fontSize: 13, fontWeight: 700, color: 'var(--mastilo-2)' }}>
-                {k}
+          <p className="muted" style={{ fontSize: 13 }}>Књиге које Православна Црква чита, а Даничић их није превео. Потребан је други извор.</p>
+          <div className="grid grid-3">
+            {notInTranslation.map((b) => (
+              <div key={b} style={{ minHeight: 60, padding: '8px 10px', border: '1.5px dashed var(--border-2)', borderRadius: 12, fontSize: 13, fontWeight: 700, color: 'var(--ink-2)' }}>
+                {b}
                 <br />
                 <small style={{ fontWeight: 400 }}>извор у припреми</small>
               </div>

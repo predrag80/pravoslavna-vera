@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next';
 
-// Статички извоз: `npm run build` прави готов сајт у `out/` за било који статички хостинг.
-// Када затреба спољни API или база, уклоните `output: 'export'` и додајте API руте (app/api/...).
+// Static export: `npm run build` produces a ready site in `out/` for any static host.
+// When an external API or database is needed, remove `output: 'export'` and add API routes (app/api/...).
 const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,

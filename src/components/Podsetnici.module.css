@@ -1,8 +1,0 @@
-.grupa { border: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.grupa legend { font-family: var(--font-naslov); font-size: 22px; font-weight: 600; color: var(--svod); margin-bottom: 8px; }
-.grupa label { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border-radius: 16px; background: var(--kartica); border: 1px solid var(--ivica); cursor: pointer; }
-.grupa input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--zlato-tamno); flex: none; }
-.grupa b { display: block; color: var(--svod); }
-.grupa small { display: block; color: var(--mastilo-2); font-size: 13px; }
-.nedostupno { opacity: 0.6; cursor: default; }
-.veza { font-size: 13px; font-weight: 700; text-decoration: none; min-height: 36px; display: inline-flex; align-items: center; }

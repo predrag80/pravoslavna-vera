@@ -1,0 +1,9 @@
+.jump { margin: 8px 0 4px; }
+.group { padding-top: 18px; scroll-margin-top: 12px; }
+.header { display: flex; align-items: center; gap: 10px; }
+.header h2 { flex: 1; font-size: 25px; }
+.color { width: 12px; height: 28px; border-radius: 3px; }
+.description { margin: 4px 0 10px; font-size: 13px; }
+.book { min-height: 60px; padding: 8px 10px; display: flex; flex-direction: column; justify-content: center; gap: 3px; border-radius: 12px; background: var(--card); border: 1px solid var(--border); text-decoration: none; color: var(--vault); }
+.book b { font-size: 13px; line-height: 1.2; }
+.book small { font-size: 11px; color: var(--ink-2); }

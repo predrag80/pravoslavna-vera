@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
-import DonjaNavigacija from '@/components/DonjaNavigacija';
-import Pokretanje from '@/components/Pokretanje';
+import BottomNav from '@/components/BottomNav';
+import AppStartup from '@/components/AppStartup';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -22,8 +22,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="sr-Cyrl">
       <body>
         <main data-pagefind-body>{children}</main>
-        <DonjaNavigacija />
-        <Pokretanje />
+        <BottomNav />
+        <AppStartup />
       </body>
     </html>
   );

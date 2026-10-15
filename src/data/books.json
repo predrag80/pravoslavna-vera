@@ -1,0 +1,547 @@
+{
+  "_note": "Ред књига у Новом завету прати црквени поредак. Даничић–Караџић нема књиге које Православна Црква чита а које нису у хебрејском канону; оне су у листи „notInTranslation“.",
+  "oldTestament": [
+    {
+      "id": "zakon",
+      "name": "Закон",
+      "description": "Пет књига Мојсијевих: стварање света, Савез и Закон.",
+      "books": [
+        {
+          "id": "1mojs",
+          "short": "1. Мојсијева",
+          "name": "Прва књига Мојсијева",
+          "chapters": 50,
+          "testament": "old"
+        },
+        {
+          "id": "2mojs",
+          "short": "2. Мојсијева",
+          "name": "Друга књига Мојсијева",
+          "chapters": 40,
+          "testament": "old"
+        },
+        {
+          "id": "3mojs",
+          "short": "3. Мојсијева",
+          "name": "Трећа књига Мојсијева",
+          "chapters": 27,
+          "testament": "old"
+        },
+        {
+          "id": "4mojs",
+          "short": "4. Мојсијева",
+          "name": "Четврта књига Мојсијева",
+          "chapters": 36,
+          "testament": "old"
+        },
+        {
+          "id": "5mojs",
+          "short": "5. Мојсијева",
+          "name": "Пета књига Мојсијева",
+          "chapters": 34,
+          "testament": "old"
+        }
+      ]
+    },
+    {
+      "id": "istorijske",
+      "name": "Историјске књиге",
+      "description": "Историја изабраног народа од уласка у обећану земљу до повратка из ропства.",
+      "books": [
+        {
+          "id": "isus-navin",
+          "short": "Исус Навин",
+          "name": "Књига Исуса Навина",
+          "chapters": 24,
+          "testament": "old"
+        },
+        {
+          "id": "sudije",
+          "short": "Судије",
+          "name": "Књига о судијама",
+          "chapters": 21,
+          "testament": "old"
+        },
+        {
+          "id": "ruta",
+          "short": "Рута",
+          "name": "Књига о Рути",
+          "chapters": 4,
+          "testament": "old"
+        },
+        {
+          "id": "1sam",
+          "short": "1. Самуилова",
+          "name": "Прва књига Самуилова",
+          "chapters": 31,
+          "testament": "old"
+        },
+        {
+          "id": "2sam",
+          "short": "2. Самуилова",
+          "name": "Друга књига Самуилова",
+          "chapters": 24,
+          "testament": "old"
+        },
+        {
+          "id": "1car",
+          "short": "1. о царевима",
+          "name": "Прва књига о царевима",
+          "chapters": 22,
+          "testament": "old"
+        },
+        {
+          "id": "2car",
+          "short": "2. о царевима",
+          "name": "Друга књига о царевима",
+          "chapters": 25,
+          "testament": "old"
+        },
+        {
+          "id": "1dn",
+          "short": "1. дневника",
+          "name": "Прва књига дневника",
+          "chapters": 29,
+          "testament": "old"
+        },
+        {
+          "id": "2dn",
+          "short": "2. дневника",
+          "name": "Друга књига дневника",
+          "chapters": 36,
+          "testament": "old"
+        },
+        {
+          "id": "jezdra",
+          "short": "Јездра",
+          "name": "Књига Јездрина",
+          "chapters": 10,
+          "testament": "old"
+        },
+        {
+          "id": "nemija",
+          "short": "Немија",
+          "name": "Књига Немијина",
+          "chapters": 13,
+          "testament": "old"
+        },
+        {
+          "id": "jestira",
+          "short": "Јестира",
+          "name": "Књига о Јестири",
+          "chapters": 10,
+          "testament": "old"
+        }
+      ]
+    },
+    {
+      "id": "poucne",
+      "name": "Поучне књиге",
+      "description": "Молитве, песме и мудрост. Међу њима је Псалтир, молитвеник Цркве.",
+      "books": [
+        {
+          "id": "jov",
+          "short": "Јов",
+          "name": "Књига о Јову",
+          "chapters": 42,
+          "testament": "old"
+        },
+        {
+          "id": "psalmi",
+          "short": "Псалми",
+          "name": "Псалми",
+          "chapters": 150,
+          "testament": "old"
+        },
+        {
+          "id": "price",
+          "short": "Приче Соломонове",
+          "name": "Приче Соломонове",
+          "chapters": 31,
+          "testament": "old"
+        },
+        {
+          "id": "propovednik",
+          "short": "Проповедник",
+          "name": "Проповедник",
+          "chapters": 12,
+          "testament": "old"
+        },
+        {
+          "id": "pesma",
+          "short": "Песма над песмама",
+          "name": "Песма над песмама",
+          "chapters": 8,
+          "testament": "old"
+        }
+      ]
+    },
+    {
+      "id": "veliki-proroci",
+      "name": "Велики пророци",
+      "description": "Пророштва о Месији која Црква чита као најаву Христа.",
+      "books": [
+        {
+          "id": "isaija",
+          "short": "Исаија",
+          "name": "Књига пророка Исаије",
+          "chapters": 66,
+          "testament": "old"
+        },
+        {
+          "id": "jeremija",
+          "short": "Јеремија",
+          "name": "Књига пророка Јеремије",
+          "chapters": 52,
+          "testament": "old"
+        },
+        {
+          "id": "plac",
+          "short": "Плач Јеремијин",
+          "name": "Плач Јеремијин",
+          "chapters": 5,
+          "testament": "old"
+        },
+        {
+          "id": "jezekilj",
+          "short": "Језекиљ",
+          "name": "Књига пророка Језекиља",
+          "chapters": 48,
+          "testament": "old"
+        },
+        {
+          "id": "danilo",
+          "short": "Данило",
+          "name": "Књига пророка Данила",
+          "chapters": 12,
+          "testament": "old"
+        }
+      ]
+    },
+    {
+      "id": "mali-proroci",
+      "name": "Мали пророци",
+      "description": "Дванаест краћих пророчких књига.",
+      "books": [
+        {
+          "id": "osija",
+          "short": "Осија",
+          "name": "Осија",
+          "chapters": 14,
+          "testament": "old"
+        },
+        {
+          "id": "joil",
+          "short": "Јоил",
+          "name": "Јоил",
+          "chapters": 3,
+          "testament": "old"
+        },
+        {
+          "id": "amos",
+          "short": "Амос",
+          "name": "Амос",
+          "chapters": 9,
+          "testament": "old"
+        },
+        {
+          "id": "avdija",
+          "short": "Авдија",
+          "name": "Авдија",
+          "chapters": 1,
+          "testament": "old"
+        },
+        {
+          "id": "jona",
+          "short": "Јона",
+          "name": "Јона",
+          "chapters": 4,
+          "testament": "old"
+        },
+        {
+          "id": "mihej",
+          "short": "Михеј",
+          "name": "Михеј",
+          "chapters": 7,
+          "testament": "old"
+        },
+        {
+          "id": "naum",
+          "short": "Наум",
+          "name": "Наум",
+          "chapters": 3,
+          "testament": "old"
+        },
+        {
+          "id": "avakum",
+          "short": "Авакум",
+          "name": "Авакум",
+          "chapters": 3,
+          "testament": "old"
+        },
+        {
+          "id": "sofonija",
+          "short": "Софонија",
+          "name": "Софонија",
+          "chapters": 3,
+          "testament": "old"
+        },
+        {
+          "id": "agej",
+          "short": "Агеј",
+          "name": "Агеј",
+          "chapters": 2,
+          "testament": "old"
+        },
+        {
+          "id": "zaharija",
+          "short": "Захарија",
+          "name": "Захарија",
+          "chapters": 14,
+          "testament": "old"
+        },
+        {
+          "id": "malahija",
+          "short": "Малахија",
+          "name": "Малахија",
+          "chapters": 4,
+          "testament": "old"
+        }
+      ]
+    }
+  ],
+  "newTestament": [
+    {
+      "id": "jevandjelja",
+      "name": "Јеванђеља",
+      "description": "Живот, учење, смрт и Васкрсење Христово.",
+      "books": [
+        {
+          "id": "matej",
+          "short": "По Матеју",
+          "name": "Јеванђеље по Матеју",
+          "chapters": 28,
+          "testament": "new"
+        },
+        {
+          "id": "marko",
+          "short": "По Марку",
+          "name": "Јеванђеље по Марку",
+          "chapters": 16,
+          "testament": "new"
+        },
+        {
+          "id": "luka",
+          "short": "По Луки",
+          "name": "Јеванђеље по Луки",
+          "chapters": 24,
+          "testament": "new"
+        },
+        {
+          "id": "jovan",
+          "short": "По Јовану",
+          "name": "Јеванђеље по Јовану",
+          "chapters": 21,
+          "testament": "new"
+        }
+      ]
+    },
+    {
+      "id": "dela",
+      "name": "Дела апостолска",
+      "description": "Почетак Цркве: од Вазнесења до проповеди апостола Павла у Риму.",
+      "books": [
+        {
+          "id": "dela",
+          "short": "Дела апостолска",
+          "name": "Дела светих апостола",
+          "chapters": 28,
+          "testament": "new"
+        }
+      ]
+    },
+    {
+      "id": "saborne",
+      "name": "Саборне посланице",
+      "description": "Посланице упућене свим хришћанима.",
+      "books": [
+        {
+          "id": "jakov",
+          "short": "Јаковљева",
+          "name": "Посланица Јаковљева",
+          "chapters": 5,
+          "testament": "new"
+        },
+        {
+          "id": "1petar",
+          "short": "1. Петрова",
+          "name": "Прва посланица Петрова",
+          "chapters": 5,
+          "testament": "new"
+        },
+        {
+          "id": "2petar",
+          "short": "2. Петрова",
+          "name": "Друга посланица Петрова",
+          "chapters": 3,
+          "testament": "new"
+        },
+        {
+          "id": "1jovan",
+          "short": "1. Јованова",
+          "name": "Прва посланица Јованова",
+          "chapters": 5,
+          "testament": "new"
+        },
+        {
+          "id": "2jovan",
+          "short": "2. Јованова",
+          "name": "Друга посланица Јованова",
+          "chapters": 1,
+          "testament": "new"
+        },
+        {
+          "id": "3jovan",
+          "short": "3. Јованова",
+          "name": "Трећа посланица Јованова",
+          "chapters": 1,
+          "testament": "new"
+        },
+        {
+          "id": "juda",
+          "short": "Јудина",
+          "name": "Посланица Јудина",
+          "chapters": 1,
+          "testament": "new"
+        }
+      ]
+    },
+    {
+      "id": "pavle",
+      "name": "Посланице апостола Павла",
+      "description": "Четрнаест посланица црквама и ученицима.",
+      "books": [
+        {
+          "id": "rimljani",
+          "short": "Римљанима",
+          "name": "Посланица Римљанима",
+          "chapters": 16,
+          "testament": "new"
+        },
+        {
+          "id": "1kor",
+          "short": "1. Коринћанима",
+          "name": "Прва посланица Коринћанима",
+          "chapters": 16,
+          "testament": "new"
+        },
+        {
+          "id": "2kor",
+          "short": "2. Коринћанима",
+          "name": "Друга посланица Коринћанима",
+          "chapters": 13,
+          "testament": "new"
+        },
+        {
+          "id": "galati",
+          "short": "Галатима",
+          "name": "Посланица Галатима",
+          "chapters": 6,
+          "testament": "new"
+        },
+        {
+          "id": "efesci",
+          "short": "Ефесцима",
+          "name": "Посланица Ефесцима",
+          "chapters": 6,
+          "testament": "new"
+        },
+        {
+          "id": "filibljani",
+          "short": "Филибљанима",
+          "name": "Посланица Филибљанима",
+          "chapters": 4,
+          "testament": "new"
+        },
+        {
+          "id": "kolosani",
+          "short": "Колошанима",
+          "name": "Посланица Колошанима",
+          "chapters": 4,
+          "testament": "new"
+        },
+        {
+          "id": "1sol",
+          "short": "1. Солуњанима",
+          "name": "Прва посланица Солуњанима",
+          "chapters": 5,
+          "testament": "new"
+        },
+        {
+          "id": "2sol",
+          "short": "2. Солуњанима",
+          "name": "Друга посланица Солуњанима",
+          "chapters": 3,
+          "testament": "new"
+        },
+        {
+          "id": "1tim",
+          "short": "1. Тимотију",
+          "name": "Прва посланица Тимотију",
+          "chapters": 6,
+          "testament": "new"
+        },
+        {
+          "id": "2tim",
+          "short": "2. Тимотију",
+          "name": "Друга посланица Тимотију",
+          "chapters": 4,
+          "testament": "new"
+        },
+        {
+          "id": "tit",
+          "short": "Титу",
+          "name": "Посланица Титу",
+          "chapters": 3,
+          "testament": "new"
+        },
+        {
+          "id": "filimon",
+          "short": "Филимону",
+          "name": "Посланица Филимону",
+          "chapters": 1,
+          "testament": "new"
+        },
+        {
+          "id": "jevreji",
+          "short": "Јеврејима",
+          "name": "Посланица Јеврејима",
+          "chapters": 13,
+          "testament": "new"
+        }
+      ]
+    },
+    {
+      "id": "otkrivenje",
+      "name": "Откривење",
+      "description": "Пророчка књига о крају историје и Царству Божјем.",
+      "books": [
+        {
+          "id": "otkrivenje",
+          "short": "Откривење",
+          "name": "Откривење Јованово",
+          "chapters": 22,
+          "testament": "new"
+        }
+      ]
+    }
+  ],
+  "notInTranslation": [
+    "Товија",
+    "Јудита",
+    "Премудрост Соломонова",
+    "Премудрост Исуса сина Сирахова",
+    "Варух",
+    "Макавејске књиге"
+  ]
+}

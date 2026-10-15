@@ -1,0 +1,8 @@
+.group { border: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.group legend { font-family: var(--font-heading); font-size: 22px; font-weight: 600; color: var(--vault); margin-bottom: 8px; }
+.group label { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border-radius: 16px; background: var(--card); border: 1px solid var(--border); cursor: pointer; }
+.group input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--gold-dark); flex: none; }
+.group b { display: block; color: var(--vault); }
+.group small { display: block; color: var(--ink-2); font-size: 13px; }
+.unavailable { opacity: 0.6; cursor: default; }
+.link { font-size: 13px; font-weight: 700; text-decoration: none; min-height: 36px; display: inline-flex; align-items: center; }

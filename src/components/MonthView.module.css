@@ -1,0 +1,27 @@
+.header { display: flex; align-items: center; justify-content: space-between; margin: 8px 0 10px; }
+.header h2 { font-size: 28px; color: var(--ivory); text-transform: capitalize; }
+.arrow { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-dark); background: transparent; color: var(--gold-light); font-size: 22px; cursor: pointer; }
+.grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.weekday { text-align: center; font-size: 11px; font-weight: 700; color: #9aa5c3; padding-bottom: 4px; }
+.day { position: relative; aspect-ratio: 1 / 1.05; min-height: 46px; border: 1px solid transparent; border-radius: 12px; background: var(--vault-2); color: var(--ivory); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+.day:hover { border-color: var(--line-dark); }
+.number { font-size: 16px; font-weight: 700; line-height: 1; }
+.oldStyle { font-size: 9px; color: #8f9ab8; margin-top: 2px; }
+.redLetter .number { color: var(--red-on-dark); }
+.today { border-color: var(--gold-light); }
+.selected { background: var(--ivory); color: var(--vault); }
+.selected .oldStyle { color: var(--ink-2); }
+.selected.redLetter .number { color: var(--red); }
+.major { position: absolute; top: 5px; right: 5px; width: 7px; height: 7px; background: var(--gold-light); transform: rotate(45deg); border-radius: 1px; }
+.fast { position: absolute; bottom: 5px; width: 14px; height: 3px; border-radius: 2px; background: var(--fast); }
+.legend { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-size: 11px; color: #c3cbe0; }
+.legend li { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { display: inline-block; }
+.lMajor { width: 8px; height: 8px; background: var(--gold-light); transform: rotate(45deg); }
+.lRedLetter { width: 9px; height: 9px; border-radius: 50%; background: var(--red-on-dark); }
+.lFast { width: 14px; height: 3px; border-radius: 2px; background: var(--fast); }
+.water { background: #8b79d1; }
+.oil { background: #d9b45a; }
+.fish { background: #6fb3d6; }
+.dairy { background: #f3ebd8; }
+.abstain { background: #f0675b; }

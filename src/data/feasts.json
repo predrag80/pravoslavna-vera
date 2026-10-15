@@ -1,0 +1,37 @@
+{
+  "_note": "Непокретни празници су по старом (јулијанском) календару: [месец, дан]. Покретни су померај у данима од Васкрса. Пре објављивања листу треба да провери свештеник.",
+  "fixed": [
+    { "id": "nova-godina", "name": "Црквена Нова година", "kind": "feast", "oldStyle": [9, 1], "description": "Почетак црквене године (Индикт)." },
+    { "id": "mala-gospojina", "name": "Мала Госпојина", "kind": "red-letter", "oldStyle": [9, 8], "description": "Рођење Пресвете Богородице." },
+    { "id": "krstovdan", "name": "Крстовдан", "kind": "red-letter", "oldStyle": [9, 14], "description": "Воздвижење Часног Крста. Дан строгог поста." },
+    { "id": "jovan-bogoslov", "name": "Свети Јован Богослов", "kind": "red-letter", "oldStyle": [9, 26], "description": "Свети апостол и јеванђелист Јован Богослов." },
+    { "id": "pokrov", "name": "Покров Пресвете Богородице", "kind": "feast", "oldStyle": [10, 1], "description": "Спомен на заштиту коју Богородица пружа вернима." },
+    { "id": "petka", "name": "Света Петка", "kind": "red-letter", "oldStyle": [10, 14], "description": "Преподобна мати Параскева. Једна од најчешћих крсних слава." },
+    { "id": "mitrovdan", "name": "Митровдан", "kind": "red-letter", "oldStyle": [10, 26], "description": "Свети великомученик Димитрије Солунски." },
+    { "id": "arandjelovdan", "name": "Аранђеловдан", "kind": "red-letter", "oldStyle": [11, 8], "description": "Сабор Светог архангела Михаила и свих небеских сила." },
+    { "id": "vavedenje", "name": "Ваведење", "kind": "red-letter", "oldStyle": [11, 21], "description": "Увођење Пресвете Богородице у храм." },
+    { "id": "nikoljdan", "name": "Никољдан", "kind": "red-letter", "oldStyle": [12, 6], "description": "Свети Николај Мирликијски, најчешћа крсна слава." },
+    { "id": "bozic", "name": "Божић", "kind": "red-letter", "oldStyle": [12, 25], "description": "Рођење Господа Исуса Христа." },
+    { "id": "bogojavljenje", "name": "Богојављење", "kind": "red-letter", "oldStyle": [1, 6], "description": "Крштење Господа на Јордану и велико освећење воде." },
+    { "id": "jovanjdan", "name": "Јовањдан", "kind": "red-letter", "oldStyle": [1, 7], "description": "Сабор Светог Јована Крститеља." },
+    { "id": "sveti-sava", "name": "Свети Сава", "kind": "feast", "oldStyle": [1, 14], "description": "Први архиепископ српски и просветитељ. Школска слава." },
+    { "id": "sretenje", "name": "Сретење", "kind": "red-letter", "oldStyle": [2, 2], "description": "Сусрет Господа са праведним Симеоном у храму." },
+    { "id": "blagovesti", "name": "Благовести", "kind": "red-letter", "oldStyle": [3, 25], "description": "Архангел Гаврило јавља Богородици да ће родити Сина Божјег." },
+    { "id": "djurdjevdan", "name": "Ђурђевдан", "kind": "red-letter", "oldStyle": [4, 23], "description": "Свети великомученик Георгије." },
+    { "id": "vidovdan", "name": "Видовдан", "kind": "red-letter", "oldStyle": [6, 15], "description": "Свети кнез Лазар и косовски мученици." },
+    { "id": "petrovdan", "name": "Петровдан", "kind": "red-letter", "oldStyle": [6, 29], "description": "Свети апостоли Петар и Павле." },
+    { "id": "ilindan", "name": "Илиндан", "kind": "red-letter", "oldStyle": [7, 20], "description": "Свети пророк Илија." },
+    { "id": "preobrazenje", "name": "Преображење", "kind": "red-letter", "oldStyle": [8, 6], "description": "Преображење Господње на гори Тавор." },
+    { "id": "velika-gospojina", "name": "Велика Госпојина", "kind": "red-letter", "oldStyle": [8, 15], "description": "Успење Пресвете Богородице." },
+    { "id": "usekovanje", "name": "Усековање", "kind": "red-letter", "oldStyle": [8, 29], "description": "Усековање главе Светог Јована Крститеља. Дан строгог поста." }
+  ],
+  "movable": [
+    { "id": "veliki-post", "name": "Почетак Великог поста", "kind": "fast", "fromPascha": -48, "description": "Чисти понедељак: седам недеља припреме за Васкрс." },
+    { "id": "cveti", "name": "Цвети", "kind": "red-letter", "fromPascha": -7, "description": "Улазак Господа у Јерусалим." },
+    { "id": "veliki-petak", "name": "Велики петак", "kind": "red-letter", "fromPascha": -2, "description": "Страдање и погреб Господа Исуса Христа." },
+    { "id": "vaskrs", "name": "Васкрс", "kind": "pascha", "fromPascha": 0, "description": "Васкрсење Христово, празник над празницима." },
+    { "id": "vaskrsnji-ponedeljak", "name": "Васкршњи понедељак", "kind": "red-letter", "fromPascha": 1, "description": "Други дан Васкрса." },
+    { "id": "spasovdan", "name": "Спасовдан", "kind": "red-letter", "fromPascha": 39, "description": "Вазнесење Господње, четрдесети дан по Васкрсу." },
+    { "id": "duhovi", "name": "Духови", "kind": "red-letter", "fromPascha": 49, "description": "Силазак Светог Духа на апостоле, педесети дан по Васкрсу." }
+  ]
+}

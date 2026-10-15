@@ -1,0 +1,13 @@
+.timeline { list-style: none; margin: 14px 0; padding: 0; position: relative; }
+.timeline::before { content: ''; position: absolute; left: 56px; top: 8px; bottom: 8px; width: 2px; background: #d8c8a6; }
+.timeline li { position: relative; display: flex; align-items: flex-start; padding: 3px 0; }
+.timeline li::before { content: ''; position: absolute; left: 52px; top: 19px; width: 10px; height: 10px; border-radius: 50%; background: var(--paper); border: 2px solid #b9975a; box-sizing: border-box; }
+.era { width: 44px; padding-top: 14px; font-size: 12px; font-weight: 800; color: var(--gold-dark); text-align: right; }
+.fathers { flex: 1; margin-left: 28px; display: flex; flex-wrap: wrap; gap: 6px; }
+.father { min-height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--card); color: var(--vault); font-size: 13px; font-weight: 700; cursor: pointer; }
+.father[aria-pressed='true'] { background: var(--vault); color: var(--ivory); border-color: var(--vault); }
+.meta { margin: 4px 0 0; font-size: 12px; font-weight: 700; color: var(--gold-light); }
+.description { margin: 8px 0 0; font-size: 14px; color: #c9d0e3; }
+.footer { margin-top: 10px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.link { min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line-dark); background: var(--vault-2); color: var(--ivory); font-size: 12px; font-weight: 600; cursor: pointer; }
+.feast { font-size: 12px; color: var(--on-dark); }

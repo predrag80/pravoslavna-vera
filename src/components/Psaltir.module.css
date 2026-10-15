@@ -1,9 +1,0 @@
-.prekidac { display: flex; padding: 4px; margin: 12px 0; background: var(--pesak); border-radius: 14px; }
-.prekidac button { flex: 1; height: 40px; border: none; border-radius: 11px; background: transparent; font-weight: 600; color: var(--mastilo-2); cursor: pointer; }
-.prekidac button[aria-selected='true'] { background: var(--kartica); color: var(--svod); font-weight: 700; box-shadow: 0 1px 3px rgba(20, 33, 61, 0.12); }
-.katizma { min-height: 66px; border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: var(--kartica); border: 1px solid var(--ivica); color: var(--svod); cursor: pointer; }
-.katizma[aria-expanded='true'] { background: var(--svod-2); color: var(--slonovaca); border-color: var(--svod-2); box-shadow: 0 0 0 3px var(--zlato-svetlo); }
-.katizma b { font-family: var(--font-naslov); font-size: 22px; line-height: 1; }
-.katizma small { font-size: 10px; font-weight: 600; opacity: 0.85; }
-.psalam { min-height: 44px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--ivica); background: var(--kartica); font-weight: 700; color: var(--svod); text-decoration: none; line-height: 1.1; }
-.psalam small { font-size: 9px; font-weight: 600; color: var(--mastilo-2); }

@@ -1,0 +1,25 @@
+.reader { min-height: 70dvh; }
+.toolbar { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 16px; padding-bottom: 8px; position: sticky; top: 0; z-index: 5; background: var(--paper); }
+.night .toolbar { background: var(--vault); }
+.back { min-height: 44px; display: inline-flex; align-items: center; font-size: 13px; font-weight: 700; text-decoration: none; }
+.buttons { display: flex; gap: 6px; }
+.buttons button { min-width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border-2); background: var(--card); color: var(--vault); font-weight: 700; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.buttons button[aria-pressed='true'] { background: var(--gold); border-color: var(--gold); color: var(--vault); }
+.night .buttons button { background: var(--vault-2); border-color: var(--line-dark); color: var(--ivory); }
+.night .buttons button[aria-pressed='true'] { background: var(--gold); color: var(--vault); }
+.text { padding-top: 12px; }
+.title { font-size: 1.7em; margin: 4px 0 14px; }
+.night .title { color: var(--ivory); }
+.prayer { font-family: var(--font-text); line-height: 1.75; }
+.prayer p { margin: 0 0 0.9em; }
+.night .prayer { color: #e6dfcf; }
+.navigation { padding-top: 12px; padding-bottom: 24px; display: flex; flex-direction: column; gap: 14px; }
+.dots { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+.dots button { width: 12px; height: 12px; padding: 0; border-radius: 50%; border: 1.5px solid #b9975a; background: transparent; cursor: pointer; }
+.dots button.read { background: var(--gold); border-color: var(--gold); }
+.dots button[aria-current='step'] { box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.35); }
+.next { display: flex; gap: 8px; }
+.next > * { flex: 1; }
+.night .next :global(.button) { background: var(--gold); color: var(--vault); }
+.night .next :global(.button-outline) { background: transparent; color: var(--ivory); border-color: var(--line-dark); }
+.night .back { color: var(--gold-light); }

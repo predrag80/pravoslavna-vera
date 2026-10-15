@@ -1,0 +1,6 @@
+.frame { aspect-ratio: 16 / 9; border-radius: 18px; background: var(--vault); display: flex; align-items: center; justify-content: center; }
+.image { margin: 0; }
+.image img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 18px; background: var(--vault); }
+.image figcaption { margin-top: 6px; font-size: 11px; line-height: 1.4; color: var(--ink-2); }
+.image figcaption a { color: inherit; }
+.small.frame, .small img { aspect-ratio: 2 / 1; }

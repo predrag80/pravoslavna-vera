@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
-import Psaltir from '@/components/Psaltir';
-import Zaglavlje from '@/components/Zaglavlje';
+import Psalter from '@/components/Psalter';
+import PageHeader from '@/components/PageHeader';
 
 export const metadata: Metadata = { title: 'Псалтир' };
 
-export default function PsaltirStrana() {
+export default function PsalterPage() {
   return (
     <>
-      <Zaglavlje naslov="Псалтир" podnaslov="150 псалама у 20 катизми, молитвеник Цркве" nazad={{ href: '/pismo/', tekst: 'Свето писмо' }} />
-      <div className="omot">
-        <Psaltir />
+      <PageHeader title="Псалтир" subtitle="150 псалама у 20 катизми, молитвеник Цркве" back={{ href: '/pismo/', text: 'Свето писмо' }} />
+      <div className="container">
+        <Psalter />
       </div>
     </>
   );

@@ -1,0 +1,20 @@
+.screen { position: relative; min-height: 100dvh; margin-bottom: calc(-1 * var(--nav-height)); overflow: hidden; background: var(--vault); color: var(--ivory); }
+.star { position: absolute; border-radius: 50%; background: var(--gold-light); opacity: 0.55; }
+.content { position: relative; max-width: 440px; margin: 0 auto; padding: calc(48px + env(safe-area-inset-top)) 24px calc(28px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 100dvh; }
+.title { margin-top: 22px; font-size: 46px; color: var(--ivory); letter-spacing: 0.01em; }
+.subtitle { margin: 12px 0 0; max-width: 300px; font-size: 15px; color: #c3cbe0; }
+.script { margin-top: 22px; }
+.script :global(.script-toggle) { background: var(--vault-3); border-color: var(--line-dark); }
+.script :global(.script-toggle button) { color: #c3cbe0; }
+.script :global(.script-toggle button[aria-pressed='true']) { color: var(--vault); }
+.question { margin: 34px 0 14px; font-size: 27px; color: var(--gold-light); }
+.journeys { width: 100%; display: flex; flex-direction: column; gap: 12px; }
+.journey { display: flex; align-items: center; gap: 14px; min-height: 76px; padding: 14px 16px; background: var(--vault-2); border: 1px solid var(--line-dark); border-radius: 18px; color: var(--ivory); text-align: left; cursor: pointer; }
+.journey:hover, .journey[aria-pressed='true'] { border-color: var(--gold); }
+.number { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--gold); display: flex; align-items: center; justify-content: center; color: var(--gold-light); font-family: var(--font-heading); font-size: 20px; font-weight: 700; }
+.text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.text b { font-size: 16px; }
+.text small { font-size: 13px; line-height: 1.4; color: var(--on-dark); }
+.note { margin: auto 0 0; padding-top: 24px; font-size: 12px; color: #8f9ab8; }
+.top { position: absolute; z-index: 1; top: calc(12px + env(safe-area-inset-top)); left: 12px; }
+.back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px 0 10px; border: 1px solid var(--line-dark); border-radius: 999px; background: transparent; color: var(--gold-light); font-size: 13px; font-weight: 700; cursor: pointer; }

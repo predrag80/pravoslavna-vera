@@ -1,23 +1,23 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import CitacMolitve from '@/components/CitacMolitve';
-import { molitve } from '@/lib/sadrzaj';
+import PrayerReader from '@/components/PrayerReader';
+import { prayers } from '@/lib/content';
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return molitve().map((m) => ({ slug: m.slug }));
+  return prayers().map((m) => ({ slug: m.slug }));
 }
 
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  return { title: molitve().find((m) => m.slug === slug)?.naslov ?? 'Молитва' };
+  return { title: prayers().find((m) => m.slug === slug)?.title ?? 'Молитва' };
 }
 
-export default async function Molitva({ params }: Props) {
+export default async function PrayerPage({ params }: Props) {
   const { slug } = await params;
-  const m = molitve().find((x) => x.slug === slug);
+  const m = prayers().find((x) => x.slug === slug);
   if (!m) notFound();
-  return <CitacMolitve stavke={[{ slug: m.slug, naslov: m.naslov, html: m.html }]} nazad={{ href: '/molitve/', tekst: 'Молитвеник' }} />;
+  return <PrayerReader items={[{ slug: m.slug, title: m.title, html: m.html }]} back={{ href: '/molitve/', text: 'Молитвеник' }} />;
 }

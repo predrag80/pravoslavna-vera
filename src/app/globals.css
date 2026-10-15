@@ -6,35 +6,35 @@
 @import '@fontsource/pt-serif/400.css';
 @import '@fontsource/pt-serif/400-italic.css';
 
-/* Визуелни језик „Свод“: тамноплави свод храма, злато и папир за читање. */
+/* "Vault" visual language: the dark-blue vault of a church, gold, and paper for reading. */
 :root {
-  --svod: #14213d;
-  --svod-2: #1e2f55;
-  --svod-3: #0e1830;
-  --linija-tamna: #34477a;
-  --zlato: #c9a24b;
-  --zlato-svetlo: #e6c77a;
-  --zlato-tamno: #7a5a16;
-  --slonovaca: #f3ebd8;
-  --papir: #f6f1e7;
-  --kartica: #fffcf5;
-  --ivica: #e5d9c3;
-  --ivica-2: #d8c8a6;
-  --pesak: #efe6d4;
-  --mastilo: #1d1b22;
-  --mastilo-2: #5e5a66;
-  --na-tamnom: #b8c0d6;
-  --crveno: #a3261e;
-  --crveno-na-tamnom: #f0675b;
-  --post: #8b79d1;
+  --vault: #14213d;
+  --vault-2: #1e2f55;
+  --vault-3: #0e1830;
+  --line-dark: #34477a;
+  --gold: #c9a24b;
+  --gold-light: #e6c77a;
+  --gold-dark: #7a5a16;
+  --ivory: #f3ebd8;
+  --paper: #f6f1e7;
+  --card: #fffcf5;
+  --border: #e5d9c3;
+  --border-2: #d8c8a6;
+  --sand: #efe6d4;
+  --ink: #1d1b22;
+  --ink-2: #5e5a66;
+  --on-dark: #b8c0d6;
+  --red: #a3261e;
+  --red-on-dark: #f0675b;
+  --fast: #8b79d1;
 
-  --font-naslov: 'Cormorant Garamond', Georgia, serif;
-  --font-tekst: 'PT Serif', Georgia, serif;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-text: 'PT Serif', Georgia, serif;
   --font-ui: 'Manrope', system-ui, sans-serif;
 
   --radius: 20px;
-  --sirina: 640px;
-  --navigacija: 100px;
+  --max-width: 640px;
+  --nav-height: 100px;
   color-scheme: light;
 }
 
@@ -43,88 +43,88 @@ html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   min-height: 100dvh;
-  background: var(--papir);
-  color: var(--mastilo);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--font-ui);
   font-size: 16px;
   line-height: 1.5;
-  padding-bottom: calc(var(--navigacija) + env(safe-area-inset-bottom));
+  padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom));
 }
-body.tamno { background: var(--svod); color: var(--slonovaca); }
-a { color: var(--zlato-tamno); }
-body.tamno a { color: var(--zlato-svetlo); }
-:focus-visible { outline: 3px solid var(--zlato); outline-offset: 2px; border-radius: 6px; }
+body.dark { background: var(--vault); color: var(--ivory); }
+a { color: var(--gold-dark); }
+body.dark a { color: var(--gold-light); }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 6px; }
 img, svg { max-width: 100%; }
 button { font: inherit; color: inherit; }
 
-.omot { max-width: var(--sirina); margin: 0 auto; padding: 0 16px; }
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 16px; }
 
-.natpis {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--zlato-tamno);
+.eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dark);
 }
-body.tamno .natpis { color: var(--zlato-svetlo); }
+body.dark .eyebrow { color: var(--gold-light); }
 
-h1, h2, h3 { font-family: var(--font-naslov); font-weight: 600; line-height: 1.05; margin: 0; }
-h1 { font-size: clamp(34px, 8vw, 44px); color: var(--svod); }
-body.tamno h1 { color: var(--slonovaca); }
-h2 { font-size: 26px; color: var(--svod); }
-.prigusen { color: var(--mastilo-2); }
-body.tamno .prigusen { color: var(--na-tamnom); }
+h1, h2, h3 { font-family: var(--font-heading); font-weight: 600; line-height: 1.05; margin: 0; }
+h1 { font-size: clamp(34px, 8vw, 44px); color: var(--vault); }
+body.dark h1 { color: var(--ivory); }
+h2 { font-size: 26px; color: var(--vault); }
+.muted { color: var(--ink-2); }
+body.dark .muted { color: var(--on-dark); }
 
-.kartica { background: var(--kartica); border: 1px solid var(--ivica); border-radius: var(--radius); padding: 16px 18px; }
-.kartica-tamna { background: var(--svod); color: var(--slonovaca); border-radius: var(--radius); padding: 16px 18px; }
-.kartica-tamna h2, .kartica-tamna h3 { color: var(--slonovaca); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+.card-dark { background: var(--vault); color: var(--ivory); border-radius: var(--radius); padding: 16px 18px; }
+.card-dark h2, .card-dark h3 { color: var(--ivory); }
 
-.cip {
+.chip {
   display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 14px; border-radius: 999px;
-  border: 1px solid var(--ivica-2); background: transparent; font-size: 13px; font-weight: 700; color: var(--svod);
+  border: 1px solid var(--border-2); background: transparent; font-size: 13px; font-weight: 700; color: var(--vault);
   cursor: pointer; text-decoration: none; white-space: nowrap;
 }
-.cip[aria-pressed='true'], .cip[aria-selected='true'], .cip[aria-current='page'] { background: var(--svod); color: var(--slonovaca); border-color: var(--svod); }
-body.tamno .cip { border-color: var(--linija-tamna); color: var(--slonovaca); }
-body.tamno .cip[aria-pressed='true'] { background: var(--slonovaca); color: var(--svod); }
+.chip[aria-pressed='true'], .chip[aria-selected='true'], .chip[aria-current='page'] { background: var(--vault); color: var(--ivory); border-color: var(--vault); }
+body.dark .chip { border-color: var(--line-dark); color: var(--ivory); }
+body.dark .chip[aria-pressed='true'] { background: var(--ivory); color: var(--vault); }
 
-.dugme {
+.button {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 0 18px;
-  border-radius: 14px; border: none; background: var(--svod); color: var(--slonovaca); font-weight: 700; font-size: 14px;
+  border-radius: 14px; border: none; background: var(--vault); color: var(--ivory); font-weight: 700; font-size: 14px;
   cursor: pointer; text-decoration: none;
 }
-.dugme-obrub { background: transparent; color: var(--svod); border: 1px solid var(--ivica-2); }
-.dugme-isprekidano { background: transparent; color: var(--zlato-tamno); border: 1px dashed #b9975a; font-weight: 600; }
+.button-outline { background: transparent; color: var(--vault); border: 1px solid var(--border-2); }
+.button-dashed { background: transparent; color: var(--gold-dark); border: 1px dashed #b9975a; font-weight: 600; }
 
-.red-cipova { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
-.red-cipova::-webkit-scrollbar { display: none; }
+.chip-row { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.chip-row::-webkit-scrollbar { display: none; }
 
-.mreza { display: grid; gap: 8px; }
-.mreza-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.mreza-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.mreza-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.grid { display: grid; gap: 8px; }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 
-.tekst-citanja { font-family: var(--font-tekst); font-size: 18px; line-height: 1.7; }
+.reading-text { font-family: var(--font-text); font-size: 18px; line-height: 1.7; }
 
-.samo-citac {
+.sr-only {
   position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
 }
 
-.zaglavlje-strane { padding-top: 28px; padding-bottom: 8px; }
-.zaglavlje-strane .nazad {
+.page-header { padding-top: 28px; padding-bottom: 8px; }
+.page-header .back {
   display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 12px 0 8px; margin-left: -8px;
-  border: none; border-radius: 999px; background: transparent; color: var(--zlato-tamno);
+  border: none; border-radius: 999px; background: transparent; color: var(--gold-dark);
   font-size: 13px; font-weight: 700; text-decoration: none; cursor: pointer;
 }
-body.tamno .zaglavlje-strane .nazad { color: var(--zlato-svetlo); }
-.zaglavlje-strane .natpis { display: block; margin-bottom: 4px; }
-.zaglavlje-strane p { margin: 6px 0 0; }
+body.dark .page-header .back { color: var(--gold-light); }
+.page-header .eyebrow { display: block; margin-bottom: 4px; }
+.page-header p { margin: 6px 0 0; }
 
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 
-.gornji-red { display: flex; align-items: center; justify-content: space-between; min-height: 44px; margin-bottom: 4px; gap: 12px; }
-.izbor-pisma { display: inline-flex; padding: 3px; border: 1px solid var(--ivica-2); border-radius: 999px; }
-body.tamno .izbor-pisma, .na-tamnom .izbor-pisma { border-color: var(--linija-tamna); }
-.izbor-pisma button {
+.top-row { display: flex; align-items: center; justify-content: space-between; min-height: 44px; margin-bottom: 4px; gap: 12px; }
+.script-toggle { display: inline-flex; padding: 3px; border: 1px solid var(--border-2); border-radius: 999px; }
+body.dark .script-toggle, .on-dark .script-toggle { border-color: var(--line-dark); }
+.script-toggle button {
   min-width: 40px; height: 36px; border: none; border-radius: 999px; background: transparent;
   font-weight: 700; font-size: 13px; cursor: pointer; color: inherit;
 }
-.izbor-pisma button[aria-pressed='true'] { background: var(--zlato); color: var(--svod); }
-.izbor-pisma.siroko { padding: 4px; }
-.izbor-pisma.siroko button { min-width: 112px; height: 44px; font-size: 14px; }
+.script-toggle button[aria-pressed='true'] { background: var(--gold); color: var(--vault); }
+.script-toggle.wide { padding: 4px; }
+.script-toggle.wide button { min-width: 112px; height: 44px; font-size: 14px; }

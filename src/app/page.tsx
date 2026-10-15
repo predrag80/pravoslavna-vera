@@ -1,14 +1,14 @@
-import Danas from '@/components/Danas';
-import { podaciDana } from '@/lib/dan';
-import { danas } from '@/lib/kalendar';
-import { PREUSMERI_AKO_NEMA_PUTA } from '@/lib/put';
+import Today from '@/components/Today';
+import { todayData } from '@/lib/today';
+import { today } from '@/lib/calendar';
+import { REDIRECT_IF_NO_JOURNEY } from '@/lib/journey';
 
-export default function Pocetna() {
+export default function HomePage() {
   return (
     <>
-      {/* Прво отварање: екран добродошлице пре него што се почетна прикаже. */}
-      <script dangerouslySetInnerHTML={{ __html: PREUSMERI_AKO_NEMA_PUTA }} />
-      <Danas pocetno={podaciDana(danas())} />
+      {/* First visit: show the welcome screen before the home page renders. */}
+      <script dangerouslySetInnerHTML={{ __html: REDIRECT_IF_NO_JOURNEY }} />
+      <Today initial={todayData(today())} />
     </>
   );
 }

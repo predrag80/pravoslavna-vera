@@ -1,0 +1,7 @@
+.day { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 6px; text-align: center; }
+.day div { display: flex; flex-direction: column; }
+.day b { color: var(--vault); }
+.day span { font-size: 12px; }
+.day button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--card); font-size: 22px; color: var(--gold-dark); cursor: pointer; }
+.saint { margin-top: 14px; text-align: center; font-size: 32px; }
+.others { text-align: center; margin: 4px 0 0; font-size: 13px; }

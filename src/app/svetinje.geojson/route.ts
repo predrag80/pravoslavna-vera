@@ -1,16 +1,16 @@
-import podaci from '@/data/svetinje.json';
+import data from '@/data/shrines.json';
 
-// Статички GeoJSON за мапу; прави се једном, при изградњи сајта.
+// Static GeoJSON for the map; built once, at site build time.
 export const dynamic = 'force-static';
 
 export function GET() {
   const geojson = {
     type: 'FeatureCollection',
-    features: podaci.svetinje.map((s) => ({
+    features: data.shrines.map((s) => ({
       type: 'Feature',
       id: s.id,
       geometry: { type: 'Point', coordinates: [s.lon, s.lat] },
-      properties: { id: s.id, naziv: s.naziv, vrsta: s.vrsta, vek: s.vek, mesto: s.mesto, opis: s.opis, oznake: s.oznake.join(',') },
+      properties: { id: s.id, name: s.name, kind: s.kind, century: s.century, place: s.place, description: s.description, tags: s.tags.join(',') },
     })),
   };
   return Response.json(geojson);

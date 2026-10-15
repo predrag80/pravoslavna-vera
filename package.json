@@ -4,15 +4,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "node scripts/kopiraj-maplibre-worker.mjs",
+    "predev": "node scripts/copy-maplibre-worker.mjs",
     "dev": "next dev",
-    "prebuild": "node scripts/kopiraj-maplibre-worker.mjs",
+    "prebuild": "node scripts/copy-maplibre-worker.mjs",
     "build": "next build && pagefind --site out",
     "start": "npx serve out",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "node --test --experimental-strip-types tests/*.test.ts",
-    "slike": "node scripts/slike.mjs"
+    "images": "node scripts/images.mjs"
   },
   "engines": {
     "node": ">=20.9.0"

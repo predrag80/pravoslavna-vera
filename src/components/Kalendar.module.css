@@ -1,4 +1,0 @@
-.prekidac { display: flex; padding: 4px; margin: 4px 0 8px; border: 1px solid var(--linija-tamna); border-radius: 14px; }
-.prekidac button { flex: 1; height: 40px; border: none; border-radius: 11px; background: transparent; color: #c3cbe0; font-weight: 600; cursor: pointer; }
-.prekidac button[aria-selected='true'] { background: var(--zlato); color: var(--svod); font-weight: 700; }
-.cekanje { min-height: 420px; }

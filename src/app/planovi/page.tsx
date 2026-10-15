@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
-import ListaPlanova from '@/components/ListaPlanova';
-import Zaglavlje from '@/components/Zaglavlje';
+import PlanList from '@/components/PlanList';
+import PageHeader from '@/components/PageHeader';
 
 export const metadata: Metadata = { title: 'Планови читања' };
 
-export default function Planovi() {
+export default function PlansPage() {
   return (
     <>
-      <Zaglavlje naslov="Планови читања" podnaslov="Свето писмо део по део, својим темпом" />
-      <div className="omot">
-        <ListaPlanova />
+      <PageHeader title="Планови читања" subtitle="Свето писмо део по део, својим темпом" />
+      <div className="container">
+        <PlanList />
       </div>
     </>
   );

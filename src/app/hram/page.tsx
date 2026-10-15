@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
-import Hram from '@/components/Hram';
-import Zaglavlje from '@/components/Zaglavlje';
+import ChurchGuide from '@/components/ChurchGuide';
+import PageHeader from '@/components/PageHeader';
 
 export const metadata: Metadata = { title: 'Уђи у храм' };
 
-export default function HramStrana() {
+export default function ChurchPage() {
   return (
     <>
-      <Zaglavlje naslov="Уђи у храм" podnaslov="Додирните део храма да сазнате шта значи" nazad={{ href: '/ucenje/', tekst: 'Учење · први корак' }} />
-      <div className="omot">
-        <Hram />
+      <PageHeader title="Уђи у храм" subtitle="Додирните део храма да сазнате шта значи" back={{ href: '/ucenje/', text: 'Учење · први корак' }} />
+      <div className="container">
+        <ChurchGuide />
       </div>
     </>
   );

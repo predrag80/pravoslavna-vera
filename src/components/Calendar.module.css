@@ -1,0 +1,4 @@
+.toggle { display: flex; padding: 4px; margin: 4px 0 8px; border: 1px solid var(--line-dark); border-radius: 14px; }
+.toggle button { flex: 1; height: 40px; border: none; border-radius: 11px; background: transparent; color: #c3cbe0; font-weight: 600; cursor: pointer; }
+.toggle button[aria-selected='true'] { background: var(--gold); color: var(--vault); font-weight: 700; }
+.loading { min-height: 420px; }

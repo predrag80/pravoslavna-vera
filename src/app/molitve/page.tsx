@@ -1,47 +1,47 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import TroparDana from '@/components/TroparDana';
-import Zaglavlje from '@/components/Zaglavlje';
-import { molitve, molitvePravila, PRAVILA, type GrupaMolitve, type IdPravila } from '@/lib/sadrzaj';
-import s from './molitve.module.css';
+import TroparionOfDay from '@/components/TroparionOfDay';
+import PageHeader from '@/components/PageHeader';
+import { prayers, prayersOfRule, PRAYER_RULES, type PrayerGroup, type PrayerRuleId } from '@/lib/content';
+import s from './prayers.module.css';
 
 export const metadata: Metadata = { title: 'Молитвеник' };
 
-const GRUPE: { id: GrupaMolitve; naziv: string }[] = [
-  { id: 'svakodnevne', naziv: 'Свакодневне молитве' },
-  { id: 'akatisti', naziv: 'Акатисти' },
-  { id: 'kanoni', naziv: 'Канони' },
-  { id: 'ostale', naziv: 'Остале молитве' },
+const GROUPS: { id: PrayerGroup; name: string }[] = [
+  { id: 'svakodnevne', name: 'Свакодневне молитве' },
+  { id: 'akatisti', name: 'Акатисти' },
+  { id: 'kanoni', name: 'Канони' },
+  { id: 'ostale', name: 'Остале молитве' },
 ];
 
-export default function Molitvenik() {
-  const sve = molitve();
+export default function PrayerBookPage() {
+  const all = prayers();
   return (
     <>
-      <Zaglavlje naslov="Молитвеник" podnaslov="Молитвена правила, свакодневне молитве, акатисти и канони" />
-      <div className="omot">
-        <div className={s.pravila}>
-          {(Object.keys(PRAVILA) as IdPravila[]).map((id) => (
-            <Link key={id} href={`/molitve/pravilo/${id}/`} className={id === 'vecernje' ? `${s.pravilo} ${s.vece}` : s.pravilo}>
-              <b>{PRAVILA[id].naziv}</b>
-              <span>{PRAVILA[id].opis} · {molitvePravila(id).length} молитава</span>
+      <PageHeader title="Молитвеник" subtitle="Молитвена правила, свакодневне молитве, акатисти и канони" />
+      <div className="container">
+        <div className={s.rules}>
+          {(Object.keys(PRAYER_RULES) as PrayerRuleId[]).map((id) => (
+            <Link key={id} href={`/molitve/pravilo/${id}/`} className={id === 'vecernje' ? `${s.rule} ${s.evening}` : s.rule}>
+              <b>{PRAYER_RULES[id].name}</b>
+              <span>{PRAYER_RULES[id].description} · {prayersOfRule(id).length} молитава</span>
               <small>Корак по корак ›</small>
             </Link>
           ))}
         </div>
 
-        <TroparDana />
+        <TroparionOfDay />
 
-        {GRUPE.map((g) => {
-          const lista = sve.filter((m) => m.grupa === g.id);
-          if (!lista.length) return null;
+        {GROUPS.map((g) => {
+          const list = all.filter((m) => m.group === g.id);
+          if (!list.length) return null;
           return (
-            <section key={g.id} className={s.grupa} aria-labelledby={`g-${g.id}`}>
-              <h2 id={`g-${g.id}`}>{g.naziv}</h2>
+            <section key={g.id} className={s.group} aria-labelledby={`g-${g.id}`}>
+              <h2 id={`g-${g.id}`}>{g.name}</h2>
               <ul>
-                {lista.map((m) => (
+                {list.map((m) => (
                   <li key={m.slug}>
-                    <Link href={`/molitve/${m.slug}/`}>{m.naslov}<span aria-hidden="true">›</span></Link>
+                    <Link href={`/molitve/${m.slug}/`}>{m.title}<span aria-hidden="true">›</span></Link>
                   </li>
                 ))}
               </ul>

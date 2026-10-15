@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
-import Prolog from '@/components/Prolog';
-import Zaglavlje from '@/components/Zaglavlje';
+import Prologue from '@/components/Prologue';
+import PageHeader from '@/components/PageHeader';
 
 export const metadata: Metadata = { title: 'Охридски пролог' };
 
-export default function PrologStrana() {
+export default function ProloguePage() {
   return (
     <>
-      <Zaglavlje natpis="Охридски пролог" naslov="Пролог за данас" nazad={{ href: '/', tekst: 'Данас' }} />
-      <div className="omot">
-        <Prolog />
+      <PageHeader eyebrow="Охридски пролог" title="Пролог за данас" back={{ href: '/', text: 'Данас' }} />
+      <div className="container">
+        <Prologue />
       </div>
     </>
   );
