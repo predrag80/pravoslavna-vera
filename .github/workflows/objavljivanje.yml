@@ -62,7 +62,20 @@ jobs:
           SSH_DIR: ${{ secrets.SSH_DIR }}
           SSH_PORT: ${{ secrets.SSH_PORT }}
         run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_KEY" > ~/.ssh/kljuc && chmod 600 ~/.ssh/kljuc
-          ssh-keyscan -p "${SSH_PORT:-22}" "$SSH_HOST" >> ~/.ssh/known_hosts
-          rsync -az --delete -e "ssh -i ~/.ssh/kljuc -p ${SSH_PORT:-22}" out/ "$SSH_USER@$SSH_HOST:$SSH_DIR/"
+          greska() { echo "::error title=SSH::$1"; exit 1; }
+          PORT="${SSH_PORT:-22}"
+          [ -n "$SSH_USER" ] || greska "Недостаје тајна SSH_USER."
+          [ -n "$SSH_DIR" ] || greska "Недостаје тајна SSH_DIR."
+          [ -n "$SSH_KEY" ] || greska "Недостаје тајна SSH_KEY."
+          case "$SSH_DIR" in /*) ;; *) greska "SSH_DIR мора да буде пуна путања која почиње са / (сада почиње са '${SSH_DIR:0:1}')." ;; esac
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" | tr -d '\r' > ~/.ssh/kljuc && chmod 600 ~/.ssh/kljuc
+          ssh-keygen -y -f ~/.ssh/kljuc > /dev/null 2>&1 || greska "SSH_KEY није исправан приватни кључ (треба цео садржај, са редовима BEGIN и END, без лозинке)."
+          timeout 20 bash -c "</dev/tcp/$SSH_HOST/$PORT" 2>/dev/null || greska "Сервер $SSH_HOST не прима везе на порту $PORT (погрешна адреса, порт или заштитни зид блокира GitHub)."
+          ssh-keyscan -T 15 -p "$PORT" "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null || greska "ssh-keyscan није успео за $SSH_HOST:$PORT."
+          SSH="ssh -i $HOME/.ssh/kljuc -p $PORT -o BatchMode=yes -o ConnectTimeout=15"
+          $SSH "$SSH_USER@$SSH_HOST" true 2>/tmp/ssh.err || greska "Пријава није успела за корисника $SSH_USER: $(tail -1 /tmp/ssh.err). Проверите да је јавни кључ у ~/.ssh/authorized_keys на серверу."
+          $SSH "$SSH_USER@$SSH_HOST" "command -v rsync" >/dev/null || greska "На серверу није инсталиран rsync (нпр. sudo apt install rsync)."
+          $SSH "$SSH_USER@$SSH_HOST" "mkdir -p '$SSH_DIR' && test -w '$SSH_DIR'" || greska "Корисник $SSH_USER нема право писања у SSH_DIR."
+          rsync -az --delete -e "$SSH" out/ "$SSH_USER@$SSH_HOST:$SSH_DIR/" || greska "rsync није успео."
+          echo "::notice title=SSH::Сајт је постављен."
